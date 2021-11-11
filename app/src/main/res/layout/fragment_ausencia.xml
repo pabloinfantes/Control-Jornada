@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.horario.HorarioFragment">
+
+
+    <TextView
+        android:id="@+id/tvLugar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/ausencia_tvLugar_layout_marginStart"
+        android:layout_marginTop="@dimen/ausencia_tvLugar_layout_marginStart"
+        android:layout_marginEnd="@dimen/ausencia_tvLugar_layout_marginStart"
+        android:fontFamily="@font/officialbook"
+        android:text="@string/ausencia_tvMotivoAusencia_text"
+        android:textColor="@color/black"
+        android:textSize="@dimen/horario_tvFecha_textSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvFecha_ausencia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/officialbook"
+        android:text="@string/horario_tvFecha_text"
+        android:textColor="@color/colorGrey"
+        android:textSize="@dimen/ausencia_tvFecha_textSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLugar" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/ausencia_coordinator_layout_marginTop"
+        android:layout_marginBottom="@dimen/ausencia_coordinator_layout_marginTop"
+        app:layout_constraintBottom_toTopOf="@+id/btCancelar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFecha_ausencia">
+
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvAusencia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </RadioGroup>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+    <Button
+        android:id="@+id/btEnviar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/ausencia_coordinator_layout_marginTop"
+        android:layout_marginEnd="@dimen/ausencia_coordinator_layout_marginTop"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="@string/ausencia_btEnviar_text"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btCancelar"
+        app:layout_constraintTop_toBottomOf="@+id/coordinatorLayout" />
+
+    <Button
+        android:id="@+id/btCancelar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/ausencia_coordinator_layout_marginTop"
+        android:layout_marginEnd="@dimen/ausencia_coordinator_layout_marginTop"
+        android:layout_marginBottom="@dimen/ausencia_coordinator_layout_marginTop"
+        android:backgroundTint="@color/colorRed"
+        android:text="@string/ausencia_btCancelar_text"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btEnviar"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

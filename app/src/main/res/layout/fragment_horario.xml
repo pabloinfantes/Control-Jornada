@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.horario.HorarioFragment">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@color/white">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/officialbook"
+            android:text="@string/horario_text"
+            android:textColor="@color/white"
+            android:textSize="@dimen/horario_toolbar_textSize" />
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <TextView
+        android:id="@+id/tvFecha_horario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/horario_tvFecha_layout_marginTop"
+        android:fontFamily="@font/officialbook"
+        android:text="@string/horario_tvFecha_text"
+        android:textColor="@color/black"
+        android:textSize="@dimen/horario_tvFecha_textSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar3" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
+        android:layout_width="0dp"
+        android:layout_height="407dp"
+        android:layout_marginStart="@dimen/horario_coordinator_layout_marginStart"
+        android:layout_marginTop="@dimen/horario_coordinator_layout_marginStart"
+        android:layout_marginEnd="@dimen/horario_coordinator_layout_marginStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFecha_horario"
+        tools:context="HorarioFragement">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvHorario"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <Button
+        android:id="@+id/btFirma"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/horario_btFirma_layout_marginStart"
+        android:layout_marginEnd="@dimen/horario_btFirma_layout_marginStart"
+        android:backgroundTint="@color/colorGreen"
+        android:text="@string/horario_btFirma_text"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coordinatorLayout" />
+
+    <TextView
+        android:id="@+id/tvMotivoAusencia_horario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/horario_tvMotivoAusencia_layout_marginStart"
+        android:layout_marginTop="@dimen/horario_tvMotivoAusencia_layout_marginTop"
+        android:fontFamily="@font/officialbook"
+        android:text="@string/horario_tvMotivoAusencia_text"
+        android:textColor="@color/black"
+        android:textSize="@dimen/horario_tvFecha_textSize"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btFirma" />
+
+    <Button
+        android:id="@+id/btAusencia"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/horario_btFirma_layout_marginStart"
+        android:layout_marginTop="@dimen/horario_tvMotivoAusencia_layout_marginTop"
+        android:layout_marginEnd="@dimen/horario_btFirma_layout_marginStart"
+        android:backgroundTint="@color/colorYellow"
+        android:text="@string/horario_btAusencia_text"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMotivoAusencia_horario" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

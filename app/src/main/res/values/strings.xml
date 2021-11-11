@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">ControlJornada</string>
+    <string name="splash_imgLogo_contentDescription">Imagen del logo</string>
+    <string name="tieUser">Nombre de Usuario</string>
+    <string name="tiePassword">Contraseña</string>
+    <string name="login_text_chkRemember">Recuerdame</string>
+    <string name="login_btSignUp_text">REGISTRAR</string>
+    <string name="login_tvLogin_text">Iniciar sesión con otras plataformas</string>
+    <string name="login_btSignIn_text">Entrar</string>
+    <string name="login_tvName_text">Control de Jornada</string>
+    <string name="login_tvOtherLogin_text">Iniciar sesion con otras plataformas</string>
+    <string name="singup_label">Registro</string>
+    <string name="SignUp_tieUser_hint">Nombre de usuario</string>
+    <string name="SignUp_tieEmail_hint">Introduce tu email</string>
+    <string name="SignUp_tiePassword_hint">Introduce Contraseña</string>
+    <string name="SignUp_tieConfirmPassword_hint">Confirma tu contraseña</string>
+    <string name="SignUp_tieName_hint">Nombre</string>
+    <string name="SignUp_tieSurname_hint">Apellidos</string>
+    <string name="SignUp_tieConfirmPin_hint">Confirmar pin</string>
+    <string name="SignUp_tiePin_hint">Introduce tu pin</string>
+    <string name="singup_chkPolitics">He leido y acepto la politica de privacidad</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="horario_text">Control de Jornada</string>
+    <string name="horarioItem_tvSalida_text">Salida</string>
+    <string name="horarioItem_tvEntrada_text">Entrada</string>
+    <string name="horarioItem_button_text">Añadir lugar de trabajo</string>
+    <string name="horarioItem_edLugarTrabajo_hint">Lugar de trabajo</string>
+    <string name="horario_tvFecha_text">Jueves ,28 de octubre de 2021</string>
+    <string name="horario_tvMotivoAusencia_text">¿Motivo de la ausencia?</string>
+    <string name="horario_btFirma_text">Firmar</string>
+    <string name="horario_btAusencia_text">Indicar el motivo</string>
+    <string name="action_aboutus">Sobre Nosotros</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="horario_item_menu">Menu</string>
+    <string name="ausencia_tvMotivoAusencia_text">Motivo de la ausencia</string>
+    <string name="ausencia_btEnviar_text">Enviar</string>
+    <string name="ausencia_btCancelar_text">Cancelar</string>
+    <string name="back" translatable="false"><![CDATA[<-]]></string>
+    <string name="forward" translatable="false"><![CDATA[->]]></string>
+    <string name="calendario_tvCalendario_text">Jueves,28 de octubre de 2021</string>
+    <string name="calendario_tvHoras_text">Horas Totales:  9</string>
+    <string name="calendario_tvLugar_text">Lugar de trabajo: Ies Portada Alta</string>
+    <string name="app_description">Esta seria la descripcion de la persona</string>
+    <string name="calendario_btSobreNosotros_text">Sobre Nosotros</string>
+    <string name="calendario_btAjustes_text">Ajustes</string>
+
+</resources>

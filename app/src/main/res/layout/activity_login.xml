@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/LoginApparience"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".ui.login.LoginActivity">
+
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginStart="@dimen/login_tvName_marginStar"
+        android:layout_marginTop="@dimen/login_tvName_marginTop"
+        android:layout_marginEnd="@dimen/login_tvName_marginEnd"
+        android:fontFamily="@font/officialbook"
+        android:gravity="center_horizontal"
+        android:text="@string/login_tvName_text"
+        android:textColor="@color/white"
+        android:textSize="@dimen/login_tvName_textSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/login_constraint_marginStar"
+        android:layout_marginTop="@dimen/login_constraint_marginTop"
+        android:layout_marginEnd="@dimen/login_constraint_marginEnd"
+        android:layout_marginBottom="@dimen/login_constraint_marginBottom"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilUser"
+            style="@style/LoginTextHintApparience"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/login_tilUser_marginStart"
+            android:layout_marginTop="@dimen/login_tilUser_marginTop1"
+            android:layout_marginEnd="@dimen/login_tilUser_marginEnd"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tieUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/tieUser" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilPassword"
+            style="@style/LoginTextHintApparience"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/login_tilPassword_marginStart"
+            android:layout_marginTop="@dimen/login_tilPassword_marginTop1"
+            android:layout_marginEnd="@dimen/login_tilPassword_marginEnd"
+            app:endIconMode="password_toggle"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilUser">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiePassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/tiePassword"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <CheckBox
+            android:id="@+id/chkRemember"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/login_tilPassword_marginEnd"
+            android:layout_marginTop="@dimen/login_tilPassword_marginEnd"
+            android:layout_marginBottom="@dimen/login_tilPassword_marginEnd"
+            android:layout_weight="0.8"
+            android:buttonTint="@color/colorPrimary"
+            android:text="@string/login_text_chkRemember"
+            app:layout_constraintBottom_toTopOf="@+id/btSignIn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilPassword"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/btSignUp"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/login_tilPassword_marginEnd"
+            android:layout_marginEnd="@dimen/login_tilPassword_marginEnd"
+            android:text="@string/login_btSignUp_text"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilPassword" />
+
+        <Button
+            android:id="@+id/btSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="@dimen/login_btSignIn_marginStart"
+            android:layout_marginTop="@dimen/login_btSignIn_marginTop"
+            android:layout_marginEnd="@dimen/login_btSignIn_marginEnd"
+            android:backgroundTint="@color/colorPrimary"
+            android:text="@string/login_btSignIn_text"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btSignUp"
+            tools:ignore="TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/tvOtherLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/login_btSignIn_marginTop"
+            android:layout_marginTop="@dimen/login_tvOtherLogin_marginTop"
+            android:layout_marginEnd="@dimen/login_btSignIn_marginTop"
+            android:gravity="bottom|center_horizontal"
+            android:text="@string/login_tvOtherLogin_text"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.472"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btSignIn" />
+
+        <ImageButton
+            android:id="@+id/imgGoogle"
+            android:layout_width="97dp"
+            android:layout_height="97dp"
+            android:layout_marginStart="@dimen/login_btSignIn_marginTop"
+            android:layout_marginTop="@dimen/login_imgGoogle_marginTop"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvOtherLogin"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/ic_google"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageButton
+            android:id="@+id/imgFacebook"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/login_btSignIn_marginTop"
+            android:layout_marginTop="@dimen/login_imgGoogle_marginTop"
+            android:layout_marginEnd="@dimen/login_imgGoogle_marginEnd"
+            android:background="@android:color/transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.562"
+            app:layout_constraintStart_toEndOf="@+id/imgGoogle"
+            app:layout_constraintTop_toBottomOf="@+id/tvOtherLogin"
+            app:srcCompat="@drawable/ic_facebook"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

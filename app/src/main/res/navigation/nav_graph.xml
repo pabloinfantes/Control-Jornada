@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/horarioFragment">
+
+    <fragment
+        android:id="@+id/horarioFragment"
+        android:name="com.example.controljornada.ui.horario.HorarioFragment"
+        android:label="fragment_horario"
+        tools:layout="@layout/fragment_horario" >
+        <action
+            android:id="@+id/action_horarioFragment_to_ausenciaFragment"
+            app:destination="@id/ausenciaFragment" />
+        <action
+            android:id="@+id/action_horarioFragment_to_calendarioFragment"
+            app:destination="@id/calendarioFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ausenciaFragment"
+        android:name="com.example.controljornada.ui.ausencia.AusenciaFragment"
+        android:label="fragment_ausencia"
+        tools:layout="@layout/fragment_ausencia" />
+    <fragment
+        android:id="@+id/calendarioFragment"
+        android:name="com.example.controljornada.ui.calendario.CalendarioFragment"
+        android:label="fragment_calendario"
+        tools:layout="@layout/fragment_calendario" >
+        <action
+            android:id="@+id/action_calendarioFragment_to_aboutUsFragment"
+            app:destination="@id/aboutUsFragment" />
+        <action
+            android:id="@+id/action_calendarioFragment_to_ajustesFragment"
+            app:destination="@id/ajustesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.example.controljornada.ui.aboutus.AboutUsFragment"
+        android:label="AboutUsFragment" />
+    <fragment
+        android:id="@+id/ajustesFragment"
+        android:name="com.example.controljornada.ui.ajustes.AjustesFragment"
+        android:label="fragment_ajustes"
+        tools:layout="@layout/fragment_ajustes" />
+</navigation>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="LoginApparience">
+        <item name="hintTextColor">@color/white</item>
+        <item name="android:background">@drawable/shape_login_layout</item>
+        <item name="boxStrokeColor">@color/white</item>
+    </style>
+
+    <style name="LoginTextHintApparience">
+        <item name="boxBackgroundMode">filled</item>
+        <item name="hintTextColor">@color/colorPrimary</item>
+        <item name="android:background">@drawable/shape_textinputlayout</item>
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+        <item name="boxStrokeColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="HorarioTextHintApparience">
+        <item name="boxBackgroundMode">filled</item>
+        <item name="hintTextColor">@color/black</item>
+        <item name="android:background">@drawable/shape_horario_textinputlayout</item>
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+        <item name="boxStrokeColor">@color/black</item>
+    </style>
+
+    <style name="AusenciaTextHintApparience">
+        <item name="boxBackgroundMode">filled</item>
+        <item name="hintTextColor">@color/black</item>
+        <item name="android:background">@drawable/shape_ausencia_textinputlayout</item>
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+        <item name="boxStrokeColor">@color/black</item>
+    </style>
+
+
+    <style name="LoginTextHintApparience.SignUp">
+        <item name="android:background">@null</item>
+    </style>
+
+</resources>

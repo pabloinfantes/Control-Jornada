@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ControlJornada</string>
+    <string name="splash_imgLogo_contentDescription">Logo Image</string>
+    <string name="tieUser">Username</string>
+    <string name="tiePassword">Password</string>
+    <string name="login_text_chkRemember">remember me</string>
+    <string name="login_btSignUp_text">SIGN UP</string>
+    <string name="login_tvLogin_text">Login with other platforms</string>
+    <string name="login_btSignIn_text">Get in</string>
+    <string name="login_tvName_text">Day Control</string>
+    <string name="login_tvOtherLogin_text">Login with other platforms</string>
+    <string name="singup_label">Sing up</string>
+    <string name="SignUp_tieUser_hint">Username</string>
+    <string name="SignUp_tiePassword_hint">Enter your password</string>
+    <string name="SignUp_tieEmail_hint">Enter your email</string>
+    <string name="SignUp_tieConfirmPassword_hint">Confirm your password</string>
+    <string name="SignUp_tieName_hint">Name</string>
+    <string name="SignUp_tieSurname_hint">Surname</string>
+    <string name="SignUp_tieConfirmPin_hint">Confirm pin</string>
+    <string name="SignUp_tiePin_hint">Enter your pin</string>
+    <string name="singup_chkPolitics">I have read and accept the privacy policy</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="horario_text">Day Control</string>
+    <string name="horarioItem_tvSalida_text">exit</string>
+    <string name="horarioItem_tvEntrada_text">entry</string>
+    <string name="horarioItem_button_text">Add workplace</string>
+    <string name="horarioItem_edLugarTrabajo_hint">workplace</string>
+    <string name="horario_tvFecha_text">Thursday, October 28, 2021</string>
+    <string name="ausencia_btEnviar_text">Submit</string>
+    <string name="ausencia_btCancelar_text">Cancel</string>
+    <string name="horario_item_menu">Menu</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_aboutus">About Us</string>
+    <string name="horario_tvMotivoAusencia_text">Reason for absence?</string>
+    <string name="horario_btFirma_text">Sign</string>
+    <string name="horario_btAusencia_text">State the reason</string>
+    <string name="ausencia_tvMotivoAusencia_text">Reason for absence</string>
+    <string name="calendario_tvCalendario_text">Thursday, October 28, 2021</string>
+    <string name="calendario_tvHoras_text">Total Hours: 9</string>
+    <string name="calendario_tvLugar_text">workplace: Ies Portada Alta</string>
+    <string name="app_description">This would be the description of the person</string>
+    <string name="calendario_btSobreNosotros_text">About Us</string>
+    <string name="calendario_btAjustes_text">Settings</string>
+</resources>
