@@ -51,7 +51,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvSalida" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edLugarTrabajo"
+        android:id="@+id/tilLugarTrabajo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="@dimen/horario_edLugarTrabajo_layout_marginStart"
@@ -79,5 +79,5 @@
         android:text="@string/horarioItem_button_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edLugarTrabajo" />
+        app:layout_constraintTop_toBottomOf="@+id/tilLugarTrabajo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

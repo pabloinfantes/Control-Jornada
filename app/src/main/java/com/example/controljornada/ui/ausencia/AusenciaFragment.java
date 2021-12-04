@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.controljornada.R;
 import com.example.controljornada.databinding.FragmentAusenciaBinding;
 
 
@@ -20,6 +21,9 @@ public class AusenciaFragment extends Fragment {
 
     private FragmentAusenciaBinding binding;
     private AusenciaAdapter adapter;
+    int[] iconos = {R.drawable.ic_action_enfermedad,R.drawable.ic_action_personal,
+            R.drawable.ic_action_festivo,R.drawable.ic_action_vacaciones,R.drawable.ic_action_recuperacion,
+            R.drawable.ic_action_maternidad,R.drawable.ic_action_paternidad,R.drawable.ic_action_otros};
 
     @Override
     public View onCreateView(
@@ -49,7 +53,7 @@ public class AusenciaFragment extends Fragment {
 
     private void initRvAusencia() {
         //1.- Sera inicializar dicho adapter
-        adapter = new AusenciaAdapter();
+        adapter = new AusenciaAdapter(iconos);
         //2.- OBLIGATORIOMENTE se debe indicae que diseño (layout) tendra el recycler view
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL,false);
         //3.- Asgino el layout al recyclerView

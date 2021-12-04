@@ -33,9 +33,10 @@
 
     <TextView
         android:id="@+id/tvFecha_horario"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="@dimen/horario_tvFecha_layout_marginTop"
         android:fontFamily="@font/officialbook"
         android:text="@string/horario_tvFecha_text"
@@ -45,47 +46,220 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar3" />
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/coordinatorLayout"
+
+    <TextView
+        android:id="@+id/tvhorarioMañana"
         android:layout_width="0dp"
-        android:layout_height="407dp"
-        android:layout_marginStart="@dimen/horario_coordinator_layout_marginStart"
-        android:layout_marginTop="@dimen/horario_coordinator_layout_marginStart"
-        android:layout_marginEnd="@dimen/horario_coordinator_layout_marginStart"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/officialbook"
+        android:text="@string/horario_tvhorarioMañana_text"
+        android:textColor="@color/black"
+        android:textSize="@dimen/horario_tvhorarioMañana_textSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFecha_horario"
-        tools:context="HorarioFragement">
+        app:layout_constraintTop_toBottomOf="@+id/tvFecha_horario" />
+
+    <TextView
+        android:id="@+id/tvhorarioTarde"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/officialbook"
+        android:text="@string/horario_tvhorarioTarde_text"
+        android:textColor="@color/black"
+        android:textSize="@dimen/horario_tvhorarioTarde_textSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraint1" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint1"
+        android:layout_width="367dp"
+        android:layout_height="162dp"
+        android:layout_marginTop="8dp"
+        style="@style/HorarioTextHintApparience"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvhorarioMañana">
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvHorario"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/tvEntrada"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="@dimen/horario_tvEntrada_layout_marginTop"
+            android:text="@string/horarioItem_tvEntrada_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvSalida"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/horario_tvSalida_layout_marginStart"
+            android:layout_marginTop="@dimen/horario_tvEntrada_layout_marginTop"
+            android:text="@string/horarioItem_tvSalida_text"
+            app:layout_constraintStart_toEndOf="@+id/tvEntrada"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvHorarioIzq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="@dimen/horario_tvHorarioIzq_layout_marginTop"
+            android:text="08:00"
+            android:textColorHint="@color/black"
+            android:textSize="@dimen/horario_tvHorarioIzq_textSize"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvEntrada" />
+
+        <TextView
+            android:id="@+id/tvHorarioDer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/horario_tvHorarioIzq_layout_marginTop"
+            android:text="14:00"
+            android:textSize="@dimen/horario_tvHorarioDer_textSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.398"
+            app:layout_constraintStart_toEndOf="@+id/tvHorarioIzq"
+            app:layout_constraintTop_toBottomOf="@+id/tvSalida" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilLugarTrabajo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/horario_edLugarTrabajo_layout_marginStart"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="@dimen/horario_edLugarTrabajo_layout_marginStart"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvHorarioDer">
+
+            <com.google.android.material.textfield.TextInputEditText
+
+                android:id="@+id/tieLugarTrabajo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/horarioItem_edLugarTrabajo_hint" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint2"
+        style="@style/HorarioTextHintApparience"
+        android:layout_width="367dp"
+        android:layout_height="169dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvhorarioTarde">
+
+
+        <TextView
+            android:id="@+id/tvEntrada2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="@dimen/horario_tvEntrada_layout_marginTop"
+            android:text="@string/horarioItem_tvEntrada_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvSalida2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/horario_tvSalida_layout_marginStart"
+            android:layout_marginTop="@dimen/horario_tvEntrada_layout_marginTop"
+            android:text="@string/horarioItem_tvSalida_text"
+            app:layout_constraintStart_toEndOf="@+id/tvEntrada2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvHorarioIzq2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="@dimen/horario_tvHorarioIzq_layout_marginTop"
+            android:text="15:30"
+            android:textColorHint="@color/black"
+            android:textSize="@dimen/horario_tvHorarioIzq_textSize"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvEntrada2" />
+
+        <TextView
+            android:id="@+id/tvHorarioDer2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/horario_tvHorarioIzq_layout_marginTop"
+            android:text="18:00"
+            android:textSize="@dimen/horario_tvHorarioDer_textSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.398"
+            app:layout_constraintStart_toEndOf="@+id/tvHorarioIzq2"
+            app:layout_constraintTop_toBottomOf="@+id/tvSalida2" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilLugarTrabajo2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/horario_edLugarTrabajo_layout_marginStart"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="@dimen/horario_edLugarTrabajo_layout_marginStart"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvHorarioDer2">
+
+            <com.google.android.material.textfield.TextInputEditText
+
+                android:id="@+id/tieLugarTrabajo2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/horarioItem_edLugarTrabajo_hint" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/btFirma"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/horario_btFirma_layout_marginStart"
-        android:layout_marginEnd="@dimen/horario_btFirma_layout_marginStart"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:backgroundTint="@color/colorGreen"
         android:text="@string/horario_btFirma_text"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coordinatorLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/constraint2" />
 
     <TextView
         android:id="@+id/tvMotivoAusencia_horario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginStart="@dimen/horario_tvMotivoAusencia_layout_marginStart"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="@dimen/horario_tvMotivoAusencia_layout_marginTop"
         android:fontFamily="@font/officialbook"
         android:text="@string/horario_tvMotivoAusencia_text"
@@ -99,14 +273,18 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/horario_btFirma_layout_marginStart"
-        android:layout_marginTop="@dimen/horario_tvMotivoAusencia_layout_marginTop"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="@dimen/horario_btFirma_layout_marginStart"
+        android:layout_marginBottom="32dp"
         android:backgroundTint="@color/colorYellow"
         android:text="@string/horario_btAusencia_text"
         android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvMotivoAusencia_horario" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

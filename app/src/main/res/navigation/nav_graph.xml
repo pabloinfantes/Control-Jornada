@@ -42,5 +42,14 @@
         android:id="@+id/ajustesFragment"
         android:name="com.example.controljornada.ui.ajustes.AjustesFragment"
         android:label="fragment_ajustes"
-        tools:layout="@layout/fragment_ajustes" />
+        tools:layout="@layout/fragment_ajustes" >
+        <action
+            android:id="@+id/action_ajustesFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.controljornada.ui.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

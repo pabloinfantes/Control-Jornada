@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/colorSecondary"
     android:orientation="vertical"
     android:textAlignment="center">
@@ -13,7 +13,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="@dimen/signUp_layout_weight"
         android:background="@color/colorPrimary"
         app:titleTextColor="@color/white">
@@ -30,11 +30,15 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilName"
         style="@style/LoginTextHintApparience.SignUp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="@dimen/landscape_singup_margin"
+        android:layout_marginRight="@dimen/landscape_singup_margin"
         android:layout_weight="@dimen/signUp_layout_weight"
         app:startIconDrawable="@drawable/ic_tiluser_person">
 
@@ -50,7 +54,10 @@
         android:id="@+id/tilSurname"
         style="@style/LoginTextHintApparience.SignUp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/landscape_singup__marginTop"
+        android:layout_marginLeft="@dimen/landscape_singup_margin"
+        android:layout_marginRight="@dimen/landscape_singup_margin"
         android:layout_weight="@dimen/signUp_layout_weight"
         app:startIconDrawable="@drawable/ic_tiluser_person">
 
@@ -66,7 +73,10 @@
         android:id="@+id/tilUser"
         style="@style/LoginTextHintApparience.SignUp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/landscape_singup__marginTop"
+        android:layout_marginLeft="@dimen/landscape_singup_margin"
+        android:layout_marginRight="@dimen/landscape_singup_margin"
         android:layout_weight="@dimen/signUp_layout_weight"
         app:startIconDrawable="@drawable/ic_tiluser_person">
 
@@ -82,7 +92,10 @@
         android:id="@+id/tilEmail"
         style="@style/LoginTextHintApparience.SignUp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/landscape_singup__marginTop"
+        android:layout_marginLeft="@dimen/landscape_singup_margin"
+        android:layout_marginRight="@dimen/landscape_singup_margin"
         android:layout_weight="@dimen/signUp_layout_weight"
         app:layout_constraintBottom_toTopOf="@+id/tilPassword"
         app:layout_constraintTop_toBottomOf="@id/tilUser"
@@ -100,7 +113,10 @@
         android:id="@+id/tilPassword"
         style="@style/LoginTextHintApparience.SignUp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/landscape_singup__marginTop"
+        android:layout_marginLeft="@dimen/landscape_singup_margin"
+        android:layout_marginRight="@dimen/landscape_singup_margin"
         android:layout_weight="@dimen/signUp_layout_weight"
         app:layout_constraintTop_toBottomOf="@id/tilEmail"
         app:startIconDrawable="@drawable/ic_action_password">
@@ -117,7 +133,10 @@
         android:id="@+id/tilConfirmPassword"
         style="@style/LoginTextHintApparience.SignUp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/landscape_singup__marginTop"
+        android:layout_marginLeft="@dimen/landscape_singup_margin"
+        android:layout_marginRight="@dimen/landscape_singup_margin"
         android:layout_weight="@dimen/signUp_layout_weight"
         app:layout_constraintTop_toBottomOf="@id/tilPassword"
         app:startIconDrawable="@drawable/ic_action_password">
@@ -133,7 +152,10 @@
         android:id="@+id/tilPin"
         style="@style/LoginTextHintApparience.SignUp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/landscape_singup__marginTop"
+        android:layout_marginLeft="@dimen/landscape_singup_margin"
+        android:layout_marginRight="@dimen/landscape_singup_margin"
         android:layout_weight="@dimen/signUp_layout_weight"
         app:layout_constraintTop_toBottomOf="@id/tilPassword"
         app:startIconDrawable="@drawable/ic_action_pin">
@@ -150,7 +172,10 @@
         android:id="@+id/tilConfirmPin"
         style="@style/LoginTextHintApparience.SignUp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/landscape_singup__marginTop"
+        android:layout_marginLeft="@dimen/landscape_singup_margin"
+        android:layout_marginRight="@dimen/landscape_singup_margin"
         android:layout_weight="@dimen/signUp_layout_weight"
         app:layout_constraintTop_toBottomOf="@id/tilPassword"
         app:startIconDrawable="@drawable/ic_action_pin">
@@ -163,25 +188,31 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
-    <CheckBox
-        android:id="@+id/chkPolitics"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:buttonTint="@color/colorPrimary"
-        android:fontFamily="@font/officialbook"
-        android:layout_weight="@dimen/signUp_chk_layout_weight"
-        android:text="@string/singup_chkPolitics"
-        android:textColor="@color/white" />
-
-
-    <Button
-        android:id="@+id/btRegistrar"
+    <LinearLayout
+        android:gravity="bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="@dimen/signUp_layout_weight"
-        android:backgroundTint="@color/colorPrimary"
-        android:text="@string/login_btSignIn_text"
-        android:textColor="@color/white" />
+        android:orientation="horizontal">
+        <CheckBox
+            android:id="@+id/chkPolitics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:buttonTint="@color/colorPrimary"
+            android:fontFamily="@font/officialbook"
+            android:text="@string/singup_chkPolitics"
+            android:textColor="@color/white" />
+        <Button
+            android:id="@+id/btRegistrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/colorPrimary"
+            android:layout_marginRight="@dimen/landscape_singup_margin"
+            android:text="@string/login_btSignIn_text"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
 
 
 </LinearLayout>

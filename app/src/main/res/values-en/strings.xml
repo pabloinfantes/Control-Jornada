@@ -42,4 +42,21 @@
     <string name="app_description">This would be the description of the person</string>
     <string name="calendario_btSobreNosotros_text">About Us</string>
     <string name="calendario_btAjustes_text">Settings</string>
+    <string name="Ajustes_btGenerar">Generate Reports</string>
+    <string name="Ajustes_btSobreNosotros">About Us</string>
+    <string name="Ajustes_btVersion">Version</string>
+    <string name="ajustes_tieApellido_hint">Surname</string>
+    <string name="ajustes_tieEdad_hint">Age</string>
+    <string name="Ajustes_btManual">User\'s manual</string>
+    <string name="Ajustes_btPreferencia">Preferences</string>
+    <string name="Ajustes_btPerfil">User profile</string>
+    <string name="profile_tvDatosPersonales">Personal information</string>
+    <string name="profile_tvGenero_text">Gender</string>
+    <string name="profile_tvDireccion">Address</string>
+    <string name="SignUp_tieEmpresa_hint">Company</string>
+    <string name="SignUp_tieLocalidad_hint">Location</string>
+    <string name="profile_tvMetodoContactos">Contact method</string>
+    <string name="profile_tieTelefono_hint">Telephone</string>
+    <string name="horario_tvhorarioMañana_text">Morning schedule</string>
+    <string name="horario_tvhorarioTarde_text">Afternoon schedule</string>
 </resources>

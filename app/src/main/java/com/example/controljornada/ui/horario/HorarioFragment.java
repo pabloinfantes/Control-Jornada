@@ -37,7 +37,6 @@ public class HorarioFragment extends Fragment implements View.OnClickListener{
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initRvHorario();
 
     }
 
@@ -67,16 +66,7 @@ public class HorarioFragment extends Fragment implements View.OnClickListener{
     private void showCalendarioFragment() {
         NavHostFragment.findNavController(this).navigate(R.id.action_horarioFragment_to_calendarioFragment);
     }
-    private void initRvHorario() {
-        //1.- Sera inicializar dicho adapter
-        adapter = new HorarioAdapter();
-        //2.- OBLIGATORIOMENTE se debe indicae que diseño (layout) tendra el recycler view
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL,false);
-        //3.- Asgino el layout al recyclerView
-        binding.rvHorario.setLayoutManager(linearLayoutManager);
-        //4.- Asigno a la vista sus datos (modelo)
-        binding.rvHorario.setAdapter(adapter);
-    }
+
 
 
 

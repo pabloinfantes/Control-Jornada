@@ -4,19 +4,19 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.controljornada.R;
 import com.example.controljornada.databinding.FragmentAjustesBinding;
 
 
 public class AjustesFragment extends Fragment {
     FragmentAjustesBinding binding;
-    private AjustesAdapter adapter;
+
 
     @Override
     public View onCreateView(
@@ -25,13 +25,19 @@ public class AjustesFragment extends Fragment {
     ) {
 
         binding = FragmentAjustesBinding.inflate(inflater, container, false);
+        binding.ajustesBtPerfil.setOnClickListener(view -> showProfile());
         return binding.getRoot();
 
     }
 
+    private void showProfile() {
+        NavHostFragment.findNavController(this).navigate(R.id.action_ajustesFragment_to_profileFragment);
+    }
+
+
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initRvAjustes();
+
 
     }
 
@@ -43,14 +49,6 @@ public class AjustesFragment extends Fragment {
 
 
 
-    private void initRvAjustes() {
-        //1.- Sera inicializar dicho adapter
-        adapter = new AjustesAdapter();
-        //2.- OBLIGATORIOMENTE se debe indicae que diseño (layout) tendra el recycler view
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL,false);
-        //3.- Asgino el layout al recyclerView
-        binding.rvAjustes.setLayoutManager(linearLayoutManager);
-        //4.- Asigno a la vista sus datos (modelo)
-        binding.rvAjustes.setAdapter(adapter);
-    }
+
+
 }
