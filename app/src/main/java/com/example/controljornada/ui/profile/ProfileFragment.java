@@ -13,7 +13,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.controljornada.R;
-import com.example.controljornada.data.model.Ajustes;
 import com.example.controljornada.databinding.FragmentProfileBinding;
 
 

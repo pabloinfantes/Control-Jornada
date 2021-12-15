@@ -66,6 +66,7 @@
     <dimen name="landscape_singup_margin">10dp</dimen>
     <dimen name="horario_tvhorarioMañana_textSize">25sp</dimen>
     <dimen name="horario_tvhorarioTarde_textSize">25sp</dimen>
+    <dimen name="user_item_textSize">10sp</dimen>
     <item name="signUp_layout_weight" type="dimen" format="float">0.02</item>
     <item name="signUp_chk_layout_weight" type="dimen" format="float">0.001</item>
 </resources>

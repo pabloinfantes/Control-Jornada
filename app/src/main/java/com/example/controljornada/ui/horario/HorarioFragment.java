@@ -55,10 +55,13 @@ public class HorarioFragment extends Fragment implements View.OnClickListener{
                 break;
             case R.id.btFirma:
                 showCalendarioFragment();
+
                 break;
 
         }
     }
+
+
 
     private void showAusenciaFragment() {
         NavHostFragment.findNavController(this).navigate(R.id.action_horarioFragment_to_ausenciaFragment);

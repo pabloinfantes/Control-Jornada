@@ -5,7 +5,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_logo"
-        android:label="@string/app_name"
+        android:label="@string/name_actionbar"
         android:roundIcon="@mipmap/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.ControlJornada.NoActionBar">
@@ -28,7 +28,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:theme="@style/Theme.ControlJornada.NoActionBar"
+            android:theme="@style/Theme.ControlJornada"
             ></activity>
     </application>
 

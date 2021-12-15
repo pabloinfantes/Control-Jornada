@@ -7,44 +7,19 @@
     tools:context=".ui.horario.HorarioFragment">
 
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:titleTextColor="@color/white">
-
-        <TextView
-            android:id="@+id/toolbar_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/officialbook"
-            android:text="@string/horario_text"
-            android:textColor="@color/white"
-            android:textSize="@dimen/horario_toolbar_textSize" />
-
-
-    </androidx.appcompat.widget.Toolbar>
-
-
     <TextView
         android:id="@+id/tvFecha_horario"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="@dimen/horario_tvFecha_layout_marginTop"
         android:fontFamily="@font/officialbook"
         android:text="@string/horario_tvFecha_text"
         android:textColor="@color/black"
         android:textSize="@dimen/horario_tvFecha_textSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar3" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView

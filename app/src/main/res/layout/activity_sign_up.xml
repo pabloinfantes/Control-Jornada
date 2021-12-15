@@ -8,25 +8,6 @@
     android:orientation="vertical"
     android:textAlignment="center">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        app:titleTextColor="@color/white">
-
-        <TextView
-            android:id="@+id/toolbar_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/officialbook"
-            android:text="@string/singup_label"
-            android:textColor="@color/white"
-            android:textSize="@dimen/singup_toolbar_textSize" />
-
-    </androidx.appcompat.widget.Toolbar>
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilName"
         style="@style/LoginTextHintApparience.SignUp"

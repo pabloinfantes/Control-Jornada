@@ -61,6 +61,14 @@
     <string name="profile_tieTelefono_hint">Telefono</string>
     <string name="horario_tvhorarioMañana_text">Horario de la mañana</string>
     <string name="horario_tvhorarioTarde_text">Horario de la tarde</string>
+    <string name="ajustes_btNumeroHorasMensuales">Numero de horas mensual</string>
+    <string name="ction_order_byNombre">Ordenar por nombre alfabeticamente</string>
+    <string name="action_order_byNumeroHoras">Ordenar por numero de horas</string>
+    <string name="action_search">Buscar</string>
+    <string name="name_actionbar">Control de jornada</string>
+    <string name="horario_tvUserName_text">Pablo Infantes Sosa</string>
+    <string name="horario_tvNumeroHoras_text">"Numero de horas mensuales: "</string>
+    <string name="horario_tvNumeroHorasLabel_text">9</string>
 
 
 </resources>
