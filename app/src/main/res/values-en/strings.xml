@@ -59,4 +59,27 @@
     <string name="profile_tieTelefono_hint">Telephone</string>
     <string name="horario_tvhorarioMañana_text">Morning schedule</string>
     <string name="horario_tvhorarioTarde_text">Afternoon schedule</string>
+    <string name="horario_tvUserName_text">Pablo Infantes Sosa</string>
+    <string name="name_actionbar">Day Control</string>
+    <string name="undo">UNDO</string>
+    <string name="fdmanage_tieName_hint">Name</string>
+    <string name="horario_tvNumeroHorasLabel_text">9</string>
+    <string name="ajustes_btNumeroHorasMensuales">Number of hours per month</string>
+    <string name="ction_order_byNombre">Sort by name alphabetically</string>
+    <string name="action_order_byNumeroHoras">Sort by number of hours</string>
+    <string name="action_search">Search</string>
+    <string name="horario_tvNumeroHoras_text">Number of hours per month:</string>
+    <string name="fdmanage_tieNumeroHoras_hint">Number of hours</string>
+    <string name="fdmanage_tieNombreCorto_hint">Shortname</string>
+    <string name="tituloEditar">Edit User</string>
+    <string name="title_delete_user">Delete User</string>
+    <string name="message_delete_user">Do you want to delete user %1$s?</string>
+    <string name="ajustes_btObras">Public Works</string>
+    <string name="action_order_obra">Sort works by name</string>
+    <string name="action_order_obra_bydescription">Sort works by description</string>
+    <string name="message_delete_obra">Do you want to delete work %1$s?</string>
+    <string name="title_delete_obra">Delete public work</string>
+    <string name="fdmanage_tieDescription_hint">Description</string>
+    <string name="fdmanage_tieShortName_hint">ShortName</string>
+    <string name="titleEditObra">Edit public work</string>
 </resources>

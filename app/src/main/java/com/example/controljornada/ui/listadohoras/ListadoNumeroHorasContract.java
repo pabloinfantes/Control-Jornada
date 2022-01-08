@@ -23,28 +23,24 @@ public interface ListadoNumeroHorasContract {
 
     interface Presenter extends BasePresenter {
 
-
         void load();
-
         void delete(User user);
-
         void undo(User user);
-
-
         void order();
 
     }
 
+    interface OnInteractorListener extends OnRepositoryListCallback {
+    }
 
     interface Repository{
 
-        void getList();
-
-        void delete(User user);
+        void getList(OnRepositoryListCallback callback);
+        void delete(User user, OnRepositoryListCallback callback);
+        void undo(User user, OnRepositoryListCallback callback);
 
     }
 
 
-    interface OnInteractorListener extends OnRepositoryListCallback {
-    }
+
 }

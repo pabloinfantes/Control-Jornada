@@ -27,8 +27,13 @@ public class AjustesFragment extends Fragment {
         binding = FragmentAjustesBinding.inflate(inflater, container, false);
         binding.ajustesBtPerfil.setOnClickListener(view -> showProfile());
         binding.ajustesBtNumeroHorasMensuales.setOnClickListener(view -> showNumeroHorasFragment());
+        binding.ajustesBtObras.setOnClickListener(view -> showObras());
         return binding.getRoot();
 
+    }
+
+    private void showObras() {
+        NavHostFragment.findNavController(this).navigate(R.id.action_ajustesFragment_to_listObraFragment);
     }
 
     private void showNumeroHorasFragment() {

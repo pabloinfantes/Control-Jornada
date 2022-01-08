@@ -49,6 +49,9 @@
         <action
             android:id="@+id/action_ajustesFragment_to_listadoNumeroHorasFragment"
             app:destination="@id/listadoNumeroHorasFragment" />
+        <action
+            android:id="@+id/action_ajustesFragment_to_listObraFragment"
+            app:destination="@id/listObraFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -59,5 +62,48 @@
         android:id="@+id/listadoNumeroHorasFragment"
         android:name="com.example.controljornada.ui.listadohoras.ListadoNumeroHorasFragment"
         android:label="fragment_listado_numero_horas"
-        tools:layout="@layout/fragment_listado_numero_horas" />
+        tools:layout="@layout/fragment_listado_numero_horas" >
+        <action
+            android:id="@+id/action_listadoNumeroHorasFragment_to_listManageFragment"
+            app:destination="@id/listManageFragment" />
+        <action
+            android:id="@+id/action_listadoNumeroHorasFragment_to_baseDialogFragment"
+            app:destination="@id/baseDialogFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listManageFragment"
+        android:name="com.example.controljornada.ui.listadohoras.ListManageFragment"
+        android:label="fragment_list_manage"
+        tools:layout="@layout/fragment_list_manage" >
+        <argument
+            android:name="user"
+            app:argType="com.example.controljornada.data.model.User"
+            app:nullable="true" />
+    </fragment>
+    <dialog
+        android:id="@+id/baseDialogFragment"
+        android:name="com.example.controljornada.ui.base.BaseDialogFragment"
+        android:label="BaseDialogFragment" />
+    <fragment
+        android:id="@+id/listObraFragment"
+        android:name="com.example.controljornada.ui.obra.ListObraFragment"
+        android:label="fragment_list_obra"
+        tools:layout="@layout/fragment_list_obra" >
+        <action
+            android:id="@+id/action_listObraFragment_to_baseDialogFragment"
+            app:destination="@id/baseDialogFragment" />
+        <action
+            android:id="@+id/action_listObraFragment_to_obraManageFragment"
+            app:destination="@id/obraManageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/obraManageFragment"
+        android:name="com.example.controljornada.ui.obra.ObraManageFragment"
+        android:label="fragment_obra_manage"
+        tools:layout="@layout/fragment_obra_manage" >
+        <argument
+            android:name="obra"
+            app:argType="com.example.controljornada.data.model.Obra"
+            app:nullable="true" />
+    </fragment>
 </navigation>

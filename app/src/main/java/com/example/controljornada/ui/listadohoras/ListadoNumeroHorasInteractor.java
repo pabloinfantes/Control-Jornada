@@ -10,25 +10,29 @@ import java.util.List;
 public class ListadoNumeroHorasInteractor implements OnRepositoryListCallback {
 
     private ListadoNumeroHorasContract.OnInteractorListener listener;
+    private OnRepositoryListCallback callback;
 
     public ListadoNumeroHorasInteractor(ListadoNumeroHorasContract.OnInteractorListener listener) {
         this.listener = listener;
+        callback = this;
     }
 
 
     public void load(){
-        UserRepository.getInstance(this).getList();
+        UserRepository.getInstance().getList(callback);
     }
 
     public void delete(User user) {
-        UserRepository.getInstance(this).delete(user);
+        UserRepository.getInstance().delete(user,callback);
     }
 
-
+    public void undo(User user){
+        UserRepository.getInstance().undo(user,callback);
+    }
 
     @Override
     public void onFailure(String message) {
-
+        listener.onFailure(message);
     }
 
     @Override
@@ -43,6 +47,6 @@ public class ListadoNumeroHorasInteractor implements OnRepositoryListCallback {
 
     @Override
     public void onUndoSuccess(String message) {
-
+        listener.onUndoSuccess(message);
     }
 }

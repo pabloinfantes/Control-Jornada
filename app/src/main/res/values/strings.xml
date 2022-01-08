@@ -69,6 +69,21 @@
     <string name="horario_tvUserName_text">Pablo Infantes Sosa</string>
     <string name="horario_tvNumeroHoras_text">"Numero de horas mensuales: "</string>
     <string name="horario_tvNumeroHorasLabel_text">9</string>
+    <string name="fdmanage_tieName_hint">Nombre</string>
+    <string name="fdmanage_tieNumeroHoras_hint">Numero de horas</string>
+    <string name="fdmanage_tieNombreCorto_hint">Nombre corto</string>
+    <string name="tituloEditar">Editar Usuario</string>
+    <string name="title_delete_user">Eliminar Usuario </string>
+    <string name="message_delete_user">¿Quiere eliminar el usuario %1$s  ?</string>
+    <string name="undo">UNDO</string>
+    <string name="ajustes_btObras">Obras</string>
+    <string name="action_order_obra">Ordenar obras por nombre</string>
+    <string name="action_order_obra_bydescription">Ordenar obras por descripcion</string>
+    <string name="message_delete_obra">¿Quiere eliminar la obra %1$s ?</string>
+    <string name="title_delete_obra">Eliminar Obra</string>
+    <string name="fdmanage_tieDescription_hint">Descripcion</string>
+    <string name="fdmanage_tieShortName_hint">Nombre Corto</string>
+    <string name="titleEditObra">Editar Obra</string>
 
 
 </resources>

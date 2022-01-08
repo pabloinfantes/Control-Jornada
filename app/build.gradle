@@ -1,5 +1,7 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'
+    id 'androidx.navigation.safeargs'
 }
 
 android {
@@ -32,6 +34,8 @@ android {
 
 dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.firebase:firebase-firestore:24.0.0'
+    implementation 'com.google.firebase:firebase-auth:21.0.1'
     def nav_version = "2.3.5"
 
     // Java language implementation
@@ -45,5 +49,14 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'io.github.medyo:android-about-page:2.0.0'
 
+    //Firebase
+    implementation platform('com.google.firebase:firebase-bom:29.0.0')
+    implementation 'com.google.firebase:firebase-analytics'
+
+    //EventBus
+    implementation 'org.greenrobot:eventbus:3.2.0'
+
+    //librerias son para el dependency list
+    //amulyakhare
     implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
 }

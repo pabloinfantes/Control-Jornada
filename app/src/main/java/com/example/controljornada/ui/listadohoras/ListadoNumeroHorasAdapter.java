@@ -14,7 +14,6 @@ import com.amulyakhare.textdrawable.util.ColorGenerator;
 import com.example.controljornada.R;
 import com.example.controljornada.data.model.User;
 import com.example.controljornada.data.model.UserComparator;
-import com.example.controljornada.ui.ausencia.AusenciaAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,6 +23,7 @@ public class ListadoNumeroHorasAdapter extends RecyclerView.Adapter<ListadoNumer
 
     private ArrayList<User> list;
     private OnManageListadoListener listener;
+
 
 
     public interface OnManageListadoListener{
@@ -76,6 +76,10 @@ public class ListadoNumeroHorasAdapter extends RecyclerView.Adapter<ListadoNumer
 
         notifyDataSetChanged();
 
+    }
+    public void undo(User deleted){
+        list.add(deleted);
+        notifyDataSetChanged();
     }
 
     public void delete(User deleted) {

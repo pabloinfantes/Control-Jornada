@@ -35,7 +35,7 @@ public class ListadoNumeroHorasPresenter implements ListadoNumeroHorasContract.P
 
     @Override
     public void undo(User user) {
-
+        interactor.undo(user);
     }
 
     @Override
@@ -51,7 +51,7 @@ public class ListadoNumeroHorasPresenter implements ListadoNumeroHorasContract.P
 
     @Override
     public void onFailure(String message) {
-
+        view.onFailure(message);
     }
 
     @Override

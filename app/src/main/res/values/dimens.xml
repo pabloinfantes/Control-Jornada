@@ -67,6 +67,12 @@
     <dimen name="horario_tvhorarioMañana_textSize">25sp</dimen>
     <dimen name="horario_tvhorarioTarde_textSize">25sp</dimen>
     <dimen name="user_item_textSize">10sp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="fab_elevation">6dp</dimen>
+    <dimen name="obra_item_paddingBottom">7dp</dimen>
+    <dimen name="obra_item_paddin">5dp</dimen>
+    <dimen name="dependency_item_margim_bottom">5dp</dimen>
+    <dimen name="dependency_item_paddin">5dp</dimen>
     <item name="signUp_layout_weight" type="dimen" format="float">0.02</item>
     <item name="signUp_chk_layout_weight" type="dimen" format="float">0.001</item>
 </resources>
