@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "550528375368",
+    "project_id": "control-jornada-eae95",
+    "storage_bucket": "control-jornada-eae95.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:550528375368:android:1d2ccc3e351ea7efb5d67d",
+        "android_client_info": {
+          "package_name": "com.example.controljornada"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "550528375368-3hvs429f7mfj2e3qo0nl3i96dji62d7l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAsiSbCEfwh9CjeNbL-DIVEBmM0fhWSrE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "550528375368-3hvs429f7mfj2e3qo0nl3i96dji62d7l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

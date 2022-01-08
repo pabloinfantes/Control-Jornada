@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="errEmailEmpty">No puede ser vacio</string>
+    <string name="errorPasswordEmpty">No puede ser vacio</string>
+    <string name="errorPassword">Esa contraseña no cumple el formato correcto</string>
+    <string name="errEmail">Formato del email erroneo</string>
+
+</resources>
