@@ -20,20 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></Button>
 
-    <Button
-        android:id="@+id/ajustes_btSobreNosotros"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:backgroundTint="@color/colorGrey"
-        android:text="@string/Ajustes_btSobreNosotros"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ajustes_btGenerar"></Button>
+
 
     <Button
         android:id="@+id/ajustes_btManual"
@@ -48,22 +35,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ajustes_btSobreNosotros"></Button>
+        app:layout_constraintTop_toBottomOf="@+id/ajustes_btGenerar"></Button>
 
-    <Button
-        android:id="@+id/ajustes_btVersion"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:backgroundTint="@color/colorGrey"
-        android:text="@string/Ajustes_btVersion"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ajustes_btManual"></Button>
 
     <Button
         android:id="@+id/ajustes_btPreferencias"
@@ -78,7 +51,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ajustes_btVersion"></Button>
+        app:layout_constraintTop_toBottomOf="@+id/ajustes_btManual"></Button>
 
     <Button
         android:id="@+id/ajustes_btPerfil"

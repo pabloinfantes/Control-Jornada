@@ -84,6 +84,44 @@
     <string name="fdmanage_tieDescription_hint">Descripcion</string>
     <string name="fdmanage_tieShortName_hint">Nombre Corto</string>
     <string name="titleEditObra">Editar Obra</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="privacy_and_condition">Condiciones y privacidad</string>
+    <string name="key_help">ayuda</string>
+    <string name="help_point">Centro de ayuda</string>
+    <string name="help_header">Ayuda</string>
+    <string name="informacion_header">Información</string>
+    <string name="nombreEmpresa">Infantes</string>
+    <string name="tituloEmpresa">Nombre de la empresa</string>
+    <string name="key_empresa">empresa</string>
+    <string name="key_version">version</string>
+    <string name="versionApp">Version de la aplicación</string>
+    <string name="numVersion">1.0</string>
+    <string name="key_account">cuenta</string>
+    <string name="title_account">Cuenta</string>
+    <string name="summary_account">Privacidad, mensajes, seguridad</string>
+    <string name="notification_header">Notificaciones</string>
+    <string name="notification">Notificaciones</string>
+    <string name="notification_summary">Activar las notificaciones de nuestra aplicación</string>
+    <string name="key_ringtone">sonido</string>
+    <string name="title_ringtone">Sonido de la notificación</string>
+    <string name="summary_ringtone">Seleccionar el tono de las notificaciones</string>
+    <string name="key_user">user</string>
+    <string name="title_user">Usuario</string>
+    <string name="key_password">password</string>
+    <string name="title_password">Contraseña</string>
 
 
 </resources>

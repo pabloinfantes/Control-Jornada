@@ -1,0 +1,20 @@
+<resources>
+    <!-- Ringtone -->
+    <string-array name="ringtone">
+        <item>Basic tone</item>
+        <item>Basic bell</item>
+        <item>Beep one</item>
+        <item>Good Morning</item>
+        <item>Piano</item>
+        <item>Flow</item>
+    </string-array>
+
+    <string-array name="ringtone_value">
+        <item>tone</item>
+        <item>bell</item>
+        <item>beep</item>
+        <item>morning</item>
+        <item>piano</item>
+        <item>flow</item>
+    </string-array>
+</resources>

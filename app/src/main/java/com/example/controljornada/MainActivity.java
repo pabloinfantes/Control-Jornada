@@ -2,6 +2,10 @@ package com.example.controljornada;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,15 +16,19 @@ import android.widget.Toast;
 import com.example.controljornada.databinding.ActivityMainBinding;
 import com.example.controljornada.ui.profile.ProfileFragment;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity implements PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
 
-    ActivityMainBinding binding;
+    private ActivityMainBinding binding;
+    private NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        //Inicializar el controlador de navegacion en la aplicacion
+        navController = Navigation.findNavController(this,R.id.nav_host_fragment);
     }
 
     @Override
@@ -42,5 +50,13 @@ public class MainActivity extends AppCompatActivity  {
                 return false;
         }
 
+    }
+
+    @Override
+    public boolean onPreferenceStartFragment(PreferenceFragmentCompat caller, Preference pref) {
+        if (pref.getKey().equals(getString(R.string.key_account))){
+            navController.navigate(R.id.action_settingsFragment_to_accountFragment);
+        }
+        return true;
     }
 }

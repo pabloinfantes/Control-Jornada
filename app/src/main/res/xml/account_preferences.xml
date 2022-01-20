@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+        android:defaultValue="Default value"
+        android:key="@string/key_user"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/title_user" />
+    <EditTextPreference
+        android:key="@string/key_password"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:inputType="textPassword"
+        android:title="@string/title_password" />
+</PreferenceScreen>

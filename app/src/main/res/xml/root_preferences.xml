@@ -1,0 +1,68 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Vamos a crear una categoria que muestra otro Fragment de preferencias -->
+
+    <Preference
+        android:fragment="com.example.controljornada.ui.preferences.AccountFragment"
+        android:icon="@drawable/ic_tiluser_person"
+        android:key="@string/key_account"
+        android:title="@string/title_account"
+        android:summary="@string/summary_account"
+        />
+
+    <!-- Preferencias con las opciones de las notificaciones -->
+    <PreferenceCategory android:title="@string/notification_header">
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="@string/notification"
+            android:summary="@string/notification_summary"
+            android:title="title_notification">
+
+        </SwitchPreference>
+
+        <ListPreference
+            android:key="@string/key_ringtone"
+            android:title="@string/title_ringtone"
+            android:summary="@string/summary_ringtone"
+            android:entries="@array/ringtone"
+            android:entryValues="@array/ringtone_value">
+        </ListPreference>
+    </PreferenceCategory>
+
+    <!-- Preferencias con las opciones de las dependencias -->
+    <PreferenceCategory app:title="@string/informacion_header">
+        <Preference
+            android:key="@string/key_empresa"
+            android:title="@string/tituloEmpresa"
+            android:summary="@string/nombreEmpresa"
+            />
+        <Preference
+            android:key="@string/key_version"
+            android:title="@string/versionApp"
+            android:summary="@string/numVersion"
+            />
+
+    </PreferenceCategory>
+
+    <!-- Preferencias con las opciones de la ayuda, que se mostrara en la pagina web -->
+    <PreferenceCategory android:title="@string/help_header">
+        <Preference
+            android:title="@string/help_point"
+            android:key="@string/key_help">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://twitter.com/pabloinfantes1">
+            </intent>
+        </Preference>
+
+        <Preference
+            android:title="@string/privacy_and_condition">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://twitter.com/pabloinfantes1">
+            </intent>
+        </Preference>
+    </PreferenceCategory>
+
+</PreferenceScreen>
