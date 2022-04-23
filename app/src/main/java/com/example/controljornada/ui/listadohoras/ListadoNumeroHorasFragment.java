@@ -153,13 +153,9 @@ public class ListadoNumeroHorasFragment extends Fragment implements ListadoNumer
 
     @Override
     public void showDataOrder() {
-        adapter.order();
+        adapter.order(getContext());
     }
 
-    @Override
-    public void showDataInverseOrder() {
-        adapter.inverseOrder();
-    }
 
 
 

@@ -1,5 +1,7 @@
 package com.example.controljornada.ui.listadohoras;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
@@ -87,15 +90,17 @@ public class ListadoNumeroHorasAdapter extends RecyclerView.Adapter<ListadoNumer
         notifyDataSetChanged();
     }
 
-    public void order() {
-        Collections.sort(list);
-        notifyDataSetChanged();
+    public void order(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        Boolean order = prefs.getBoolean("orderUser",false);
+        if (order){
+            Collections.sort(list);
+            notifyDataSetChanged();
+        }
+
     }
 
-    public void inverseOrder() {
-        Collections.reverse(list);
-        notifyDataSetChanged();
-    }
+
 
 
     public void orderByNumeroHoras() {

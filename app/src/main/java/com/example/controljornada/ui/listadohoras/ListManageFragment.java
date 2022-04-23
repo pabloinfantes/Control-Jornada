@@ -3,6 +3,10 @@ package com.example.controljornada.ui.listadohoras;
 
 
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
@@ -13,11 +17,16 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDeepLinkBuilder;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.controljornada.ControlJornadaAplication;
 import com.example.controljornada.R;
 import com.example.controljornada.data.model.User;
 import com.example.controljornada.databinding.FragmentListManageBinding;
+import com.example.controljornada.ui.obra.ObraManageFragmentArgs;
+
+import java.util.Random;
 
 
 public class ListManageFragment extends Fragment implements ListadoManageContract.View {
@@ -71,6 +80,8 @@ public class ListManageFragment extends Fragment implements ListadoManageContrac
 
     private User getUser() {
         User user = new User();
+        if (ListManageFragmentArgs.fromBundle(getArguments()).getUser() !=null)
+            user.setId(ListManageFragmentArgs.fromBundle(getArguments()).getUser().getId());
         user.setNombreCompleto(binding.tieName2.getText().toString());
         user.setNumeroHorasMensuales(binding.tieNumeroHoras.getText().toString());
         user.setNombreCorto(binding.tieNombreCorto2.getText().toString());
@@ -100,6 +111,30 @@ public class ListManageFragment extends Fragment implements ListadoManageContrac
 
     @Override
     public void onSuccess(String message) {
+
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(User.TAG, getUser());
+
+
+        PendingIntent pendingIntent = new NavDeepLinkBuilder(getActivity())
+                .setGraph(R.navigation.nav_graph)
+                .setDestination(R.id.listManageFragment)
+                .setArguments(bundle)
+                .createPendingIntent();
+
+        //5.- Crear la notificacion
+        Notification.Builder builder = new Notification.Builder(getActivity(), ControlJornadaAplication.IDCHANEL)
+                .setSmallIcon(R.drawable.ic_action_email)
+                .setAutoCancel(true)
+                .setContentTitle(getResources().getString(R.string.notification_title_add_usuario))
+                .setContentText(message)
+                .setContentIntent(pendingIntent);
+        //6.- Añadir notificacion al manager
+        NotificationManager notificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(new Random().nextInt(), builder.build());
+
+
         NavHostFragment.findNavController(this).navigateUp();
     }
 

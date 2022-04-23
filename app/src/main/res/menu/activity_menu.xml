@@ -2,10 +2,39 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-        android:id="@+id/action_search"
-        android:title="@string/action_search"
-        app:showAsAction="always"
-        android:icon="@drawable/ic_action_buscar"
-        android:orderInCategory="2"/>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/horarioContenedorFragment"
+            android:title="@string/horarioFragment"
+            />
+
+
+        <item
+            android:id="@+id/listadoNumeroHorasFragment"
+            android:title="@string/listadoNumeroHorasFragment"
+            />
+
+        <item
+            android:id="@+id/listObraFragment"
+            android:title="@string/listObraFragment"
+            />
+
+    </group>
+
+    <item android:title="@string/menu_options">
+        <menu>
+            <item
+                android:id="@+id/aboutUsFragment"
+                android:title="@string/action_aboutus"
+                app:showAsAction="never"
+                android:orderInCategory="3"/>
+            <item
+                android:id="@+id/settingsFragment"
+                android:title="@string/action_settings"
+                app:showAsAction="never"
+                android:orderInCategory="4"/>
+        </menu>
+    </item>
+
 </menu>

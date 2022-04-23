@@ -1,5 +1,8 @@
 package com.example.controljornada.ui.obra;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
@@ -88,15 +93,16 @@ public class ListadoObrasAdapter extends RecyclerView.Adapter<ListadoObrasAdapte
         notifyDataSetChanged();
     }
 
-    public void order() {
-        Collections.sort(list);
-        notifyDataSetChanged();
+    public void order(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        Boolean order = prefs.getBoolean("orderObra",false);
+        if (order){
+            Collections.sort(list);
+            notifyDataSetChanged();
+        }
+
     }
 
-    public void inverseOrder() {
-        Collections.reverse(list);
-        notifyDataSetChanged();
-    }
 
 
     public void orderByDescripcion() {

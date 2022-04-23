@@ -14,10 +14,10 @@
     <dimen name="landscape_singup__marginLeft">1dp</dimen>
     <dimen name="landscape_singup__marginRight">1dp</dimen>
     <dimen name="landscape_singup__marginBottom">1dp</dimen>
-    <dimen name="horario_toolbar_textSize">40sp</dimen>
+    <dimen name="horario_toolbar_textSize">30sp</dimen>
     <dimen name="horario_tvHorarioIzq_textSize">30sp</dimen>
     <dimen name="horario_tvHorarioDer_textSize">30sp</dimen>
-    <dimen name="horario_tvFecha_textSize">30sp</dimen>
+    <dimen name="horario_tvFecha_textSize">25sp</dimen>
     <dimen name="ausencia_tvFecha_textSize">20sp</dimen>
     <dimen name="calendario_tvCalendario_textSize">20sp</dimen>
     <dimen name="calendario_tvHoras_textSize">15sp</dimen>
@@ -64,8 +64,8 @@
     <dimen name="horario_edLugarTrabajo_layout_marginStart">16dp</dimen>
     <dimen name="horario_button_layout_marginStart">32dp</dimen>
     <dimen name="landscape_singup_margin">10dp</dimen>
-    <dimen name="horario_tvhorarioMañana_textSize">25sp</dimen>
-    <dimen name="horario_tvhorarioTarde_textSize">25sp</dimen>
+    <dimen name="horario_tvhorarioMañana_textSize">17sp</dimen>
+    <dimen name="horario_tvhorarioTarde_textSize">17sp</dimen>
     <dimen name="user_item_textSize">10sp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="fab_elevation">6dp</dimen>
@@ -73,6 +73,8 @@
     <dimen name="obra_item_paddin">5dp</dimen>
     <dimen name="dependency_item_margim_bottom">5dp</dimen>
     <dimen name="dependency_item_paddin">5dp</dimen>
+    <dimen name="toolbar_elevation">4dp</dimen>
+    <dimen name="_marginTop_tvLugar">20dp</dimen>
     <item name="signUp_layout_weight" type="dimen" format="float">0.02</item>
     <item name="signUp_chk_layout_weight" type="dimen" format="float">0.001</item>
 </resources>

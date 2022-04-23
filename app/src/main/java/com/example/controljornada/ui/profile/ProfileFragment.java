@@ -22,6 +22,14 @@ public class ProfileFragment extends Fragment {
 
     String[] generos = {"Seleccione","Femenino","Masculino"};
 
+    public static Fragment newInstance(Bundle bundle){
+        ProfileFragment fragment = new ProfileFragment();
+        if(bundle != null){
+            fragment.setArguments(bundle);
+        }
+        return fragment;
+    }
+
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,

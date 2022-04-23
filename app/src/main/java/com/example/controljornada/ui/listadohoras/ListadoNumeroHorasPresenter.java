@@ -40,13 +40,7 @@ public class ListadoNumeroHorasPresenter implements ListadoNumeroHorasContract.P
 
     @Override
     public void order() {
-        if (order==true){
-            order=false;
-            view.showDataInverseOrder();
-        }else {
-            order=true;
-            view.showDataOrder();
-        }
+        view.showDataOrder();
     }
 
     @Override

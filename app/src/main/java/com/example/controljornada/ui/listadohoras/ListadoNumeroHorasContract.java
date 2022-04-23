@@ -13,11 +13,8 @@ public interface ListadoNumeroHorasContract {
     interface View extends OnRepositoryListCallback{
         void showNoData();
         void showData(ArrayList<User> list);
-
-        //muestra el orden A-Z
         void showDataOrder();
-        //Ordena de la Z a la A
-        void showDataInverseOrder();
+
     }
 
 

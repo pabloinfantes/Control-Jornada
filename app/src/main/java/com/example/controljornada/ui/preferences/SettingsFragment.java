@@ -11,11 +11,15 @@ import androidx.preference.PreferenceFragmentCompat;
 
 import com.example.controljornada.R;
 
-public class SettingsFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener{
+public class SettingsFragment extends PreferenceFragmentCompat{
+
+
+    private SharedPreferences.OnSharedPreferenceChangeListener preferenceChangeListener;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey);
+
         Preference preference = getPreferenceManager().findPreference(getString(R.string.key_help));
         preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
@@ -24,44 +28,48 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
                 return false;
             }
         });
+
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActivity().setTitle("Settings Fragment");
+        preferenceChangeListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+            @Override
+            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+                if (key.equals(getString(R.string.key_ringtone))){
+                    Preference pre_sonido= findPreference(key);
+                    pre_sonido.setSummary(sharedPreferences.getString(key,""));
+                }
+                if (key.equals(getString(R.string.key_hora))){
+                    Preference pre_hora= findPreference(key);
+                    pre_hora.setSummary(sharedPreferences.getString(key,"8:01"));
+                }
+            }
+        };
     }
+
+
 
     @Override
     public void onResume() {
         super.onResume();
-        getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+        getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(preferenceChangeListener);
+
+        Preference sonidoPref = findPreference(getString(R.string.key_ringtone));
+        sonidoPref.setSummary(getPreferenceScreen().getSharedPreferences().getString(getString(R.string.key_ringtone),""));
+
+        Preference horaPref = findPreference(getString(R.string.key_hora));
+        horaPref.setSummary(getPreferenceScreen().getSharedPreferences().getString(getString(R.string.key_hora),"8:01"));
+
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
+        getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(preferenceChangeListener);
     }
 
-    @Override
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        Preference preference = findPreference(key);
-        //Voy a buscar si la preferencia es mi lista ringtone
-        if (key.equals(getString(R.string.key_ringtone))) {
-            /*
-                Como he comprobado previamente que la preferencia que se ha modificado es una
-                lista, se puede hacer downcasting
-             */
-            ListPreference listPreference = (ListPreference) preference;
 
-            //Se recoge el indice seleccionado
-            int index = listPreference.findIndexOfValue(sharedPreferences.getString(key, ""));
-            if (index >= 0) {
-                preference.setSummary(listPreference.getEntries()[index]);
-            } else {
-                listPreference.setSummary(sharedPreferences.getString(key, ""));
-            }
-        }
-    }
+
 }

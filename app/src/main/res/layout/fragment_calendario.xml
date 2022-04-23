@@ -8,164 +8,77 @@
     tools:context=".ui.calendario.CalendarioFragment">
 
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
+    <CalendarView
+        android:id="@+id/calendario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/btAtras"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/back"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20sp"
-            android:textStyle="bold"></Button>
-
-        <TextView
-            android:id="@+id/tvMesYAnio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Nov 2021"
-            android:textAlignment="center"
-            android:textColor="@color/black"></TextView>
-
-        <Button
-            android:id="@+id/btSiguiente"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/forward"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20sp"
-            android:textStyle="bold"></Button>
+    </CalendarView>
 
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="dom"
-            android:textAlignment="center"
-            android:textColor="@color/colorGrey"
-            android:textSize="16sp"></TextView>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="lun"
-            android:textAlignment="center"
-            android:textColor="@color/colorGrey"
-            android:textSize="16sp"></TextView>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="mar"
-            android:textAlignment="center"
-            android:textColor="@color/colorGrey"
-            android:textSize="16sp"></TextView>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="mie"
-            android:textAlignment="center"
-            android:textColor="@color/colorGrey"
-            android:textSize="16sp"></TextView>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="jue"
-            android:textAlignment="center"
-            android:textColor="@color/colorGrey"
-            android:textSize="16sp"></TextView>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="vie"
-            android:textAlignment="center"
-            android:textColor="@color/colorGrey"
-            android:textSize="16sp"></TextView>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="sab"
-            android:textAlignment="center"
-            android:textColor="@color/colorGrey"
-            android:textSize="16sp"></TextView>
-
-    </LinearLayout>
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/Rvcalendar"
-        android:layout_width="0dp"
-        android:layout_height="386dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"></androidx.recyclerview.widget.RecyclerView>
-
-    <TextView
-        android:id="@+id/tvCalendario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:fontFamily="@font/officialbook"
-        android:gravity="bottom"
-        android:text="@string/calendario_tvCalendario_text"
-        android:textColor="@color/black"
-        android:textSize="@dimen/calendario_tvCalendario_textSize"
-        app:layout_constraintBottom_toTopOf="@+id/tvHoras"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Rvcalendar" />
 
     <TextView
         android:id="@+id/tvLugar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp"
+        android:layout_marginLeft="@dimen/_marginTop_tvLugar"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/officialbook"
         android:text="@string/calendario_tvLugar_text"
         android:textColor="@color/black"
         android:textSize="@dimen/calendario_tvLugar_textSize"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvHoras" />
 
     <TextView
-        android:id="@+id/tvHoras"
+        android:id="@+id/tvLugar2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_marginTop_tvLugar"
+        android:fontFamily="@font/officialbook"
+        android:text="text"
+        android:textColor="@color/black"
+        android:textSize="@dimen/calendario_tvLugar_textSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvLugar"
+        app:layout_constraintTop_toBottomOf="@+id/tvHoras" />
 
+
+    <TextView
+        android:id="@+id/tvLugar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_marginTop_tvLugar"
+        android:layout_marginLeft="@dimen/_marginTop_tvLugar"
+        android:fontFamily="@font/officialbook"
+        android:text="@string/calendario_tvLugar2_text"
+        android:textColor="@color/black"
+        android:textSize="@dimen/calendario_tvLugar_textSize"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvLugar3"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvLugar3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/officialbook"
+        android:text="text"
+        android:layout_marginTop="@dimen/_marginTop_tvLugar"
+        android:textColor="@color/black"
+        android:textSize="@dimen/calendario_tvLugar_textSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvLugar1"
+        app:layout_constraintTop_toBottomOf="@+id/tvLugar2" />
+
+    <TextView
+        android:id="@+id/tvHoras"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -176,29 +89,8 @@
         android:textSize="@dimen/calendario_tvHoras_textSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCalendario" />
+        app:layout_constraintTop_toBottomOf="@+id/calendario" />
 
-    <Button
-        android:id="@+id/btAjustes"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorPrimary"
-        android:text="@string/calendario_btAjustes_text"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btSobreNosotros" />
 
-    <Button
-        android:id="@+id/btSobreNosotros"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorPrimary"
-        android:text="@string/calendario_btSobreNosotros_text"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-
-        app:layout_constraintEnd_toStartOf="@+id/btAjustes"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

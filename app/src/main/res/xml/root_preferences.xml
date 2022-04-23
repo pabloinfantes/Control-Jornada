@@ -26,12 +26,24 @@
             android:title="@string/title_ringtone"
             android:summary="@string/summary_ringtone"
             android:entries="@array/ringtone"
-            android:entryValues="@array/ringtone_value">
+            android:entryValues="@array/ringtone_value"
+            android:defaultValue="@string/summary_ringtone">
+        </ListPreference>
+
+        <ListPreference
+            android:key="@string/key_hora"
+            android:title="@string/title_hora"
+            android:summary="@string/summary_hora"
+            android:entries="@array/numHoras"
+            app:entryValues="@array/numHoras"
+            android:defaultValue="@string/summary_hora">
         </ListPreference>
     </PreferenceCategory>
 
     <!-- Preferencias con las opciones de las dependencias -->
     <PreferenceCategory app:title="@string/informacion_header">
+
+
         <Preference
             android:key="@string/key_empresa"
             android:title="@string/tituloEmpresa"
@@ -42,6 +54,23 @@
             android:title="@string/versionApp"
             android:summary="@string/numVersion"
             />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/orden_header">
+
+        <SwitchPreference
+            android:defaultValue="order"
+            android:key="@string/orderObra"
+            android:summary="@string/order_alfabeticamente_obra"
+            android:title="@string/order_obra"></SwitchPreference>
+
+        <SwitchPreference
+            android:defaultValue="order"
+            android:key="@string/orderUser"
+            android:summary="@string/order_alfabeticamente_user"
+            android:title="@string/order_user"></SwitchPreference>
+
 
     </PreferenceCategory>
 

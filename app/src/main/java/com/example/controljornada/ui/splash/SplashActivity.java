@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.example.controljornada.MainActivity;
+import com.example.controljornada.ui.MainActivity;
 import com.example.controljornada.R;
 import com.example.controljornada.data.model.User;
 import com.example.controljornada.databinding.ActivitySplashBinding;

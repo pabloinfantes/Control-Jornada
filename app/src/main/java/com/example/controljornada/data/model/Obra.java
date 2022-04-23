@@ -1,24 +1,47 @@
 package com.example.controljornada.data.model;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 
+@Entity
 public class Obra implements Comparable , Serializable {
-
     public static final String TAG = "obra";
-    String name;
-    String shortname;
-    String description;
 
 
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+
+    @NonNull
+    private String name;
+    @NonNull
+    private String shortname;
+
+    private String description;
+
+    @Ignore
     public Obra() {
     }
 
-    public Obra(String name, String shortname, String description) {
+
+    public Obra(int id, String name, String shortname, String description) {
+        this.id = id;
         this.name = name;
         this.shortname = shortname;
         this.description = description;
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -63,10 +86,10 @@ public class Obra implements Comparable , Serializable {
 
     @Override
     public int compareTo(Object obj) {
-
         if (equals(obj))
-            return ((Obra)obj).getDescription().compareTo(getName());
+            return ((Obra)obj).getDescription().compareTo(getDescription());
         else
             return ((Obra)obj).getName().compareTo(getName());
+
     }
 }

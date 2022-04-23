@@ -3,68 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/horarioFragment">
+    app:startDestination="@id/horarioContenedorFragment">
 
-    <fragment
-        android:id="@+id/horarioFragment"
-        android:name="com.example.controljornada.ui.horario.HorarioFragment"
-        android:label="fragment_horario"
-        tools:layout="@layout/fragment_horario" >
-        <action
-            android:id="@+id/action_horarioFragment_to_ausenciaFragment"
-            app:destination="@id/ausenciaFragment" />
-        <action
-            android:id="@+id/action_horarioFragment_to_calendarioFragment"
-            app:destination="@id/calendarioFragment" />
-    </fragment>
     <fragment
         android:id="@+id/ausenciaFragment"
         android:name="com.example.controljornada.ui.ausencia.AusenciaFragment"
-        android:label="fragment_ausencia"
+        android:label="@string/ausencia"
         tools:layout="@layout/fragment_ausencia" />
-    <fragment
-        android:id="@+id/calendarioFragment"
-        android:name="com.example.controljornada.ui.calendario.CalendarioFragment"
-        android:label="fragment_calendario"
-        tools:layout="@layout/fragment_calendario" >
-        <action
-            android:id="@+id/action_calendarioFragment_to_aboutUsFragment"
-            app:destination="@id/aboutUsFragment" />
-        <action
-            android:id="@+id/action_calendarioFragment_to_ajustesFragment"
-            app:destination="@id/ajustesFragment" />
-    </fragment>
     <fragment
         android:id="@+id/aboutUsFragment"
         android:name="com.example.controljornada.ui.aboutus.AboutUsFragment"
-        android:label="AboutUsFragment" />
-    <fragment
-        android:id="@+id/ajustesFragment"
-        android:name="com.example.controljornada.ui.ajustes.AjustesFragment"
-        android:label="fragment_ajustes"
-        tools:layout="@layout/fragment_ajustes" >
-        <action
-            android:id="@+id/action_ajustesFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-        <action
-            android:id="@+id/action_ajustesFragment_to_listadoNumeroHorasFragment"
-            app:destination="@id/listadoNumeroHorasFragment" />
-        <action
-            android:id="@+id/action_ajustesFragment_to_listObraFragment"
-            app:destination="@id/listObraFragment" />
-        <action
-            android:id="@+id/action_ajustesFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.example.controljornada.ui.profile.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        android:label="@string/about_us" />
     <fragment
         android:id="@+id/listadoNumeroHorasFragment"
         android:name="com.example.controljornada.ui.listadohoras.ListadoNumeroHorasFragment"
-        android:label="fragment_listado_numero_horas"
+        android:label="@string/numHoras"
         tools:layout="@layout/fragment_listado_numero_horas" >
         <action
             android:id="@+id/action_listadoNumeroHorasFragment_to_listManageFragment"
@@ -76,7 +29,7 @@
     <fragment
         android:id="@+id/listManageFragment"
         android:name="com.example.controljornada.ui.listadohoras.ListManageFragment"
-        android:label="fragment_list_manage"
+        android:label="@string/anadirHoras"
         tools:layout="@layout/fragment_list_manage" >
         <argument
             android:name="user"
@@ -90,7 +43,7 @@
     <fragment
         android:id="@+id/listObraFragment"
         android:name="com.example.controljornada.ui.obra.ListObraFragment"
-        android:label="fragment_list_obra"
+        android:label="@string/obra"
         tools:layout="@layout/fragment_list_obra" >
         <action
             android:id="@+id/action_listObraFragment_to_baseDialogFragment"
@@ -102,7 +55,7 @@
     <fragment
         android:id="@+id/obraManageFragment"
         android:name="com.example.controljornada.ui.obra.ObraManageFragment"
-        android:label="fragment_obra_manage"
+        android:label="@string/addObra"
         tools:layout="@layout/fragment_obra_manage" >
         <argument
             android:name="obra"
@@ -112,7 +65,7 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.controljornada.ui.preferences.SettingsFragment"
-        android:label="SettingsFragment" >
+        android:label="@string/ajustes" >
         <action
             android:id="@+id/action_settingsFragment_to_accountFragment"
             app:destination="@id/accountFragment" />
@@ -120,5 +73,13 @@
     <fragment
         android:id="@+id/accountFragment"
         android:name="com.example.controljornada.ui.preferences.AccountFragment"
-        android:label="AccountFragment" />
+        android:label="@string/cuenta" />
+    <fragment
+        android:id="@+id/horarioContenedorFragment"
+        android:name="com.example.controljornada.ui.horario.HorarioContenedorFragment"
+        android:label="@string/horario" >
+        <action
+            android:id="@+id/action_horarioContenedorFragment_to_ausenciaFragment"
+            app:destination="@id/ausenciaFragment" />
+    </fragment>
 </navigation>

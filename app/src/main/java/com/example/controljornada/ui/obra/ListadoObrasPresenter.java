@@ -9,7 +9,6 @@ public class ListadoObrasPresenter implements ListadoObrasContract.Presenter, Li
 
     private ListadoObrasContract.View view;
     private ListadoObrasInteractor interactor;
-    private Boolean order=false;
 
 
     public ListadoObrasPresenter(ListadoObrasContract.View view) {
@@ -40,13 +39,7 @@ public class ListadoObrasPresenter implements ListadoObrasContract.Presenter, Li
 
     @Override
     public void order() {
-        if (order==true){
-            order=false;
-            view.showDataInverseOrder();
-        }else {
-            order=true;
             view.showDataOrder();
-        }
     }
 
     @Override

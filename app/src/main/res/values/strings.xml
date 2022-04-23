@@ -40,7 +40,8 @@
     <string name="forward" translatable="false"><![CDATA[->]]></string>
     <string name="calendario_tvCalendario_text">Jueves,28 de octubre de 2021</string>
     <string name="calendario_tvHoras_text">Horas Totales:  9</string>
-    <string name="calendario_tvLugar_text">Lugar de trabajo: Ies Portada Alta</string>
+    <string name="calendario_tvLugar_text">Lugar de trabajo mañana:</string>
+    <string name="calendario_tvLugar2_text">Lugar de trabajo tarde:</string>
     <string name="app_description">Esta seria la descripcion de la persona</string>
     <string name="calendario_btSobreNosotros_text">Sobre Nosotros</string>
     <string name="calendario_btAjustes_text">Ajustes</string>
@@ -85,19 +86,19 @@
     <string name="fdmanage_tieShortName_hint">Nombre Corto</string>
     <string name="titleEditObra">Editar Obra</string>
     <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
+    <string name="messages_header" translatable="false">Messages</string>
+    <string name="sync_header" translatable="false">Sync</string>
 
     <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
+    <string name="signature_title" translatable="false">Your signature</string>
+    <string name="reply_title" translatable="false">Default reply action</string>
 
     <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    <string name="sync_title" translatable="false">Sync email periodically</string>
+    <string name="attachment_title" translatable="false">Download incoming attachments</string>
+    <string name="attachment_summary_on" translatable="false">Automatically download attachments for incoming emails
     </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="attachment_summary_off" translatable="false">Only download attachments when manually requested</string>
     <string name="privacy_and_condition">Condiciones y privacidad</string>
     <string name="key_help">ayuda</string>
     <string name="help_point">Centro de ayuda</string>
@@ -122,6 +123,36 @@
     <string name="title_user">Usuario</string>
     <string name="key_password">password</string>
     <string name="title_password">Contraseña</string>
+    <string name="name_channel">ControlJornada_Channel</string>
+    <string name="tvUser">Pablo Infantes Sosa</string>
+    <string name="tvEmail">pabloinfantes@gmail.com</string>
+    <string name="menu_options">Opciones</string>
+    <string name="horarioFragment">Horario</string>
+    <string name="listadoNumeroHorasFragment">Numero de horas</string>
+    <string name="listObraFragment">Obras Actuales</string>
+    <string name="horario">Horario</string>
+    <string name="ausencia">Ausencia</string>
+    <string name="calendario">Calendario</string>
+    <string name="about_us">Sobre nosotros</string>
+    <string name="perfil">Perfil</string>
+    <string name="numHoras">Horas trabajadas por trabajador</string>
+    <string name="anadirHoras">Añadir trabajador</string>
+    <string name="obra">Obras Actuales</string>
+    <string name="addObra">Añadir Obra</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="cuenta">Cuenta</string>
+    <string name="key_hora">hora</string>
+    <string name="title_hora">Hora de la notificacion</string>
+    <string name="summary_hora">Selecciona la hora en la que quiere la notificación</string>
+    <string name="notification_title_add_usuario">Se ha creado un nuevo usuario</string>
+    <string name="notification_title_add_obra">Se ha creado una nueva obra</string>
+    <string name="orderObra">orderObra</string>
+    <string name="order_alfabeticamente_obra">Pulsa para ordenar siempre alfabeticamente las obras</string>
+    <string name="orderUser">orderUser</string>
+    <string name="order_alfabeticamente_user">Pulsa para ordenar siempre alfabeticamente los usuarios</string>
+    <string name="orden_header">Tipo de orden</string>
+    <string name="order_obra">Ordenar obra por nombre</string>
+    <string name="order_user">Ordenar usuarios por nombre</string>
 
 
 </resources>

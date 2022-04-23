@@ -13,11 +13,7 @@ public interface ListadoObrasContract {
     interface View extends OnRepositoryListCallback{
         void showNoData();
         void showData(ArrayList<Obra> list);
-
-        //muestra el orden A-Z
         void showDataOrder();
-        //Ordena de la Z a la A
-        void showDataInverseOrder();
     }
 
 

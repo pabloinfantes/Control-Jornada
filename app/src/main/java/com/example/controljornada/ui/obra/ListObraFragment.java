@@ -147,15 +147,8 @@ public class ListObraFragment extends Fragment implements ListadoObrasContract.V
 
     @Override
     public void showDataOrder() {
-        adapter.order();
+        adapter.order(getContext());
     }
-
-    @Override
-    public void showDataInverseOrder() {
-        adapter.inverseOrder();
-    }
-
-
 
 
     @Override

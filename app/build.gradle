@@ -54,10 +54,19 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:29.0.0')
     implementation 'com.google.firebase:firebase-analytics'
 
+    //Circle Image View
+    implementation 'com.mikhaellopez:circularimageview:4.3.0'
+
     //EventBus
     implementation 'org.greenrobot:eventbus:3.2.0'
 
     //librerias son para el dependency list
     //amulyakhare
     implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+
+    //Room
+    def room_version = "2.4.1"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
 }

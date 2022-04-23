@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.controljornada.MainActivity;
+import com.example.controljornada.ui.MainActivity;
 import com.example.controljornada.R;
 import com.example.controljornada.data.model.User;
 import com.example.controljornada.ui.base.Event;

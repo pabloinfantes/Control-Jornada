@@ -88,6 +88,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/singup__marginTop"
+        app:endIconMode="password_toggle"
         android:layout_marginLeft="@dimen/singup__marginLeft"
         android:layout_marginRight="@dimen/singup__marginRight"
         android:layout_marginBottom="@dimen/singup__marginBottom"
@@ -98,6 +99,7 @@
             android:id="@+id/tiePassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:hint="@string/SignUp_tiePassword_hint" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -108,6 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/singup__marginTop"
         android:layout_marginLeft="@dimen/singup__marginLeft"
+        app:endIconMode="password_toggle"
         android:layout_marginRight="@dimen/singup__marginRight"
         android:layout_marginBottom="@dimen/singup__marginBottom"
         app:layout_constraintTop_toBottomOf="@id/tilPassword"
@@ -117,6 +120,7 @@
             android:id="@+id/tieConfirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:hint="@string/SignUp_tieConfirmPassword_hint" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -136,6 +140,8 @@
             android:id="@+id/tiePin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
+            android:maxLength="4"
             android:hint="@string/SignUp_tiePin_hint" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -155,6 +161,8 @@
             android:id="@+id/tieConfirmPin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
+            android:maxLength="4"
             android:hint="@string/SignUp_tieConfirmPin_hint" />
     </com.google.android.material.textfield.TextInputLayout>
 

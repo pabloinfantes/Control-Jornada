@@ -17,4 +17,17 @@
         <item>piano</item>
         <item>flow</item>
     </string-array>
+
+
+    <string-array name="numHoras">
+        <item>7:00</item>
+        <item>7:10</item>
+        <item>7:20</item>
+        <item>7:30</item>
+        <item>7:40</item>
+        <item>7:50</item>
+        <item>8:00</item>
+        <item>8:10</item>
+    </string-array>
+
 </resources>
