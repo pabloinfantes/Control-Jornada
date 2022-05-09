@@ -1,10 +1,23 @@
 package com.example.controljornada.data.model;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Horario {
-    String horarioEntrada;
-    String horarioMediodia;
-    String horarioAlmuerzo;
-    String horarioSalida;
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+
+    @NonNull
+    private String horarioEntrada;
+    @NonNull
+    private String horarioMediodia;
+    @NonNull
+    private String horarioAlmuerzo;
+    @NonNull
+    private String horarioSalida;
+
 
     public Horario(String horarioEntrada, String horarioMediodia, String horarioAlmuerzo, String horarioSalida) {
         this.horarioEntrada = horarioEntrada;
@@ -13,6 +26,13 @@ public class Horario {
         this.horarioSalida = horarioSalida;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getHorarioEntrada() {
         return horarioEntrada;

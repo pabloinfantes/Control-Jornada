@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,6 +32,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.controljornada.R;
+import com.example.controljornada.data.model.Horario;
 import com.example.controljornada.databinding.FragmentHorarioBinding;
 import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.HttpResponse;
 import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.client.ClientProtocolException;
@@ -54,6 +56,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Locale;
@@ -62,13 +65,11 @@ import java.util.Objects;
 import javax.net.ssl.HttpsURLConnection;
 
 
-public class HorarioFragment extends Fragment implements View.OnClickListener {
+public class HorarioFragment extends Fragment implements View.OnClickListener ,HorarioContract.View{
 
 
     private FragmentHorarioBinding binding;
-    private String result;
-
-
+    private HorarioContract.Presenter presenter;
 
     public static Fragment newInstance(Bundle bundle) {
         HorarioFragment fragment = new HorarioFragment();
@@ -78,10 +79,10 @@ public class HorarioFragment extends Fragment implements View.OnClickListener {
         return fragment;
     }
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        presenter = new HorarioFragmentPresenter(this);
 
     }
 
@@ -176,24 +177,27 @@ public class HorarioFragment extends Fragment implements View.OnClickListener {
         }
         binding.tvFechaHorario.setText(fechaActual.getDayOfMonth()+" de "  + resulta+ " de "  +fechaActual.getYear());
 
-
         binding.tvHorarioIzq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Calendar calendar = Calendar.getInstance();
-                int hour = calendar.get(Calendar.HOUR_OF_DAY);
-                int minute = calendar.get(Calendar.MINUTE);
+
                 //inicializar el time picker
                 TimePickerDialog timePickerDialog = new TimePickerDialog(
                         getContext(),
-                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        android.R.style.Theme_Holo_Light_Dialog,
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker timePicker, int hours, int minutes) {
                                 //inicializar horas y minutos
-                                binding.tvHorarioIzq.setText(hours + ":" + minutes);
+                                calendar.set(Calendar.HOUR_OF_DAY, hours);
+                                calendar.set(Calendar.MINUTE, minutes);
+                                SimpleDateFormat timeformat = new SimpleDateFormat("HH:mm");
+                                String formatedDate = timeformat.format(calendar.getTime());
+                                binding.tvHorarioIzq.setText(formatedDate);
+
                             }
-                        }, hour, minute, false);
+                        }, calendar.get(Calendar.HOUR_OF_DAY),  calendar.get(Calendar.MINUTE), false);
                 timePickerDialog.show();
             }
         });
@@ -201,8 +205,7 @@ public class HorarioFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View view) {
                 Calendar calendar = Calendar.getInstance();
-                int hour1 = calendar.get(Calendar.HOUR_OF_DAY);
-                int minute1 = calendar.get(Calendar.MINUTE);
+
                 //inicializar el time picker
                 TimePickerDialog timePickerDialog1 = new TimePickerDialog(
                         getContext(),
@@ -211,9 +214,13 @@ public class HorarioFragment extends Fragment implements View.OnClickListener {
                             @Override
                             public void onTimeSet(TimePicker timePicker, int hours, int minutes) {
                                 //inicializar horas y minutos
-                                binding.tvHorarioDer.setText(hours + ":" + minutes);
+                                calendar.set(Calendar.HOUR_OF_DAY, hours);
+                                calendar.set(Calendar.MINUTE, minutes);
+                                SimpleDateFormat timeformat = new SimpleDateFormat("HH:mm");
+                                String formatedDate = timeformat.format(calendar.getTime());
+                                binding.tvHorarioDer.setText(formatedDate);
                             }
-                        }, hour1, minute1, false);
+                        }, calendar.get(Calendar.HOUR_OF_DAY),  calendar.get(Calendar.MINUTE), false);
                 timePickerDialog1.show();
             }
         });
@@ -221,8 +228,6 @@ public class HorarioFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View view) {
                 Calendar calendar = Calendar.getInstance();
-                int hour2 = calendar.get(Calendar.HOUR_OF_DAY);
-                int minute2 = calendar.get(Calendar.MINUTE);
                 //inicializar el time picker
                 TimePickerDialog timePickerDialog2 = new TimePickerDialog(
                         getContext(),
@@ -231,9 +236,13 @@ public class HorarioFragment extends Fragment implements View.OnClickListener {
                             @Override
                             public void onTimeSet(TimePicker timePicker, int hours, int minutes) {
                                 //inicializar horas y minutos
-                                binding.tvHorarioIzq2.setText(hours + ":" + minutes);
+                                calendar.set(Calendar.HOUR_OF_DAY, hours);
+                                calendar.set(Calendar.MINUTE, minutes);
+                                SimpleDateFormat timeformat = new SimpleDateFormat("HH:mm");
+                                String formatedDate = timeformat.format(calendar.getTime());
+                                binding.tvHorarioIzq2.setText(formatedDate);
                             }
-                        }, hour2, minute2, false);
+                        }, calendar.get(Calendar.HOUR_OF_DAY),  calendar.get(Calendar.MINUTE), false);
                 timePickerDialog2.show();
             }
         });
@@ -241,8 +250,7 @@ public class HorarioFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View view) {
                 Calendar calendar = Calendar.getInstance();
-                int hour3 = calendar.get(Calendar.HOUR_OF_DAY);
-                int minute3 = calendar.get(Calendar.MINUTE);
+
                 //inicializar el time picker
                 TimePickerDialog timePickerDialog3 = new TimePickerDialog(
                         getContext(),
@@ -251,17 +259,25 @@ public class HorarioFragment extends Fragment implements View.OnClickListener {
                             @Override
                             public void onTimeSet(TimePicker timePicker, int hours, int minutes) {
                                 //inicializar horas y minutos
-                                binding.tvHorarioDer2.setText(hours + ":" + minutes);
+                                calendar.set(Calendar.HOUR_OF_DAY, hours);
+                                calendar.set(Calendar.MINUTE, minutes);
+                                SimpleDateFormat timeformat = new SimpleDateFormat("HH:mm ");
+                                String formatedDate = timeformat.format(calendar.getTime());
+                                binding.tvHorarioDer2.setText(formatedDate);
                             }
-                        }, hour3, minute3, false);
+                        }, calendar.get(Calendar.HOUR_OF_DAY),  calendar.get(Calendar.MINUTE), false);
                 timePickerDialog3.show();
             }
         });
 
-
+        binding.btFirma.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                presenter.add(new Horario(binding.tvHorarioIzq.getText().toString(),binding.tvHorarioIzq2.getText().toString(),binding.tvHorarioDer.getText().toString(),binding.tvHorarioDer2.getText().toString()));
+            }
+        });
 
     }
-
 
 
     @Override
@@ -274,15 +290,12 @@ public class HorarioFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
 
-
         switch (view.getId()) {
             case R.id.btAusencia:
                 showAusenciaFragment();
                 break;
 
-
         }
-
 
     }
 
@@ -292,4 +305,13 @@ public class HorarioFragment extends Fragment implements View.OnClickListener {
     }
 
 
+    @Override
+    public void onSuccess(String message) {
+        Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onFailure(String message) {
+        Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();
+    }
 }
