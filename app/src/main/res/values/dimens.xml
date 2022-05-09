@@ -75,6 +75,6 @@
     <dimen name="dependency_item_paddin">5dp</dimen>
     <dimen name="toolbar_elevation">4dp</dimen>
     <dimen name="_marginTop_tvLugar">20dp</dimen>
-    <item name="signUp_layout_weight" type="dimen" format="float">0.02</item>
-    <item name="signUp_chk_layout_weight" type="dimen" format="float">0.001</item>
+    <item name="signUp_layout_weight" format="float" type="dimen">0.02</item>
+    <item name="signUp_chk_layout_weight" format="float" type="dimen">0.001</item>
 </resources>

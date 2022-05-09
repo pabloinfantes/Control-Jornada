@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/horarioContenedorFragment"
+            android:title="@string/horarioFragment"
+            />
+
+    </group>
+
+    <item android:title="@string/menu_options">
+        <menu>
+            <item
+                android:id="@+id/aboutUsFragment"
+                android:title="@string/action_aboutus"
+                app:showAsAction="never"
+                android:orderInCategory="3"/>
+            <item
+                android:id="@+id/settingsFragment"
+                android:title="@string/action_settings"
+                app:showAsAction="never"
+                android:orderInCategory="4"/>
+        </menu>
+    </item>
+
+</menu>

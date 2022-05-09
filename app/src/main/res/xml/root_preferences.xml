@@ -33,10 +33,10 @@
         <ListPreference
             android:key="@string/key_hora"
             android:title="@string/title_hora"
-            android:summary="@string/summary_hora"
+            android:summary="8:01"
             android:entries="@array/numHoras"
             app:entryValues="@array/numHoras"
-            android:defaultValue="@string/summary_hora">
+            android:defaultValue="8:01">
         </ListPreference>
     </PreferenceCategory>
 

@@ -9,6 +9,7 @@ import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import com.example.controljornada.ui.MainActivity;
 import com.example.controljornada.R;
 import com.example.controljornada.data.model.User;
+import com.example.controljornada.ui.MainActivityNormalUser;
 import com.example.controljornada.ui.base.Event;
 import com.example.controljornada.ui.signup.SignUpActivity;
 import com.example.controljornada.databinding.ActivityLoginBinding;
@@ -24,12 +26,23 @@ import com.example.controljornada.utils.CommonUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.ProtocolException;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
 
     private ActivityLoginBinding binding;
     private LoginContract.Presenter presenter;
-
+    public String result;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +66,84 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     }
 
     private void startMainActivity() {
-        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+
+        Thread thread = new Thread(new Runnable() {
+            public String data = "";
+            @Override
+            public void run() {
+
+                try {
+                    String email = String.valueOf(binding.tieUser.getText());
+                    URL url = new URL("http://158.101.203.234/add/controlJornada/controlJornada.php?email="+email);
+                    Log.d("url", String.valueOf(url));
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection.setRequestMethod("GET");
+                    connection.setRequestProperty("Content-Type", "application/json; utf-8");
+                    connection.setRequestProperty("Accept", "application/json");
+                    connection.connect();
+
+                    int code = connection.getResponseCode();
+                    switch (code) {
+                        case 200:
+                        case 201:
+                            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
+                            String line;
+                            while ((line = br.readLine()) != null) {
+                                data += line;
+                            }
+                            sendData(data);
+
+
+                            br.close();
+                    }
+                    connection.disconnect();
+                } catch (ProtocolException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            public String getData() {
+                return data;
+            }
+        });
+        thread.start();
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        Log.d("rr",result);
+
+        JSONArray array = null;
+        String email = null;
+        String admin = null;
+        try {
+            array = new JSONArray(result);
+            for(int i=0; i < array.length(); i++)
+            {
+                JSONObject object = array.getJSONObject(i);
+                email = object.getString("email");
+                admin = object.getString("admin");
+                if (admin.equals("1")){
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                }else {
+                    startActivity(new Intent(LoginActivity.this, MainActivityNormalUser.class));
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    private void sendData(String data) {
+        result =data;
     }
 
     @Override

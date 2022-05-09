@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:paddingTop="10dp"
+    android:paddingBottom="5dp"
+    android:background="@color/colorPrimary"
+    android:gravity="center_horizontal"
+    >
+
+    <!--    IMAGEN DEL PERFIL-->
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_tiluser_person"
+
+        app:civ_border_color="@color/white"
+        app:civ_border_width="4dp"
+        app:civ_shadow="true"
+        app:civ_shadow_radius="10dp"
+        app:civ_shadow_color="@color/white"/>
+
+
+    <TextView
+        android:id="@+id/tvUserNav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:text="@string/tvUser" />
+
+
+    <TextView
+        android:id="@+id/tvEmailNav"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="@string/tvEmail"/>
+
+
+
+</LinearLayout>
