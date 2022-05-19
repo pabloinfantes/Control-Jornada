@@ -21,12 +21,16 @@ public class ListadoManageInteractor implements OnRepositoryCallback {
             listener.onNombreEmpty();
             return;
         }
-        if (TextUtils.isEmpty(user.getNumeroHorasMensuales())){
+        if (TextUtils.isEmpty(String.valueOf(user.getAdmin()))){
             listener.onNumHorasEmpty();
             return;
         }
         if (TextUtils.isEmpty(user.getNombreCorto())){
             listener.onNombreCortoEmpty();
+            return;
+        }
+        if (TextUtils.isEmpty(user.getEmail())){
+            listener.onEmailEmpty();
             return;
         }
 
@@ -34,16 +38,9 @@ public class ListadoManageInteractor implements OnRepositoryCallback {
     }
 
     public void edit(User user) {
-        if (TextUtils.isEmpty(user.getNombreCompleto())){
-            listener.onNombreEmpty();
-            return;
-        }
-        if (TextUtils.isEmpty(user.getNumeroHorasMensuales())){
+
+        if (TextUtils.isEmpty(String.valueOf(user.getAdmin()))){
             listener.onNumHorasEmpty();
-            return;
-        }
-        if (TextUtils.isEmpty(user.getNombreCorto())){
-            listener.onNombreCortoEmpty();
             return;
         }
 

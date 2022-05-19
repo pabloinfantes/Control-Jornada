@@ -17,7 +17,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 //1.- Definir la configuracion de la base de datos
-@Database(entities = {User.class, Obra.class, Horario.class}, version = 2)
+@Database(entities = {User.class, Obra.class, Horario.class}, version = 3)
 public abstract class ControlJornadaDatabase extends androidx.room.RoomDatabase {
 
 

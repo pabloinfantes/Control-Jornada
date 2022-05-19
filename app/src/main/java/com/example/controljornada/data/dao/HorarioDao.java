@@ -26,7 +26,10 @@ public interface HorarioDao {
     @Query("DELETE FROM  horario")
     void deleteAll();
 
-    @Query("SELECT * FROM  horario")
-    List<Horario> select();
+    @Query("SELECT * FROM  horario WHERE iduser = :iduser AND fechaDelDiaDeTrabajo = :fechaDelDiaDeTrabajo")
+    List<Horario> selectNormalUser(int iduser, String fechaDelDiaDeTrabajo);
+
+    @Query("SELECT * FROM  horario WHERE fechaDelDiaDeTrabajo = :fechaDelDiaDeTrabajo")
+    List<Horario> selectAdminUser( String fechaDelDiaDeTrabajo);
 
 }

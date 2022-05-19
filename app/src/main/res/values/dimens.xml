@@ -6,10 +6,10 @@
     <dimen name="login_tilUser_marginTop">15dp</dimen>
     <dimen name="login_tilPassword_marginTop">15dp</dimen>
     <dimen name="singup_toolbar_textSize">40sp</dimen>
-    <dimen name="singup__marginTop">2dp</dimen>
-    <dimen name="singup__marginLeft">2dp</dimen>
-    <dimen name="singup__marginRight">2dp</dimen>
-    <dimen name="singup__marginBottom">2dp</dimen>
+    <dimen name="singup__marginTop">16dp</dimen>
+    <dimen name="singup__marginLeft">8dp</dimen>
+    <dimen name="singup__marginRight">8dp</dimen>
+    <dimen name="singup__marginBottom">8dp</dimen>
     <dimen name="landscape_singup__marginTop">1dp</dimen>
     <dimen name="landscape_singup__marginLeft">1dp</dimen>
     <dimen name="landscape_singup__marginRight">1dp</dimen>
@@ -35,7 +35,7 @@
     <dimen name="login_constraint_marginBottom">80dp</dimen>
     <dimen name="login_tilUser_marginStart">16dp</dimen>
     <dimen name="login_tilUser_marginEnd">16dp</dimen>
-    <dimen name="login_tilUser_marginTop1">24dp</dimen>
+    <dimen name="login_tilUser_marginTop1">50dp</dimen>
     <dimen name="login_tilPassword_marginStart">16dp</dimen>
     <dimen name="login_tilPassword_marginEnd">16dp</dimen>
     <dimen name="login_tilPassword_marginTop1">8dp</dimen>

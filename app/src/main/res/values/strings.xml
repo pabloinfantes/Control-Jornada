@@ -10,7 +10,7 @@
     <string name="login_tvName_text">Control de Jornada</string>
     <string name="login_tvOtherLogin_text">Iniciar sesion con otras plataformas</string>
     <string name="singup_label">Registro</string>
-    <string name="SignUp_tieUser_hint">Nombre de usuario</string>
+    <string name="SignUp_tieUser_hint">Nombre Completo</string>
     <string name="SignUp_tieEmail_hint">Introduce tu email</string>
     <string name="SignUp_tiePassword_hint">Introduce Contraseña</string>
     <string name="SignUp_tieConfirmPassword_hint">Confirma tu contraseña</string>
@@ -68,10 +68,10 @@
     <string name="action_search">Buscar</string>
     <string name="name_actionbar">Control de jornada</string>
     <string name="horario_tvUserName_text">Pablo Infantes Sosa</string>
-    <string name="horario_tvNumeroHoras_text">"Numero de horas mensuales: "</string>
+    <string name="horario_tvNumeroHoras_text">"administrador: "</string>
     <string name="horario_tvNumeroHorasLabel_text">9</string>
     <string name="fdmanage_tieName_hint">Nombre</string>
-    <string name="fdmanage_tieNumeroHoras_hint">Numero de horas</string>
+    <string name="fdmanage_tieNumeroHoras_hint">admin</string>
     <string name="fdmanage_tieNombreCorto_hint">Nombre corto</string>
     <string name="tituloEditar">Editar Usuario</string>
     <string name="title_delete_user">Eliminar Usuario </string>
@@ -128,14 +128,14 @@
     <string name="tvEmail">pabloinfantes@gmail.com</string>
     <string name="menu_options">Opciones</string>
     <string name="horarioFragment">Horario</string>
-    <string name="listadoNumeroHorasFragment">Numero de horas</string>
+    <string name="listadoNumeroHorasFragment">Usuarios</string>
     <string name="listObraFragment">Obras Actuales</string>
     <string name="horario">Horario</string>
     <string name="ausencia">Ausencia</string>
     <string name="calendario">Calendario</string>
     <string name="about_us">Sobre nosotros</string>
     <string name="perfil">Perfil</string>
-    <string name="numHoras">Horas trabajadas por trabajador</string>
+    <string name="numHoras">Usuarios</string>
     <string name="anadirHoras">Añadir trabajador</string>
     <string name="obra">Obras Actuales</string>
     <string name="addObra">Añadir Obra</string>
@@ -162,6 +162,8 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="guardar">Guardar</string>
+    <string name="cerrarsesion">Cerrar Sesion</string>
 
 
 </resources>

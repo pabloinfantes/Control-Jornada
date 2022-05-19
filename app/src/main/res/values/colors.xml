@@ -13,5 +13,6 @@
     <color name="colorGreen">#43A047</color>
     <color name="colorRed">#E53935</color>
     <color name="colorGrey">#D8D4D4</color>
-    #E53935
+    <color name="colorGreenLight">#99DF9C</color>
+
 </resources>

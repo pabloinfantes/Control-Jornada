@@ -55,4 +55,9 @@ public class ListManagePresenter implements ListadoManageContract.Presenter ,Lis
     public void onNombreCortoEmpty() {
         view.setNombreCortoEmpty();
     }
+
+    @Override
+    public void onEmailEmpty() {
+        view.setEmailEmpty();
+    }
 }

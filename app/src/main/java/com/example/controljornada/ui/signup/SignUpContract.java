@@ -19,9 +19,6 @@ public interface SignUpContract {
 
     }
 
-    interface Repository{
-        void SignUp(String user,String email,String password,String comfirmPassword);
-    }
 
     interface OnSignUpInteractorListener extends LoginContract.OnInteractorListener , OnRepositoryCallback {
         void onUserEmptyError();
@@ -29,6 +26,14 @@ public interface SignUpContract {
         void onEmailError();
         void onPasswordDontMatch();
     }
+
+
+    interface Repository{
+        void SignUp(String user,String email,String password,String comfirmPassword);
+
+    }
+
+
 
 
 

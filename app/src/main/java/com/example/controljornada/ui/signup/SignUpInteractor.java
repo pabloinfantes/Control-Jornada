@@ -4,7 +4,9 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Patterns;
 
+import com.example.controljornada.data.model.User;
 import com.example.controljornada.data.repository.LoginRepositoryImpl;
+import com.example.controljornada.data.repository.UserRepository;
 import com.example.controljornada.ui.base.OnRepositoryCallback;
 import com.example.controljornada.utils.CommonUtils;
 
@@ -69,4 +71,6 @@ public class SignUpInteractor implements OnRepositoryCallback {
     public void onFailure(String message) {
         listener.onFailure(message);
     }
+
+
 }

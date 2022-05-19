@@ -43,7 +43,7 @@ public class SplashActivity extends AppCompatActivity {
 
 
     private boolean saveSession() {
-        return (PreferenceManager.getDefaultSharedPreferences(this).contains(User.TAG));
+        return (PreferenceManager.getDefaultSharedPreferences(this).contains("email"));
     }
 
     private void starLogin() {

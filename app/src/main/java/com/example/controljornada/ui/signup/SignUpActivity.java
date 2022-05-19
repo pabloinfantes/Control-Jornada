@@ -2,7 +2,11 @@ package com.example.controljornada.ui.signup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.controljornada.R;
@@ -11,6 +15,18 @@ import com.example.controljornada.ui.base.Event;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.ProtocolException;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+
+import javax.net.ssl.HttpsURLConnection;
 
 public class SignUpActivity extends AppCompatActivity implements SignUpContract.View{
 
@@ -42,6 +58,49 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
 
     @Override
     public void onSuccess(String message) {
+
+        String[] parts = message.split("-");
+        Log.d("emailjajaj",parts.toString());
+        String email = parts[0];
+        String name = parts[1];
+
+        Log.d("emailjajaj",email);
+        Log.d("namejajaj",name);
+
+
+        Thread thread = new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                try {
+                    URL url = new URL("http://158.101.203.234/add/controlJornada/insertarUser.php?email="+email+"&name="+name);
+                    Log.d("url", String.valueOf(url));
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection.setRequestMethod("POST");
+                    connection.setDoOutput(true);
+                    connection.connect();
+
+                    if( connection.getResponseCode() == HttpURLConnection.HTTP_OK ){
+                        InputStream is = connection.getErrorStream();
+                    }else{
+                        InputStream err = connection.getErrorStream();
+                    }
+
+                    connection.disconnect();
+
+                } catch (ProtocolException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+
+        });
+        thread.start();
+
+
         finish();
     }
 

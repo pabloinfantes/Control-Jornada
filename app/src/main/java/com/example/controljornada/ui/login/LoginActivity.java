@@ -1,6 +1,7 @@
 package com.example.controljornada.ui.login;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,6 +21,7 @@ import com.example.controljornada.R;
 import com.example.controljornada.data.model.User;
 import com.example.controljornada.ui.MainActivityNormalUser;
 import com.example.controljornada.ui.base.Event;
+import com.example.controljornada.ui.horario.HorarioFragment;
 import com.example.controljornada.ui.signup.SignUpActivity;
 import com.example.controljornada.databinding.ActivityLoginBinding;
 import com.example.controljornada.utils.CommonUtils;
@@ -43,6 +45,9 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     private ActivityLoginBinding binding;
     private LoginContract.Presenter presenter;
     public String result;
+    public static int USERID;
+    public static String USEREMAIL;
+    public static String ISADMIN;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +70,32 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
     }
 
-    private void startMainActivity() {
+
+
+    private void sendData(String data) {
+        result =data;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    public void showProgress() {
+        binding.progressHorizontal.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgress() {
+        binding.progressHorizontal.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void onSuccess(String message) {
+
 
         Thread thread = new Thread(new Runnable() {
             public String data = "";
@@ -120,15 +150,20 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         Log.d("rr",result);
 
         JSONArray array = null;
+        int id = 0;
         String email = null;
         String admin = null;
+        String name = null;
         try {
             array = new JSONArray(result);
             for(int i=0; i < array.length(); i++)
             {
                 JSONObject object = array.getJSONObject(i);
+                id = object.getInt("id");
                 email = object.getString("email");
                 admin = object.getString("admin");
+                name = object.getString("name");
+
                 if (admin.equals("1")){
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 }else {
@@ -140,41 +175,14 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         }
 
 
-    }
-
-    private void sendData(String data) {
-        result =data;
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        presenter.onDestroy();
-        EventBus.getDefault().unregister(this);
-    }
-
-    @Override
-    public void showProgress() {
-        binding.progressHorizontal.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void hideProgress() {
-        binding.progressHorizontal.setVisibility(View.INVISIBLE);
-    }
-
-    @Override
-    public void onSuccess(String message) {
         SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
+        editor.putInt("id",id);
+        editor.putString("admin",admin);
+        editor.putString("email",email);
+        editor.putString("name",name);
+        editor.apply();
 
-        if (binding.chkRemember.isChecked()){
-            editor.putString(User.TAG,binding.tieUser.getText().toString());
-            editor.apply();
-            //O BIEN APPLY O BIEN COMMIT QUE SINO NO SE HACEN LOS CAMBIOS EN EK FICHERO
 
-        }
-
-        startMainActivity();
     }
 
     @Override

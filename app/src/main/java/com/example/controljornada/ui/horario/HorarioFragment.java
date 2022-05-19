@@ -2,6 +2,7 @@ package com.example.controljornada.ui.horario;
 
 
 import android.app.TimePickerDialog;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.preference.PreferenceManager;
 
 import com.android.volley.Cache;
 import com.android.volley.Network;
@@ -33,7 +35,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.controljornada.R;
 import com.example.controljornada.data.model.Horario;
+import com.example.controljornada.data.model.User;
 import com.example.controljornada.databinding.FragmentHorarioBinding;
+import com.example.controljornada.ui.login.LoginActivity;
 import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.HttpResponse;
 import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.client.ClientProtocolException;
 import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.client.HttpClient;
@@ -103,6 +107,15 @@ public class HorarioFragment extends Fragment implements View.OnClickListener ,H
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        int idUser = prefs.getInt("id",1);
+        String email = prefs.getString("email","1");
+        String name = prefs.getString("name","1");
+        String admin = prefs.getString("admin","1");
+
+        Log.d("UUUSEER",new User(idUser,email,name,Integer.parseInt(admin)).toString());
+        presenter.add(new User(idUser,email,name, Integer.parseInt(admin)));
 
 
         LocalDate  fechaActual = LocalDate.now();
@@ -270,10 +283,42 @@ public class HorarioFragment extends Fragment implements View.OnClickListener ,H
             }
         });
 
+
+
+
+
+
+
         binding.btFirma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                presenter.add(new Horario(binding.tvHorarioIzq.getText().toString(),binding.tvHorarioIzq2.getText().toString(),binding.tvHorarioDer.getText().toString(),binding.tvHorarioDer2.getText().toString()));
+
+                presenter.add(new Horario(idUser,
+                        email,
+                        binding.tieLugarTrabajo.getText().toString(),
+                        binding.tieLugarTrabajo2.getText().toString(),
+                        fechaActual.toString(),
+                        binding.tvHorarioIzq.getText().toString(),
+                        binding.tvHorarioIzq2.getText().toString(),
+                        binding.tvHorarioDer.getText().toString(),
+                        binding.tvHorarioDer2.getText().toString(),
+                        10)
+                );
+
+                /*
+                presenter.add(new Horario(idUser,
+                        email,
+                        binding.tieLugarTrabajo.getText().toString(),
+                        binding.tieLugarTrabajo2.getText().toString(),
+                        "2022-05-31",
+                        binding.tvHorarioIzq.getText().toString(),
+                        binding.tvHorarioIzq2.getText().toString(),
+                        binding.tvHorarioDer.getText().toString(),
+                        binding.tvHorarioDer2.getText().toString(),
+                        10)
+                );
+                */
+
             }
         });
 

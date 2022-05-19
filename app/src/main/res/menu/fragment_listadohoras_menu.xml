@@ -7,9 +7,5 @@
         android:title="@string/ction_order_byNombre"
         app:showAsAction="never"
         android:orderInCategory="1"/>
-    <item
-        android:id="@+id/action_order_byNumeroHoras"
-        android:title="@string/action_order_byNumeroHoras"
-        app:showAsAction="never"
-        android:orderInCategory="2"/>
+    
 </menu>

@@ -1,6 +1,7 @@
 package com.example.controljornada.ui.horario;
 
 import com.example.controljornada.data.model.Horario;
+import com.example.controljornada.data.model.User;
 
 public class HorarioFragmentPresenter implements HorarioContract.Presenter, HorarioContract.OnInteractorManageListener {
 
@@ -21,6 +22,11 @@ public class HorarioFragmentPresenter implements HorarioContract.Presenter, Hora
     @Override
     public void add(Horario horario) {
         interactor.add(horario);
+    }
+
+    @Override
+    public void add(User user) {
+        interactor.add(user);
     }
 
 

@@ -2,12 +2,14 @@ package com.example.controljornada.ui.listadohoras;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -62,7 +64,7 @@ public class ListadoNumeroHorasFragment extends Fragment implements ListadoNumer
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initRvNumHoras();
-        initFab();
+
     }
 
     private void initFab() {
@@ -94,9 +96,7 @@ public class ListadoNumeroHorasFragment extends Fragment implements ListadoNumer
             case R.id.action_order_byNombre:
                 presenter.order();
                 return true;
-            case R.id.action_order_byNumeroHoras:
-                adapter.orderByNumeroHoras();
-                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

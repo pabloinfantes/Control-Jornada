@@ -16,6 +16,7 @@ public class SignUpPresenter implements SignUpContract.Presenter, SignUpContract
         interactor.validateSignUp(user, email, password, comfirmPassword);
     }
 
+
     @Override
     public void onUserEmptyError() {
         view.setUserEmptyError();

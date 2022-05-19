@@ -4,7 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ajustes.AjustesFragment">
+    >
+
+
+    <TextView
+        android:id="@+id/tvUsuarioNombre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:textSize="20sp"
+        android:text="Pablo Infantes Sosa"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+    android:id="@+id/tvDatosPersonales"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="8dp"
+    android:text="@string/profile_tvDatosPersonales"
+    android:textStyle="bold"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/tvUsuarioNombre" />
+
 
     <Spinner
         android:id="@+id/spinner"
@@ -19,42 +45,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvGenero"
         tools:ignore="SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/tvDatosPersonales"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/profile_tvDatosPersonales"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-    <TextView
-        android:id="@+id/tvUsuarioNombre"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="50dp"
-        android:text="Pablo Infantes Sosa"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/tvDatosPersonales"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView2" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/ic_user_avatar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilName"
@@ -129,60 +119,6 @@
 
 
     <TextView
-        android:id="@+id/tvDireccion"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/profile_tvDireccion"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilLocalidad"
-        style="@style/LoginTextHintApparience.SignUp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDireccion"
-        app:startIconDrawable="@drawable/ic_tiluser_person">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tieLocalidad"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/SignUp_tieLocalidad_hint" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilEmpresa"
-        style="@style/LoginTextHintApparience.SignUp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilLocalidad"
-        app:startIconDrawable="@drawable/ic_tiluser_person">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tieEmpresa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/SignUp_tieEmpresa_hint" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <TextView
         android:id="@+id/tvMetodoContactos"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -192,10 +128,12 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilEmpresa" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilTelefono"
+        android:id="@+id/tilEmpresa"
         style="@style/LoginTextHintApparience.SignUp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -208,12 +146,50 @@
         app:startIconDrawable="@drawable/ic_tiluser_person">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tieEmpresa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/SignUp_tieEmpresa_hint" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilTelefono"
+        style="@style/LoginTextHintApparience.SignUp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilEmpresa"
+        app:startIconDrawable="@drawable/ic_tiluser_person">
+
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tieTelefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/profile_tieTelefono_hint" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <Button
+        android:id="@+id/btGuardarDatos"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/guardar"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilTelefono" />
 
+    <Button
+        android:id="@+id/btCerrarSesion"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/colorRed"
+        android:text="@string/cerrarsesion"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/tilTelefono" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorGreenLight">
+
+    <TextView
+        android:id="@+id/tvFijoUsuario"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Usuario: "
+        android:textStyle="bold"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvUsuario"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+
+        android:text="0"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvFijoUsuario"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvFijoNumeroDeHoras"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Numero de horas: "
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFijoUsuario" />
+
+    <TextView
+        android:id="@+id/tvNumeroDeHoras"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/tvFijoNumeroDeHoras"
+        app:layout_constraintTop_toBottomOf="@+id/tvUsuario" />
+
+    <TextView
+        android:id="@+id/tvFijoSitioTrabajoMañana"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Lugar de trabajo por la mañana: "
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFijoNumeroDeHoras" />
+
+    <TextView
+        android:id="@+id/tvSitioTrabajoMañana"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:layout_marginTop="8dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvFijoSitioTrabajoMañana"
+        app:layout_constraintTop_toBottomOf="@+id/tvNumeroDeHoras" />
+
+    <TextView
+        android:id="@+id/tvFijoSitioTrabajoTarde"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Lugar de trabajo por la tarde: "
+        android:textSize="15sp"
+        android:layout_marginTop="8dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFijoSitioTrabajoMañana" />
+
+
+    <TextView
+        android:id="@+id/tvSitioTrabajoTarde"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="0"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvFijoSitioTrabajoTarde"
+        app:layout_constraintTop_toBottomOf="@+id/tvSitioTrabajoMañana" />
+
+    <TextView
+        android:id="@+id/tvFijoHorarioTrabajoMañana"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Horario de trabajo por la mañana: "
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFijoSitioTrabajoTarde" />
+    <TextView
+        android:id="@+id/tvHorarioEntradaMañana"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="0000000000000000000000"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFijoHorarioTrabajoMañana" />
+
+    <TextView
+        android:id="@+id/tvHorarioSalidaMañana"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="000000000000000000000000"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvHorarioEntradaMañana"
+        app:layout_constraintTop_toBottomOf="@+id/tvFijoHorarioTrabajoMañana" />
+
+    <TextView
+        android:id="@+id/tvFijoHorarioTrabajoTarde"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Horario de trabajo por la tarde: "
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHorarioSalidaMañana" />
+    <TextView
+        android:id="@+id/tvHorarioEntradaTarde"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="0000000000000000000000"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFijoHorarioTrabajoTarde" />
+
+    <TextView
+        android:id="@+id/tvHorarioSalidaTarde"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="000000000000000000000000"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvHorarioEntradaTarde"
+        app:layout_constraintTop_toBottomOf="@+id/tvFijoHorarioTrabajoTarde" />
+</androidx.constraintlayout.widget.ConstraintLayout>

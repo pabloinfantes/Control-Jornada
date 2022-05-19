@@ -36,6 +36,8 @@ public interface ListadoNumeroHorasContract {
         void delete(User user, OnRepositoryListCallback callback);
         void undo(User user, OnRepositoryListCallback callback);
 
+
+
     }
 
 

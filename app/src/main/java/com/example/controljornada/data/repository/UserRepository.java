@@ -63,6 +63,8 @@ public class UserRepository implements ListadoNumeroHorasContract.Repository, Li
     }
 
 
+
+
     @Override
     public void add(User user, OnRepositoryCallback callback) {
         ControlJornadaDatabase.databaseWriteExecutor.submit(()-> userDao.insert(user));

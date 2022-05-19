@@ -72,7 +72,7 @@ public class LoginRepositoryImpl implements LoginContract.Repository, SignUpCont
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
-                            callback.onSuccess("usuario correcto");
+                            callback.onSuccess(email + "-"+user);
 
                         } else {
                             // If sign in fails, display a message to the user.

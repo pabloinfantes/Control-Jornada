@@ -11,7 +11,7 @@ public interface ListadoManageContract {
         void setNombreEmpty();
         void setNumHorasEmpty();
         void setNombreCortoEmpty();
-
+        void setEmailEmpty();
     }
 
     interface Presenter extends BasePresenter {
@@ -23,6 +23,7 @@ public interface ListadoManageContract {
         void onNombreEmpty();
         void onNumHorasEmpty();
         void onNombreCortoEmpty();
+        void onEmailEmpty();
     }
 
     interface Repository{

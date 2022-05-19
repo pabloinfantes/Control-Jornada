@@ -83,8 +83,9 @@ public class ListManageFragment extends Fragment implements ListadoManageContrac
         if (ListManageFragmentArgs.fromBundle(getArguments()).getUser() !=null)
             user.setId(ListManageFragmentArgs.fromBundle(getArguments()).getUser().getId());
         user.setNombreCompleto(binding.tieName2.getText().toString());
-        user.setNumeroHorasMensuales(binding.tieNumeroHoras.getText().toString());
+        user.setAdmin(Integer.parseInt(binding.tieNumeroHoras.getText().toString()));
         user.setNombreCorto(binding.tieNombreCorto2.getText().toString());
+        user.setEmail(binding.tieEmail2.getText().toString());
         return user;
     }
 
@@ -105,8 +106,9 @@ public class ListManageFragment extends Fragment implements ListadoManageContrac
 
     private void initView(User user) {
         binding.tieName2.setText(user.getNombreCompleto());
-        binding.tieNumeroHoras.setText(user.getNumeroHorasMensuales());
+        binding.tieNumeroHoras.setText(String.valueOf(user.getAdmin()));
         binding.tieNombreCorto2.setText(user.getNombreCorto());
+        binding.tieEmail2.setText(user.getEmail());
     }
 
     @Override
@@ -124,12 +126,15 @@ public class ListManageFragment extends Fragment implements ListadoManageContrac
                 .createPendingIntent();
 
         //5.- Crear la notificacion
-        Notification.Builder builder = new Notification.Builder(getActivity(), ControlJornadaAplication.IDCHANEL)
-                .setSmallIcon(R.drawable.ic_action_email)
-                .setAutoCancel(true)
-                .setContentTitle(getResources().getString(R.string.notification_title_add_usuario))
-                .setContentText(message)
-                .setContentIntent(pendingIntent);
+        Notification.Builder builder = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            builder = new Notification.Builder(getActivity(), ControlJornadaAplication.IDCHANEL)
+                    .setSmallIcon(R.drawable.ic_action_email)
+                    .setAutoCancel(true)
+                    .setContentTitle(getResources().getString(R.string.notification_title_add_usuario))
+                    .setContentText(message)
+                    .setContentIntent(pendingIntent);
+        }
         //6.- Añadir notificacion al manager
         NotificationManager notificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(new Random().nextInt(), builder.build());
@@ -155,6 +160,11 @@ public class ListManageFragment extends Fragment implements ListadoManageContrac
 
     @Override
     public void setNombreCortoEmpty() {
+
+    }
+
+    @Override
+    public void setEmailEmpty() {
 
     }
 

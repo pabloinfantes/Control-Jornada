@@ -2,29 +2,59 @@ package com.example.controljornada.data.model;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity
+
+@Entity (tableName = Horario.TAG,
+        foreignKeys = @ForeignKey(
+                entity = User.class,
+                parentColumns = "id",
+                childColumns = "iduser",
+                onDelete = ForeignKey.CASCADE))
 public class Horario {
+
+    public static final String TAG = "horario";
+
     @PrimaryKey(autoGenerate = true)
     private int id;
+    @NonNull
+    private int iduser;
 
     @NonNull
-    private String horarioEntrada;
+    private String emailUser;
     @NonNull
-    private String horarioMediodia;
+    private String lugarTrabajoMñn;
     @NonNull
-    private String horarioAlmuerzo;
+    private String lugarTrabajoTarde;
     @NonNull
-    private String horarioSalida;
+    private String fechaDelDiaDeTrabajo;
+    @NonNull
+    private String horarioEntradaMñn;
+    @NonNull
+    private String horarioSalidaMñn;
+    @NonNull
+    private String horarioEntradaTarde;
+    @NonNull
+    private String horarioSalidaTarde;
 
+    @NonNull
+    private int numeroHoras;
 
-    public Horario(String horarioEntrada, String horarioMediodia, String horarioAlmuerzo, String horarioSalida) {
-        this.horarioEntrada = horarioEntrada;
-        this.horarioMediodia = horarioMediodia;
-        this.horarioAlmuerzo = horarioAlmuerzo;
-        this.horarioSalida = horarioSalida;
+    public Horario( int iduser, @NonNull String emailUser, @NonNull String lugarTrabajoMñn, @NonNull String lugarTrabajoTarde, @NonNull String fechaDelDiaDeTrabajo, @NonNull String horarioEntradaMñn, @NonNull String horarioSalidaMñn, @NonNull String horarioEntradaTarde, @NonNull String horarioSalidaTarde, int numeroHoras) {
+
+        this.iduser = iduser;
+        this.emailUser = emailUser;
+        this.lugarTrabajoMñn = lugarTrabajoMñn;
+        this.lugarTrabajoTarde = lugarTrabajoTarde;
+        this.fechaDelDiaDeTrabajo = fechaDelDiaDeTrabajo;
+        this.horarioEntradaMñn = horarioEntradaMñn;
+        this.horarioSalidaMñn = horarioSalidaMñn;
+        this.horarioEntradaTarde = horarioEntradaTarde;
+        this.horarioSalidaTarde = horarioSalidaTarde;
+        this.numeroHoras = numeroHoras;
     }
+
 
     public int getId() {
         return id;
@@ -34,45 +64,107 @@ public class Horario {
         this.id = id;
     }
 
-    public String getHorarioEntrada() {
-        return horarioEntrada;
+    public int getIduser() {
+        return iduser;
     }
 
-    public void setHorarioEntrada(String horarioEntrada) {
-        this.horarioEntrada = horarioEntrada;
+    public void setIduser(int iduser) {
+        this.iduser = iduser;
     }
 
-    public String getHorarioMediodia() {
-        return horarioMediodia;
+    @NonNull
+    public String getEmailUser() {
+        return emailUser;
     }
 
-    public void setHorarioMediodia(String horarioMediodia) {
-        this.horarioMediodia = horarioMediodia;
+    public void setEmailUser(@NonNull String emailUser) {
+        this.emailUser = emailUser;
     }
 
-    public String getHorarioAlmuerzo() {
-        return horarioAlmuerzo;
+    @NonNull
+    public String getLugarTrabajoMñn() {
+        return lugarTrabajoMñn;
     }
 
-    public void setHorarioAlmuerzo(String horarioAlmuerzo) {
-        this.horarioAlmuerzo = horarioAlmuerzo;
+    public void setLugarTrabajoMñn(@NonNull String lugarTrabajoMñn) {
+        this.lugarTrabajoMñn = lugarTrabajoMñn;
     }
 
-    public String getHorarioSalida() {
-        return horarioSalida;
+    @NonNull
+    public String getLugarTrabajoTarde() {
+        return lugarTrabajoTarde;
     }
 
-    public void setHorarioSalida(String horarioSalida) {
-        this.horarioSalida = horarioSalida;
+    public void setLugarTrabajoTarde(@NonNull String lugarTrabajoTarde) {
+        this.lugarTrabajoTarde = lugarTrabajoTarde;
+    }
+
+    @NonNull
+    public String getFechaDelDiaDeTrabajo() {
+        return fechaDelDiaDeTrabajo;
+    }
+
+    public void setFechaDelDiaDeTrabajo(@NonNull String fechaDelDiaDeTrabajo) {
+        this.fechaDelDiaDeTrabajo = fechaDelDiaDeTrabajo;
+    }
+
+    @NonNull
+    public String getHorarioEntradaMñn() {
+        return horarioEntradaMñn;
+    }
+
+    public void setHorarioEntradaMñn(@NonNull String horarioEntradaMñn) {
+        this.horarioEntradaMñn = horarioEntradaMñn;
+    }
+
+    @NonNull
+    public String getHorarioSalidaMñn() {
+        return horarioSalidaMñn;
+    }
+
+    public void setHorarioSalidaMñn(@NonNull String horarioSalidaMñn) {
+        this.horarioSalidaMñn = horarioSalidaMñn;
+    }
+
+    @NonNull
+    public String getHorarioEntradaTarde() {
+        return horarioEntradaTarde;
+    }
+
+    public void setHorarioEntradaTarde(@NonNull String horarioEntradaTarde) {
+        this.horarioEntradaTarde = horarioEntradaTarde;
+    }
+
+    @NonNull
+    public String getHorarioSalidaTarde() {
+        return horarioSalidaTarde;
+    }
+
+    public void setHorarioSalidaTarde(@NonNull String horarioSalidaTarde) {
+        this.horarioSalidaTarde = horarioSalidaTarde;
+    }
+
+    public int getNumeroHoras() {
+        return numeroHoras;
+    }
+
+    public void setNumeroHoras(int numeroHoras) {
+        this.numeroHoras = numeroHoras;
     }
 
     @Override
     public String toString() {
         return "Horario{" +
-                "horarioEntrada='" + horarioEntrada + '\'' +
-                ", horarioMediodia='" + horarioMediodia + '\'' +
-                ", horarioAlmuerzo='" + horarioAlmuerzo + '\'' +
-                ", horarioSalida='" + horarioSalida + '\'' +
+                "iduser=" + iduser +
+                ", emailUser='" + emailUser + '\'' +
+                ", lugarTrabajoMñn='" + lugarTrabajoMñn + '\'' +
+                ", lugarTrabajoTarde='" + lugarTrabajoTarde + '\'' +
+                ", fechaDelDiaDeTrabajo='" + fechaDelDiaDeTrabajo + '\'' +
+                ", horarioEntradaMñn='" + horarioEntradaMñn + '\'' +
+                ", horarioSalidaMñn='" + horarioSalidaMñn + '\'' +
+                ", horarioEntradaTarde='" + horarioEntradaTarde + '\'' +
+                ", horarioSalidaTarde='" + horarioSalidaTarde + '\'' +
+                ", numeroHoras=" + numeroHoras +
                 '}';
     }
 }

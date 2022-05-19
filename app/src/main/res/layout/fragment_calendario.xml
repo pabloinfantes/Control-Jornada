@@ -19,78 +19,14 @@
     </CalendarView>
 
 
-
-    <TextView
-        android:id="@+id/tvLugar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginLeft="@dimen/_marginTop_tvLugar"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/officialbook"
-        android:text="@string/calendario_tvLugar_text"
-        android:textColor="@color/black"
-        android:textSize="@dimen/calendario_tvLugar_textSize"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvHoras" />
-
-    <TextView
-        android:id="@+id/tvLugar2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/_marginTop_tvLugar"
-        android:fontFamily="@font/officialbook"
-        android:text="text"
-        android:textColor="@color/black"
-        android:textSize="@dimen/calendario_tvLugar_textSize"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvLugar"
-        app:layout_constraintTop_toBottomOf="@+id/tvHoras" />
-
-
-    <TextView
-        android:id="@+id/tvLugar1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/_marginTop_tvLugar"
-        android:layout_marginLeft="@dimen/_marginTop_tvLugar"
-        android:fontFamily="@font/officialbook"
-        android:text="@string/calendario_tvLugar2_text"
-        android:textColor="@color/black"
-        android:textSize="@dimen/calendario_tvLugar_textSize"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tvLugar3"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/tvLugar3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:fontFamily="@font/officialbook"
-        android:text="text"
-        android:layout_marginTop="@dimen/_marginTop_tvLugar"
-        android:textColor="@color/black"
-        android:textSize="@dimen/calendario_tvLugar_textSize"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvLugar1"
-        app:layout_constraintTop_toBottomOf="@+id/tvLugar2" />
-
-    <TextView
-        android:id="@+id/tvHoras"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/officialbook"
-        android:text="@string/calendario_tvHoras_text"
-        android:textColor="@color/black"
-        android:textSize="@dimen/calendario_tvHoras_textSize"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCalendario"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calendario" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
