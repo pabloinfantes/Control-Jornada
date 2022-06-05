@@ -36,7 +36,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvLugar" />
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+
+    <!--<androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinatorLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -58,36 +59,110 @@
         </RadioGroup>
 
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
+
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFecha_ausencia">
+
+
+        <RadioButton
+            android:id="@+id/enfermedad"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/ic_action_enfermedad"
+            android:drawablePadding="10dp"
+            android:text="@string/enfermedad"/>
+
+        <RadioButton
+            android:id="@+id/personal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/ic_action_personal"
+            android:drawablePadding="10dp"
+            android:text="@string/personal" />
+
+        <RadioButton
+            android:id="@+id/festivo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/ic_action_festivo"
+            android:drawablePadding="10dp"
+            android:text="@string/festivo" />
+
+        <RadioButton
+            android:id="@+id/vacaciones"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/ic_action_vacaciones"
+            android:drawablePadding="10dp"
+            android:text="@string/vacaciones" />
+
+        <RadioButton
+            android:id="@+id/recuperacion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/ic_action_recuperacion"
+            android:drawablePadding="10dp"
+            android:text="@string/recuperacion" />
+
+        <RadioButton
+            android:id="@+id/maternidad"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/ic_action_maternidad"
+            android:drawablePadding="10dp"
+            android:text="@string/maternidad" />
+
+        <RadioButton
+            android:id="@+id/paternidad"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/ic_action_paternidad"
+            android:drawablePadding="10dp"
+            android:text="@string/paternidad" />
+
+        <RadioButton
+            android:id="@+id/otros"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/ic_action_otros"
+            android:drawablePadding="10dp"
+            android:text="@string/otros" />
+
+
+    </RadioGroup>
 
 
     <Button
         android:id="@+id/btEnviar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/ausencia_coordinator_layout_marginTop"
-        android:layout_marginEnd="@dimen/ausencia_coordinator_layout_marginTop"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
         android:backgroundTint="@color/colorPrimary"
         android:text="@string/ausencia_btEnviar_text"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btCancelar"
-        app:layout_constraintTop_toBottomOf="@+id/coordinatorLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <Button
         android:id="@+id/btCancelar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/ausencia_coordinator_layout_marginTop"
-        android:layout_marginEnd="@dimen/ausencia_coordinator_layout_marginTop"
-        android:layout_marginBottom="@dimen/ausencia_coordinator_layout_marginTop"
+        android:layout_marginLeft="24dp"
+        android:layout_marginBottom="24dp"
         android:backgroundTint="@color/colorRed"
         android:text="@string/ausencia_btCancelar_text"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btEnviar"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

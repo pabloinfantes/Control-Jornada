@@ -72,7 +72,8 @@ public class Obra implements Comparable , Serializable {
     @Override
     public String toString() {
         return "Obra{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", shortname='" + shortname + '\'' +
                 ", description='" + description + '\'' +
                 '}';

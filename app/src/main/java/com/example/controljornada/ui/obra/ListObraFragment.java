@@ -51,6 +51,7 @@ public class ListObraFragment extends Fragment implements ListadoObrasContract.V
     ) {
 
         binding = FragmentListObraBinding.inflate(inflater, container, false);
+
         return binding.getRoot();
 
     }
@@ -59,6 +60,7 @@ public class ListObraFragment extends Fragment implements ListadoObrasContract.V
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initRvNumHoras();
+        presenter.load();
         initFab();
     }
 
@@ -100,12 +102,6 @@ public class ListObraFragment extends Fragment implements ListadoObrasContract.V
     }
 
 
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        presenter.load();
-    }
 
     @Override
     public void onFailure(String message) {

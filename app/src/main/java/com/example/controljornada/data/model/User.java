@@ -21,19 +21,17 @@ public class User implements Serializable,Comparable {
     @NonNull
     private String email;
     @NonNull
-    private String nombreCompleto;
+    private String nombre;
     @NonNull
     private int admin;
 
-
-    private String nombreCorto;
-    private String nombre;
+    private String password;
     private String apellidos;
     private String genero;
     private String telefono;
     private int edad;
-    private String password;
     private String numeroHorasMensuales;
+    private String empresa;
 
     @Ignore
     public User() {
@@ -45,14 +43,13 @@ public class User implements Serializable,Comparable {
         this.password = password;
     }
 
-
-    public User(int id,String email, String nombreCompleto, int admin) {
+    public User(int id, String email, String nombre, int admin, String numeroHorasMensuales) {
         this.id = id;
         this.email = email;
-        this.nombreCompleto = nombreCompleto;
+        this.nombre = nombre;
         this.admin = admin;
+        this.numeroHorasMensuales = numeroHorasMensuales;
     }
-
 
     public int getId() {
         return id;
@@ -72,12 +69,12 @@ public class User implements Serializable,Comparable {
     }
 
     @NonNull
-    public String getNombreCompleto() {
-        return nombreCompleto;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreCompleto(@NonNull String nombreCompleto) {
-        this.nombreCompleto = nombreCompleto;
+    public void setNombre(@NonNull String nombre) {
+        this.nombre = nombre;
     }
 
     public int getAdmin() {
@@ -88,21 +85,6 @@ public class User implements Serializable,Comparable {
         this.admin = admin;
     }
 
-    public String getNombreCorto() {
-        return nombreCorto;
-    }
-
-    public void setNombreCorto(String nombreCorto) {
-        this.nombreCorto = nombreCorto;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
     public String getApellidos() {
         return apellidos;
@@ -136,14 +118,6 @@ public class User implements Serializable,Comparable {
         this.edad = edad;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getNumeroHorasMensuales() {
         return numeroHorasMensuales;
     }
@@ -152,33 +126,47 @@ public class User implements Serializable,Comparable {
         this.numeroHorasMensuales = numeroHorasMensuales;
     }
 
+    public String getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", email='" + email + '\'' +
-                ", nombreCompleto='" + nombreCompleto + '\'' +
-                ", admin=" + admin +
-                ", nombreCorto='" + nombreCorto + '\'' +
                 ", nombre='" + nombre + '\'' +
+                ", admin=" + admin +
                 ", apellidos='" + apellidos + '\'' +
                 ", genero='" + genero + '\'' +
                 ", telefono='" + telefono + '\'' +
                 ", edad=" + edad +
-                ", password='" + password + '\'' +
                 ", numeroHorasMensuales='" + numeroHorasMensuales + '\'' +
+                ", empresa='" + empresa + '\'' +
                 '}';
     }
 
     @Override
     public boolean equals(@Nullable Object obj) {
-        return ((User)obj).getNombreCompleto().equals(getNombreCompleto());
+        return ((User)obj).getNombre().equals(getNombre());
     }
 
     @Override
     public int compareTo(Object obj) {
         if (equals(obj))
-            return ((User)obj).getNumeroHorasMensuales().compareTo(getNombreCompleto());
-        else return ((User)obj).getNombreCompleto().compareTo(getNombreCompleto());
+            return ((User)obj).getNumeroHorasMensuales().compareTo(getNombre());
+        else return ((User)obj).getNombre().compareTo(getNombre());
     }
 }

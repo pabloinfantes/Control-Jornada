@@ -154,6 +154,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         String email = null;
         String admin = null;
         String name = null;
+        String surname = null;
         try {
             array = new JSONArray(result);
             for(int i=0; i < array.length(); i++)
@@ -163,6 +164,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
                 email = object.getString("email");
                 admin = object.getString("admin");
                 name = object.getString("name");
+                surname = object.getString("surname");
 
                 if (admin.equals("1")){
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
@@ -180,6 +182,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         editor.putString("admin",admin);
         editor.putString("email",email);
         editor.putString("name",name);
+        editor.putString("surname",surname);
         editor.apply();
 
 

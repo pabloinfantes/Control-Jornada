@@ -17,7 +17,6 @@ import java.util.List;
 public class CalendarioAdapter extends RecyclerView.Adapter<CalendarioAdapter.ViewHolder>{
     private ArrayList<Horario> list;
 
-
     public CalendarioAdapter(ArrayList<Horario> list ) {
         this.list = list;
     }
@@ -32,14 +31,15 @@ public class CalendarioAdapter extends RecyclerView.Adapter<CalendarioAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull CalendarioAdapter.ViewHolder holder, int position) {
-        holder.tvUsuario.setText(list.get(position).getEmailUser().toString());
+        holder.tvUsuario.setText(list.get(position).getEmailUser());
         holder.tvNumeroDeHoras.setText(String.valueOf(list.get(position).getNumeroHoras()));
-        holder.tvSitioTrabajoMañana.setText(list.get(position).getLugarTrabajoMñn().toString());
-        holder.tvSitioTrabajoTarde.setText(list.get(position).getLugarTrabajoTarde().toString());
-        holder.tvHorarioEntradaMañana.setText(list.get(position).getHorarioEntradaMñn().toString());
-        holder.tvHorarioSalidaMañana.setText(list.get(position).getHorarioSalidaMñn().toString());
-        holder.tvHorarioEntradaTarde.setText(list.get(position).getHorarioEntradaTarde().toString());
-        holder.tvHorarioSalidaTarde.setText(list.get(position).getHorarioSalidaTarde().toString());
+        holder.tvSitioTrabajoMañana.setText(list.get(position).getLugarTrabajoMñn());
+        holder.tvSitioTrabajoTarde.setText(list.get(position).getLugarTrabajoTarde());
+        holder.tvHorarioEntradaMañana.setText(list.get(position).getHorarioEntradaMñn());
+        holder.tvHorarioSalidaMañana.setText(list.get(position).getHorarioSalidaMñn());
+        holder.tvHorarioEntradaTarde.setText(list.get(position).getHorarioEntradaTarde());
+        holder.tvHorarioSalidaTarde.setText(list.get(position).getHorarioSalidaTarde());
+        holder.tvMotivoAusencia.setText(list.get(position).getMotivoAusencia());
     }
 
     /**
@@ -63,6 +63,7 @@ public class CalendarioAdapter extends RecyclerView.Adapter<CalendarioAdapter.Vi
         TextView tvHorarioSalidaMañana;
         TextView tvHorarioEntradaTarde;
         TextView tvHorarioSalidaTarde;
+        TextView tvMotivoAusencia;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -74,7 +75,7 @@ public class CalendarioAdapter extends RecyclerView.Adapter<CalendarioAdapter.Vi
              tvHorarioSalidaMañana= itemView.findViewById(R.id.tvHorarioSalidaMañana);
              tvHorarioEntradaTarde =  itemView.findViewById(R.id.tvHorarioEntradaTarde);
              tvHorarioSalidaTarde= itemView.findViewById(R.id.tvHorarioSalidaTarde);
-
+             tvMotivoAusencia = itemView.findViewById(R.id.tvMotivoAusencia);
         }
 
 

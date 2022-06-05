@@ -68,10 +68,10 @@
     <string name="action_search">Buscar</string>
     <string name="name_actionbar">Control de jornada</string>
     <string name="horario_tvUserName_text">Pablo Infantes Sosa</string>
-    <string name="horario_tvNumeroHoras_text">"administrador: "</string>
+    <string name="horario_tvNumeroHoras_text">"Numero de horas: "</string>
     <string name="horario_tvNumeroHorasLabel_text">9</string>
     <string name="fdmanage_tieName_hint">Nombre</string>
-    <string name="fdmanage_tieNumeroHoras_hint">admin</string>
+    <string name="fdmanage_tieNumeroHoras_hint">Numero de horas</string>
     <string name="fdmanage_tieNombreCorto_hint">Nombre corto</string>
     <string name="tituloEditar">Editar Usuario</string>
     <string name="title_delete_user">Eliminar Usuario </string>
@@ -164,6 +164,17 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="guardar">Guardar</string>
     <string name="cerrarsesion">Cerrar Sesion</string>
+    <string name="enfermedad">Enfermedad</string>
+    <string name="personal">Personal</string>
+    <string name="festivo">Festivo</string>
+    <string name="vacaciones">Vacaciones</string>
+    <string name="recuperacion">Recuperación de horas</string>
+    <string name="maternidad">Maternidad</string>
+    <string name="paternidad">Paternidad</string>
+    <string name="otros">Otros</string>
+    <string name="admin">admin:</string>
+    <string name="profile_tvInfo">Informacion</string>
+    <string name="email">Correo Electronico</string>
 
 
 </resources>

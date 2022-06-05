@@ -59,6 +59,7 @@ public class LoginRepositoryImpl implements LoginContract.Repository, SignUpCont
                         }
                     }
                 });
+
     }
 
     @Override

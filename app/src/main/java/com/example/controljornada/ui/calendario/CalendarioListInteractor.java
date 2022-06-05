@@ -21,8 +21,8 @@ public class CalendarioListInteractor implements OnRepositoryListCallback {
         HorarioRepository.getInstance().selectAdminUser(fechaDelDiaDeTrabajo,callback);
     }
 
-    public void selectNormalUser(int iduser, String fechaDelDiaDeTrabajo) {
-        HorarioRepository.getInstance().selectNormalUser(iduser,fechaDelDiaDeTrabajo,callback);
+    public void selectNormalUser(String emailUser, String fechaDelDiaDeTrabajo) {
+        HorarioRepository.getInstance().selectNormalUser(emailUser,fechaDelDiaDeTrabajo,callback);
     }
 
 

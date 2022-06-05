@@ -44,23 +44,6 @@
             android:hint="@string/SignUp_tieSurname_hint" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilUser"
-        style="@style/LoginTextHintApparience.SignUp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/singup__marginTop"
-        android:layout_marginLeft="@dimen/singup__marginLeft"
-        android:layout_marginRight="@dimen/singup__marginRight"
-        android:layout_marginBottom="@dimen/singup__marginBottom"
-        app:startIconDrawable="@drawable/ic_tiluser_person">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tieUser"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/SignUp_tieUser_hint" />
-    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilEmail"

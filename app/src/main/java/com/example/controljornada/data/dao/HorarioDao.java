@@ -32,4 +32,7 @@ public interface HorarioDao {
     @Query("SELECT * FROM  horario WHERE fechaDelDiaDeTrabajo = :fechaDelDiaDeTrabajo")
     List<Horario> selectAdminUser( String fechaDelDiaDeTrabajo);
 
+    @Query("SELECT SUM(numeroHoras) FROM horario where fechaDelDiaDeTrabajo BETWEEN date('now','localtime','start of month') AND date('now','start of month','+1 month','-1 day') AND iduser = :iduser")
+    int obtenerNumHorasAlMes(int iduser);
+
 }

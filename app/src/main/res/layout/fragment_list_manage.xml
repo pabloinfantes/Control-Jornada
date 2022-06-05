@@ -40,41 +40,25 @@
             android:hint="@string/fdmanage_tieName_hint" />
     </com.google.android.material.textfield.TextInputLayout>
 
+
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilNombreCorto2"
+        android:id="@+id/tilAdmin"
+
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toStartOf="@+id/gdEnd"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/gdStart"
         app:layout_constraintTop_toBottomOf="@+id/tilName2">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tieNombreCorto2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/fdmanage_tieNombreCorto_hint" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilNumeroHoras"
-
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toStartOf="@+id/gdEnd"
-        app:layout_constraintStart_toStartOf="@+id/gdStart"
-        app:layout_constraintTop_toBottomOf="@+id/tilNombreCorto2">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tieNumeroHoras"
+            android:id="@+id/tieAdmin"
             android:inputType="number"
             android:maxLength="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:hint="@string/fdmanage_tieNumeroHoras_hint" />
+            android:hint="@string/admin" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -85,7 +69,7 @@
         app:layout_constraintEnd_toStartOf="@+id/gdEnd"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/gdStart"
-        app:layout_constraintTop_toBottomOf="@+id/tilNumeroHoras">
+        app:layout_constraintTop_toBottomOf="@+id/tilAdmin">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tieEmail2"
@@ -94,7 +78,22 @@
             android:hint="email" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilNumHoras"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toStartOf="@+id/gdEnd"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/gdStart"
+        app:layout_constraintTop_toBottomOf="@+id/tilEmail2">
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tieNumHoras"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/fdmanage_tieNumeroHoras_hint" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab2"
@@ -108,6 +107,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

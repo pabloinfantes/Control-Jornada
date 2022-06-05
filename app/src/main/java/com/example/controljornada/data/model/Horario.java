@@ -18,31 +18,34 @@ public class Horario {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
+
     @NonNull
     private int iduser;
 
     @NonNull
     private String emailUser;
-    @NonNull
+
     private String lugarTrabajoMñn;
-    @NonNull
+
     private String lugarTrabajoTarde;
+
     @NonNull
     private String fechaDelDiaDeTrabajo;
-    @NonNull
+
+
     private String horarioEntradaMñn;
-    @NonNull
+
     private String horarioSalidaMñn;
-    @NonNull
+
     private String horarioEntradaTarde;
-    @NonNull
+
     private String horarioSalidaTarde;
 
-    @NonNull
     private int numeroHoras;
 
-    public Horario( int iduser, @NonNull String emailUser, @NonNull String lugarTrabajoMñn, @NonNull String lugarTrabajoTarde, @NonNull String fechaDelDiaDeTrabajo, @NonNull String horarioEntradaMñn, @NonNull String horarioSalidaMñn, @NonNull String horarioEntradaTarde, @NonNull String horarioSalidaTarde, int numeroHoras) {
+    private String motivoAusencia;
 
+    public Horario(int iduser, @NonNull String emailUser, String lugarTrabajoMñn, String lugarTrabajoTarde, @NonNull String fechaDelDiaDeTrabajo, String horarioEntradaMñn, String horarioSalidaMñn, String horarioEntradaTarde, String horarioSalidaTarde, int numeroHoras, String motivoAusencia) {
         this.iduser = iduser;
         this.emailUser = emailUser;
         this.lugarTrabajoMñn = lugarTrabajoMñn;
@@ -53,8 +56,8 @@ public class Horario {
         this.horarioEntradaTarde = horarioEntradaTarde;
         this.horarioSalidaTarde = horarioSalidaTarde;
         this.numeroHoras = numeroHoras;
+        this.motivoAusencia = motivoAusencia;
     }
-
 
     public int getId() {
         return id;
@@ -81,21 +84,19 @@ public class Horario {
         this.emailUser = emailUser;
     }
 
-    @NonNull
     public String getLugarTrabajoMñn() {
         return lugarTrabajoMñn;
     }
 
-    public void setLugarTrabajoMñn(@NonNull String lugarTrabajoMñn) {
+    public void setLugarTrabajoMñn(String lugarTrabajoMñn) {
         this.lugarTrabajoMñn = lugarTrabajoMñn;
     }
 
-    @NonNull
     public String getLugarTrabajoTarde() {
         return lugarTrabajoTarde;
     }
 
-    public void setLugarTrabajoTarde(@NonNull String lugarTrabajoTarde) {
+    public void setLugarTrabajoTarde(String lugarTrabajoTarde) {
         this.lugarTrabajoTarde = lugarTrabajoTarde;
     }
 
@@ -108,39 +109,35 @@ public class Horario {
         this.fechaDelDiaDeTrabajo = fechaDelDiaDeTrabajo;
     }
 
-    @NonNull
     public String getHorarioEntradaMñn() {
         return horarioEntradaMñn;
     }
 
-    public void setHorarioEntradaMñn(@NonNull String horarioEntradaMñn) {
+    public void setHorarioEntradaMñn(String horarioEntradaMñn) {
         this.horarioEntradaMñn = horarioEntradaMñn;
     }
 
-    @NonNull
     public String getHorarioSalidaMñn() {
         return horarioSalidaMñn;
     }
 
-    public void setHorarioSalidaMñn(@NonNull String horarioSalidaMñn) {
+    public void setHorarioSalidaMñn(String horarioSalidaMñn) {
         this.horarioSalidaMñn = horarioSalidaMñn;
     }
 
-    @NonNull
     public String getHorarioEntradaTarde() {
         return horarioEntradaTarde;
     }
 
-    public void setHorarioEntradaTarde(@NonNull String horarioEntradaTarde) {
+    public void setHorarioEntradaTarde(String horarioEntradaTarde) {
         this.horarioEntradaTarde = horarioEntradaTarde;
     }
 
-    @NonNull
     public String getHorarioSalidaTarde() {
         return horarioSalidaTarde;
     }
 
-    public void setHorarioSalidaTarde(@NonNull String horarioSalidaTarde) {
+    public void setHorarioSalidaTarde(String horarioSalidaTarde) {
         this.horarioSalidaTarde = horarioSalidaTarde;
     }
 
@@ -152,10 +149,19 @@ public class Horario {
         this.numeroHoras = numeroHoras;
     }
 
+    public String getMotivoAusencia() {
+        return motivoAusencia;
+    }
+
+    public void setMotivoAusencia(String motivoAusencia) {
+        this.motivoAusencia = motivoAusencia;
+    }
+
     @Override
     public String toString() {
         return "Horario{" +
-                "iduser=" + iduser +
+                "id=" + id +
+                ", iduser=" + iduser +
                 ", emailUser='" + emailUser + '\'' +
                 ", lugarTrabajoMñn='" + lugarTrabajoMñn + '\'' +
                 ", lugarTrabajoTarde='" + lugarTrabajoTarde + '\'' +
@@ -165,6 +171,7 @@ public class Horario {
                 ", horarioEntradaTarde='" + horarioEntradaTarde + '\'' +
                 ", horarioSalidaTarde='" + horarioSalidaTarde + '\'' +
                 ", numeroHoras=" + numeroHoras +
+                ", motivoAusencia='" + motivoAusencia + '\'' +
                 '}';
     }
 }

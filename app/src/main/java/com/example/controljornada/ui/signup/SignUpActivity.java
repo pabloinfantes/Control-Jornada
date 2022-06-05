@@ -1,13 +1,10 @@
 package com.example.controljornada.ui.signup;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.controljornada.R;
 import com.example.controljornada.databinding.ActivitySignUpBinding;
@@ -16,17 +13,11 @@ import com.example.controljornada.ui.base.Event;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.ProtocolException;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
-
-import javax.net.ssl.HttpsURLConnection;
 
 public class SignUpActivity extends AppCompatActivity implements SignUpContract.View{
 
@@ -40,7 +31,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         setContentView(binding.getRoot());
 
 
-        binding.btRegistrar.setOnClickListener(view -> presenter.validateSignUp(binding.tieUser.getText().toString(),
+        binding.btRegistrar.setOnClickListener(view -> presenter.validateSignUp(binding.tieName.getText().toString(),
                 binding.tieEmail.getText().toString(),
                 binding.tiePassword.getText().toString(),
                 binding.tieConfirmPassword.getText().toString()));
@@ -68,12 +59,13 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         Log.d("namejajaj",name);
 
 
+
         Thread thread = new Thread(new Runnable() {
 
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://158.101.203.234/add/controlJornada/insertarUser.php?email="+email+"&name="+name);
+                    URL url = new URL("http://158.101.203.234/add/controlJornada/insertarUser.php?email="+email+"&name="+name+"&surname="+binding.tieSurname.getText().toString());
                     Log.d("url", String.valueOf(url));
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("POST");
@@ -99,6 +91,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
 
         });
         thread.start();
+
 
 
         finish();

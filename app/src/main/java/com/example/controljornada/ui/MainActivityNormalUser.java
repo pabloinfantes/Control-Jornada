@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -45,22 +47,31 @@ public class MainActivityNormalUser extends AppCompatActivity implements Prefere
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 
 
+
         Set<Integer> topLevelDestination = new HashSet<>();
         topLevelDestination.add(R.id.aboutUsFragment);
         topLevelDestination.add(R.id.settingsFragment);
         topLevelDestination.add(R.id.horarioContenedorFragment);
 
-
-        NavigationUI.setupWithNavController(binding.navigationview,navController);
+        NavigationUI.setupWithNavController(binding.navigationview1,navController);
         appBarConfiguration = new AppBarConfiguration.Builder(topLevelDestination)
-                .setOpenableLayout(binding.drawerlayout)
+                .setOpenableLayout(binding.drawerlayout1)
                 .build();
 
         NavigationUI.setupActionBarWithNavController(this,navController,appBarConfiguration);
 
-
-
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String name = prefs.getString("name", "8:01");
+        String email = prefs.getString("email", "8:01");
+
+        View headerView = binding.navigationview1.getHeaderView(0);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.tvUserNav1);
+        TextView navUserEmail = (TextView) headerView.findViewById(R.id.tvEmailNav1);
+        navUsername.setText(name);
+        navUserEmail.setText(email);
+
+
+        /*
         String hora = prefs.getString(getString(R.string.key_hora), "8:01");
         Log.d("Hora",hora);
         String horareal = hora.substring(0, 1);
@@ -83,6 +94,7 @@ public class MainActivityNormalUser extends AppCompatActivity implements Prefere
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC, event.getTimeInMillis(), pendingIntent);
 
+         */
 
     }
 
@@ -98,8 +110,8 @@ public class MainActivityNormalUser extends AppCompatActivity implements Prefere
 
     @Override
     public void onBackPressed() {
-        if (binding.drawerlayout.isDrawerOpen(GravityCompat.START))
-            binding.drawerlayout.closeDrawer(GravityCompat.START);
+        if (binding.drawerlayout1.isDrawerOpen(GravityCompat.START))
+            binding.drawerlayout1.closeDrawer(GravityCompat.START);
         else
             super.onBackPressed();
     }

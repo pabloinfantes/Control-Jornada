@@ -4,17 +4,17 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
-    android:id="@+id/drawerlayout">
+    android:id="@+id/drawerlayout1">
 
     <include layout="@layout/activity_content" android:id="@+id/include"/>
 
     <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigationview"
+        android:id="@+id/navigationview1"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:menu="@menu/activity_menu_normal_user"
-        app:headerLayout="@layout/header_nav"
+        app:headerLayout="@layout/header_nav1"
         >
     </com.google.android.material.navigation.NavigationView>
 

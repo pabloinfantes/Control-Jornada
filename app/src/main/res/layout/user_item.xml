@@ -53,5 +53,27 @@
         app:layout_constraintStart_toEndOf="@+id/tvNumeroHoras"
         app:layout_constraintTop_toBottomOf="@+id/tvUserName" />
 
+    <TextView
+        android:id="@+id/tvAdminFijo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/admin"
+        app:layout_constraintStart_toEndOf="@+id/icon"
+        app:layout_constraintTop_toBottomOf="@+id/tvNumeroHoras" />
+
+    <TextView
+        android:id="@+id/tvAdmin"
+        android:layout_width="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_height="wrap_content"
+        android:text="00000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvAdminFijo"
+        app:layout_constraintTop_toBottomOf="@+id/tvNumeroHorasLabel" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

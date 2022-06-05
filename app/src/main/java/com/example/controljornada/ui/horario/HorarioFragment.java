@@ -5,12 +5,11 @@ import android.app.TimePickerDialog;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.JsonReader;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -21,52 +20,19 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.preference.PreferenceManager;
 
-import com.android.volley.Cache;
-import com.android.volley.Network;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.BasicNetwork;
-import com.android.volley.toolbox.DiskBasedCache;
-import com.android.volley.toolbox.HurlStack;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.controljornada.R;
 import com.example.controljornada.data.model.Horario;
+import com.example.controljornada.data.model.Obra;
 import com.example.controljornada.data.model.User;
 import com.example.controljornada.databinding.FragmentHorarioBinding;
-import com.example.controljornada.ui.login.LoginActivity;
-import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.HttpResponse;
-import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.client.ClientProtocolException;
-import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.client.HttpClient;
-import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.client.methods.HttpGet;
-import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.impl.client.DefaultHttpClient;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Locale;
-import java.util.Objects;
-
-import javax.net.ssl.HttpsURLConnection;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 
 public class HorarioFragment extends Fragment implements View.OnClickListener ,HorarioContract.View{
@@ -74,6 +40,9 @@ public class HorarioFragment extends Fragment implements View.OnClickListener ,H
 
     private FragmentHorarioBinding binding;
     private HorarioContract.Presenter presenter;
+    private String firmado;
+    private User userLeido;
+    public static ArrayList<String> listObras = new ArrayList<>();
 
     public static Fragment newInstance(Bundle bundle) {
         HorarioFragment fragment = new HorarioFragment();
@@ -86,8 +55,9 @@ public class HorarioFragment extends Fragment implements View.OnClickListener ,H
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        presenter = new HorarioFragmentPresenter(this);
 
+        presenter = new HorarioFragmentPresenter(this);
+        presenter.leerObras();
     }
 
     @Override
@@ -99,9 +69,11 @@ public class HorarioFragment extends Fragment implements View.OnClickListener ,H
         binding = FragmentHorarioBinding.inflate(inflater, container, false);
         binding.btAusencia.setOnClickListener(this);
         binding.btFirma.setOnClickListener(this);
+
         return binding.getRoot();
 
     }
+
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -113,9 +85,35 @@ public class HorarioFragment extends Fragment implements View.OnClickListener ,H
         String email = prefs.getString("email","1");
         String name = prefs.getString("name","1");
         String admin = prefs.getString("admin","1");
+        String surname = prefs.getString("surname","1");
 
-        Log.d("UUUSEER",new User(idUser,email,name,Integer.parseInt(admin)).toString());
-        presenter.add(new User(idUser,email,name, Integer.parseInt(admin)));
+
+
+        binding.spinnerLugarTrabajo1.setAdapter(new ArrayAdapter<String>(getActivity(), R.layout.support_simple_spinner_dropdown_item,listObras));
+        binding.spinnerLugarTrabajo2.setAdapter(new ArrayAdapter<String>(getActivity(), R.layout.support_simple_spinner_dropdown_item,listObras));
+
+
+        try {
+
+            User user = new User(idUser,email,name, Integer.parseInt(admin),"0");
+
+            presenter.leer(user);
+
+            if (userLeido.getId() == 0){
+                user.setApellidos(surname);
+                presenter.add(user);
+            }
+            else {
+                presenter.edit(userLeido);
+            }
+
+
+
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
 
         LocalDate  fechaActual = LocalDate.now();
@@ -283,44 +281,53 @@ public class HorarioFragment extends Fragment implements View.OnClickListener ,H
             }
         });
 
-
-
-
-
-
-
         binding.btFirma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                presenter.add(new Horario(idUser,
+                Horario horario =new Horario(idUser,
                         email,
-                        binding.tieLugarTrabajo.getText().toString(),
-                        binding.tieLugarTrabajo2.getText().toString(),
+                        binding.spinnerLugarTrabajo1.getSelectedItem().toString(),
+                        binding.spinnerLugarTrabajo2.getSelectedItem().toString(),
                         fechaActual.toString(),
                         binding.tvHorarioIzq.getText().toString(),
-                        binding.tvHorarioIzq2.getText().toString(),
                         binding.tvHorarioDer.getText().toString(),
-                        binding.tvHorarioDer2.getText().toString(),
-                        10)
-                );
-
-                /*
-                presenter.add(new Horario(idUser,
-                        email,
-                        binding.tieLugarTrabajo.getText().toString(),
-                        binding.tieLugarTrabajo2.getText().toString(),
-                        "2022-05-31",
-                        binding.tvHorarioIzq.getText().toString(),
                         binding.tvHorarioIzq2.getText().toString(),
-                        binding.tvHorarioDer.getText().toString(),
                         binding.tvHorarioDer2.getText().toString(),
-                        10)
-                );
-                */
+                        10,
+                        null);
 
-            }
+                //presenter.leer(horario);
+
+
+                //if (firmado.equals("0")){
+                    try {
+                        Log.d("hora1",horario.getHorarioEntradaMñn());
+                        Log.d("hora2",horario.getHorarioSalidaMñn());
+                        Log.d("hora3",horario.getHorarioEntradaTarde());
+                        Log.d("hora4",horario.getHorarioSalidaTarde());
+
+                        int hora1 = Integer.parseInt(horario.getHorarioEntradaMñn().substring(0,2));
+                        int hora2 = Integer.parseInt(horario.getHorarioSalidaMñn().substring(0,2));
+                        int hora3 = Integer.parseInt(horario.getHorarioEntradaTarde().substring(0,2));
+                        int hora4 = Integer.parseInt(horario.getHorarioSalidaTarde().substring(0,2));
+
+                        int numHorasFinal = (hora4 -hora1) -1;
+                        horario.setNumeroHoras(numHorasFinal);
+
+                        Log.d("numHoras", String.valueOf(numHorasFinal));
+                        presenter.add(horario);
+
+
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            //}
         });
+
+
 
     }
 
@@ -344,7 +351,6 @@ public class HorarioFragment extends Fragment implements View.OnClickListener ,H
 
     }
 
-
     private void showAusenciaFragment() {
         NavHostFragment.findNavController(this).navigate(R.id.action_horarioContenedorFragment_to_ausenciaFragment);
     }
@@ -352,11 +358,60 @@ public class HorarioFragment extends Fragment implements View.OnClickListener ,H
 
     @Override
     public void onSuccess(String message) {
+
         Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onFailure(String message) {
         Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();
+    }
+
+
+
+    @Override
+    public void setHora1AntesHora2() {
+        Toast.makeText(getContext(),"hora 1 mal",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void setHora3AntesHora4() {
+        Toast.makeText(getContext(),"hora 2 mal",Toast.LENGTH_SHORT).show();
+    }
+
+
+
+    @Override
+    public void OnSuccessReadHorario(String message) {
+        firmado = message;
+    }
+
+    @Override
+    public void OnFailureReadHorario(String message) {
+        Toast.makeText(getContext(),message,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void OnSuccessReadUser(User user) {
+        userLeido = user;
+    }
+
+    @Override
+    public void OnFailureReadUser(String message) {
+        Toast.makeText(getContext(),message,Toast.LENGTH_SHORT).show();
+    }
+
+
+    @Override
+    public void OnSuccessReadObra(ArrayList<String> obras) {
+        listObras.clear();
+        for (String obra: obras) {
+            listObras.add(obra);
+        }
+    }
+
+    @Override
+    public void OnFailureReadObra(String message) {
+        Toast.makeText(getContext(),message,Toast.LENGTH_SHORT).show();
     }
 }

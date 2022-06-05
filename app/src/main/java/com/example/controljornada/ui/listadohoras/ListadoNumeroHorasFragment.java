@@ -29,6 +29,11 @@ import com.example.controljornada.ui.base.BaseDialogFragment;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.ProtocolException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,15 +72,7 @@ public class ListadoNumeroHorasFragment extends Fragment implements ListadoNumer
 
     }
 
-    private void initFab() {
-        binding.floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ListadoNumeroHorasFragmentDirections.ActionListadoNumeroHorasFragmentToListManageFragment action = ListadoNumeroHorasFragmentDirections.actionListadoNumeroHorasFragmentToListManageFragment(null);
-                NavHostFragment.findNavController(ListadoNumeroHorasFragment.this).navigate(action);
-            }
-        });
-    }
+
 
     private void initRvNumHoras() {
         adapter = new ListadoNumeroHorasAdapter(new ArrayList<>(), this);
@@ -132,6 +129,39 @@ public class ListadoNumeroHorasFragment extends Fragment implements ListadoNumer
             }
         }).show();
         adapter.delete(userDeleted);
+
+        Thread thread = new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                try {
+                    URL url = new URL("http://158.101.203.234/add/controlJornada/deleteUser.php?email="+userDeleted.getEmail());
+                    Log.d("url", String.valueOf(url));
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection.setRequestMethod("POST");
+                    connection.setDoOutput(true);
+                    connection.connect();
+
+                    if( connection.getResponseCode() == HttpURLConnection.HTTP_OK ){
+                        InputStream is = connection.getErrorStream();
+                    }else{
+                        InputStream err = connection.getErrorStream();
+                    }
+
+                    connection.disconnect();
+
+                } catch (ProtocolException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+
+        });
+        thread.start();
+
         if (adapter.getItemCount() ==0 )
             showNoData();
     }
@@ -148,6 +178,7 @@ public class ListadoNumeroHorasFragment extends Fragment implements ListadoNumer
 
     @Override
     public void showData(ArrayList<User> list) {
+        Log.d("LIIIIST",list.toString());
         adapter.update(list);
     }
 
@@ -170,7 +201,7 @@ public class ListadoNumeroHorasFragment extends Fragment implements ListadoNumer
     public void onDeleteUser(User user) {
         Bundle bundle = new Bundle();
         bundle.putString(BaseDialogFragment.TITLE, getString(R.string.title_delete_user));
-        bundle.putString(BaseDialogFragment.MESSAGE, String.format(getString(R.string.message_delete_user), user.getNombreCorto()));
+        bundle.putString(BaseDialogFragment.MESSAGE, String.format(getString(R.string.message_delete_user), user.getNombre()));
 
 
         getActivity().getSupportFragmentManager().setFragmentResultListener(BaseDialogFragment.REQUEST, this, new FragmentResultListener() {

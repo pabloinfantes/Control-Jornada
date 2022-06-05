@@ -50,7 +50,7 @@ public class CalendarioListPresenter implements CalendarioListContract.Presenter
     }
 
     @Override
-    public void selectNormalUser(int iduser, String fechaDelDiaDeTrabajo) {
-        interactor.selectNormalUser(iduser,fechaDelDiaDeTrabajo);
+    public void selectNormalUser(String emailuser, String fechaDelDiaDeTrabajo) {
+        interactor.selectNormalUser(emailuser,fechaDelDiaDeTrabajo);
     }
 }

@@ -36,6 +36,7 @@ public class ControlJornadaAplication extends Application {
         IntentFilter intentFilter = new IntentFilter("com.example.controljornada");
         registerReceiver(notification,intentFilter);
 
+
     }
 
 

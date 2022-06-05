@@ -60,11 +60,12 @@ public class ListadoNumeroHorasAdapter extends RecyclerView.Adapter<ListadoNumer
                 .toUpperCase()
                 .bold()
                 .endConfig()
-                .buildRound(list.get(position).getNombreCompleto().substring(0,1), color);
+                .buildRound(list.get(position).getNombre().substring(0,1), color);
         holder.icon.setImageDrawable(drawable);
         holder.bind(list.get(position),listener);
-        holder.tvNombreUsuario.setText(list.get(position).getNombreCompleto());
+        holder.tvNombreUsuario.setText(list.get(position).getNombre());
         holder.tvNumeroHoras.setText(list.get(position).getNumeroHorasMensuales());
+        holder.tvAdmin.setText(String.valueOf(list.get(position).getAdmin()));
 
     }
 
@@ -112,6 +113,7 @@ public class ListadoNumeroHorasAdapter extends RecyclerView.Adapter<ListadoNumer
 
         TextView tvNombreUsuario;
         TextView tvNumeroHoras;
+        TextView tvAdmin;
         ImageView icon;
 
         public ViewHolder(@NonNull View itemView) {
@@ -119,6 +121,7 @@ public class ListadoNumeroHorasAdapter extends RecyclerView.Adapter<ListadoNumer
 
             tvNombreUsuario=itemView.findViewById(R.id.tvUserName);
             tvNumeroHoras=itemView.findViewById(R.id.tvNumeroHorasLabel);
+            tvAdmin=itemView.findViewById(R.id.tvAdmin);
             icon = itemView.findViewById(R.id.icon);
         }
 

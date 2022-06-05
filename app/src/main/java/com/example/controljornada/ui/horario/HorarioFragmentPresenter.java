@@ -3,6 +3,10 @@ package com.example.controljornada.ui.horario;
 import com.example.controljornada.data.model.Horario;
 import com.example.controljornada.data.model.User;
 
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
+
 public class HorarioFragmentPresenter implements HorarioContract.Presenter, HorarioContract.OnInteractorManageListener {
 
     private HorarioContract.View view;
@@ -20,13 +24,33 @@ public class HorarioFragmentPresenter implements HorarioContract.Presenter, Hora
     }
 
     @Override
-    public void add(Horario horario) {
+    public void add(Horario horario) throws ParseException {
         interactor.add(horario);
     }
 
     @Override
-    public void add(User user) {
+    public void add(User user) throws ExecutionException, InterruptedException {
         interactor.add(user);
+    }
+
+    @Override
+    public void leer(Horario horario) {
+        interactor.leer(horario);
+    }
+
+    @Override
+    public void leer(User user) {
+        interactor.leer(user);
+    }
+
+    @Override
+    public void leerObras() {
+        interactor.leerObras();
+    }
+
+    @Override
+    public void edit(User user) {
+        interactor.edit(user);
     }
 
 
@@ -38,5 +62,45 @@ public class HorarioFragmentPresenter implements HorarioContract.Presenter, Hora
     @Override
     public void onFailure(String message) {
         view.onFailure(message);
+    }
+
+    @Override
+    public void onHora1AntesHora2() {
+        view.setHora1AntesHora2();
+    }
+
+    @Override
+    public void onHora3AntesHora4() {
+        view.setHora3AntesHora4();
+    }
+
+    @Override
+    public void OnSuccessReadHorario(String message) {
+        view.OnSuccessReadHorario(message);
+    }
+
+    @Override
+    public void OnFailureReadHorario(String message) {
+        view.OnFailureReadHorario(message);
+    }
+
+    @Override
+    public void OnSuccessReadUser(User message) {
+        view.OnSuccessReadUser(message);
+    }
+
+    @Override
+    public void OnFailureReadUser(String message) {
+        view.OnFailureReadUser(message);
+    }
+
+    @Override
+    public void OnSuccessReadObra(ArrayList<String> obras) {
+        view.OnSuccessReadObra(obras);
+    }
+
+    @Override
+    public void OnFailureReadObra(String message) {
+        view.OnFailureReadObra(message);
     }
 }

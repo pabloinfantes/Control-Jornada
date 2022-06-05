@@ -128,70 +128,17 @@
             android:hint="@string/SignUp_tieConfirmPassword_hint" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilPin"
-        style="@style/LoginTextHintApparience.SignUp"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/landscape_singup__marginTop"
-        android:layout_marginLeft="@dimen/landscape_singup_margin"
-        android:layout_marginRight="@dimen/landscape_singup_margin"
-        android:layout_weight="@dimen/signUp_layout_weight"
-        app:layout_constraintTop_toBottomOf="@id/tilPassword"
-        app:startIconDrawable="@drawable/ic_action_pin">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tiePin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/SignUp_tiePin_hint"
-            tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilConfirmPin"
-        style="@style/LoginTextHintApparience.SignUp"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/landscape_singup__marginTop"
-        android:layout_marginLeft="@dimen/landscape_singup_margin"
-        android:layout_marginRight="@dimen/landscape_singup_margin"
-        android:layout_weight="@dimen/signUp_layout_weight"
-        app:layout_constraintTop_toBottomOf="@id/tilPassword"
-        app:startIconDrawable="@drawable/ic_action_pin">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tieConfirmPin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/SignUp_tieConfirmPin_hint" />
-    </com.google.android.material.textfield.TextInputLayout>
 
 
-    <LinearLayout
-        android:gravity="bottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <CheckBox
-            android:id="@+id/chkPolitics"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:buttonTint="@color/colorPrimary"
-            android:fontFamily="@font/officialbook"
-            android:text="@string/singup_chkPolitics"
-            android:textColor="@color/white" />
         <Button
             android:id="@+id/btRegistrar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:backgroundTint="@color/colorPrimary"
             android:layout_marginRight="@dimen/landscape_singup_margin"
             android:text="@string/login_btSignIn_text"
             android:textColor="@color/white" />
-    </LinearLayout>
+
 
 
 

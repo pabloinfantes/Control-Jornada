@@ -17,7 +17,7 @@ public interface CalendarioListContract {
 
     interface Presenter extends BasePresenter {
         void selectAdminUser( String fechaDelDiaDeTrabajo);
-        void selectNormalUser(int iduser, String fechaDelDiaDeTrabajo);
+        void selectNormalUser(String emailUser, String fechaDelDiaDeTrabajo);
 
 
     }
@@ -28,7 +28,7 @@ public interface CalendarioListContract {
 
     interface Repository{
         void selectAdminUser(String fechaDelDiaDeTrabajo, OnRepositoryListCallback callback);
-        void selectNormalUser(int iduser, String fechaDelDiaDeTrabajo, OnRepositoryListCallback callback);
+        void selectNormalUser(String emailUser, String fechaDelDiaDeTrabajo, OnRepositoryListCallback callback);
 
     }
 

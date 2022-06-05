@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -20,6 +22,7 @@ import androidx.preference.PreferenceManager;
 
 import com.example.controljornada.R;
 import com.example.controljornada.databinding.ActivityMainBinding;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.Calendar;
 import java.util.HashSet;
@@ -41,8 +44,10 @@ public class MainActivity extends AppCompatActivity implements PreferenceFragmen
         setSupportActionBar(binding.include.toolbar);
         setContentView(binding.getRoot());
 
+
         //Inicializar el controlador de navegacion en la aplicacion
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+
 
 
         Set<Integer> topLevelDestination = new HashSet<>();
@@ -61,8 +66,17 @@ public class MainActivity extends AppCompatActivity implements PreferenceFragmen
         NavigationUI.setupActionBarWithNavController(this,navController,appBarConfiguration);
 
 
-
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String name = prefs.getString("name", "8:01");
+        String email = prefs.getString("email", "8:01");
+
+        View headerView = binding.navigationview.getHeaderView(0);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.tvUserNav);
+        TextView navUserEmail = (TextView) headerView.findViewById(R.id.tvEmailNav);
+        navUsername.setText(name);
+        navUserEmail.setText(email);
+
+
         String hora = prefs.getString(getString(R.string.key_hora), "8:01");
         Log.d("Hora",hora);
         String horareal = hora.substring(0, 1);
@@ -71,6 +85,8 @@ public class MainActivity extends AppCompatActivity implements PreferenceFragmen
         Log.d("Hora",horareal);
         Log.d("Hora",min);
 
+
+        /*
         Intent intent = new Intent("com.example.controljornada");
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, REQUESTCODE,intent,PendingIntent.FLAG_UPDATE_CURRENT);
 
@@ -84,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements PreferenceFragmen
 //
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC, event.getTimeInMillis(), pendingIntent);
-        
+        */
 
     }
 

@@ -106,28 +106,20 @@
             app:layout_constraintStart_toEndOf="@+id/tvHorarioIzq"
             app:layout_constraintTop_toBottomOf="@+id/tvSalida" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilLugarTrabajo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/horario_edLugarTrabajo_layout_marginStart"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="@dimen/horario_edLugarTrabajo_layout_marginStart"
+        <Spinner
+            android:id="@+id/spinnerLugarTrabajo1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvHorarioDer">
 
-            <com.google.android.material.textfield.TextInputEditText
-
-                android:id="@+id/tieLugarTrabajo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/horarioItem_edLugarTrabajo_hint" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+        </Spinner>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -189,28 +181,20 @@
             app:layout_constraintStart_toEndOf="@+id/tvHorarioIzq2"
             app:layout_constraintTop_toBottomOf="@+id/tvSalida2" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilLugarTrabajo2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/horario_edLugarTrabajo_layout_marginStart"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="@dimen/horario_edLugarTrabajo_layout_marginStart"
+        <Spinner
+            android:id="@+id/spinnerLugarTrabajo2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvHorarioDer2">
 
-            <com.google.android.material.textfield.TextInputEditText
-
-                android:id="@+id/tieLugarTrabajo2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/horarioItem_edLugarTrabajo_hint" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+        </Spinner>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

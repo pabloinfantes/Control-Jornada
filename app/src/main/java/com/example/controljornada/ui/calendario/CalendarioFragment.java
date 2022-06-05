@@ -99,13 +99,14 @@ public class CalendarioFragment extends Fragment implements CalendarioListContra
             }
 
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-            int idUser = prefs.getInt("id",1);
+
             String admin = prefs.getString("admin","1");
+            String emailUser = prefs.getString("emailUser","1");
 
             if (admin.equals("1")){
                 presenter.selectAdminUser(actualdate);
             }else {
-                presenter.selectNormalUser(idUser, actualdate );
+                presenter.selectNormalUser(emailUser, actualdate );
             }
 
         });
