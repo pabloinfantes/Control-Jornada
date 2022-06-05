@@ -14,6 +14,7 @@ import androidx.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.controljornada.data.model.Horario;
 import com.example.controljornada.data.model.User;
@@ -185,13 +186,13 @@ public class AusenciaFragment extends Fragment implements HorarioContract.View {
         Horario horario = new Horario(
                 idUser,
                 email,
-                null,
-                null,
+                "",
+                "",
                 fechaActual.toString(),
-                null,
-                null,
-                null,
-                null,
+                "",
+                "",
+                "",
+                "",
                 0,
                 ausencia);
 
@@ -199,6 +200,9 @@ public class AusenciaFragment extends Fragment implements HorarioContract.View {
 
         if (firmado.equals("0")){
             presenter.add(horario);
+            Toast.makeText(getContext(), "horario añadido", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(getContext(), "Ya has firmado", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -240,7 +244,7 @@ public class AusenciaFragment extends Fragment implements HorarioContract.View {
     }
 
     @Override
-    public void OnSuccessReadUser(User message) {
+    public void OnSuccessReadUser(String message) {
         //
     }
 

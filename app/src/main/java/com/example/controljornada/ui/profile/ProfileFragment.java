@@ -82,11 +82,10 @@ public class ProfileFragment extends Fragment implements UserContract.View {
             @Override
             public void onClick(View view) {
 
-                User user = new User(idUser,email,name,Integer.parseInt(admin),"0");
-                user.setApellidos(surname);
+                User user = new User(idUser,email,name,Integer.parseInt(admin));
                 user.setEmpresa(binding.tieEmpresa.getText().toString());
                 user.setGenero(binding.spinner.getSelectedItem().toString());
-                user.setEdad(Integer.parseInt(binding.tieEdad.getText().toString()));
+                user.setEdad(binding.tieEdad.getText().toString());
                 user.setTelefono(binding.tieTelefono.getText().toString());
 
                 presenter.edit(user);

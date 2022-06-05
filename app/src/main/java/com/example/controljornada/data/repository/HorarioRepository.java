@@ -2,11 +2,7 @@ package com.example.controljornada.data.repository;
 
 import android.util.Log;
 
-import com.example.controljornada.data.ControlJornadaDatabase;
-import com.example.controljornada.data.dao.HorarioDao;
-import com.example.controljornada.data.dao.UserDao;
 import com.example.controljornada.data.model.Horario;
-import com.example.controljornada.data.model.Obra;
 import com.example.controljornada.data.model.User;
 import com.example.controljornada.ui.base.OnRepositoryCallback;
 import com.example.controljornada.ui.base.OnRepositoryListCallback;
@@ -40,15 +36,19 @@ public class HorarioRepository implements HorarioContract.Repository, Calendario
 
     private String result;
     private String resultObra;
+    private String resultNumeroHoras;
 
+
+    private void sendDataNumeroHoras(String data) {
+        resultNumeroHoras = data;
+    }
 
 
     private HorarioRepository() {
         listHorario = new ArrayList<>();
         listUser = new ArrayList<>();
         obras = new ArrayList<>();
-        //horarioDao = ControlJornadaDatabase.getDatabase().horarioDao();
-        //userDao = ControlJornadaDatabase.getDatabase().userDao();
+
     }
 
     public static HorarioRepository getInstance() {
@@ -62,20 +62,114 @@ public class HorarioRepository implements HorarioContract.Repository, Calendario
     private void sendData(String data) {
         result = data;
     }
+
     private void sendDataObra(String data) {
         resultObra = data;
     }
 
     @Override
+    public void editNumHora(User user, OnRepositoryCallback callback) {
+        Thread thread = new Thread(new Runnable() {
+            public String data = "";
+
+            @Override
+            public void run() {
+
+                try {
+
+                    URL url = new URL("http://158.101.203.234/add/controlJornada/numeroHoras.php?id="+user.getId());
+                    Log.d("url", String.valueOf(url));
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection.setRequestMethod("GET");
+                    connection.setRequestProperty("Content-Type", "application/json; utf-8");
+                    connection.setRequestProperty("Accept", "application/json");
+                    connection.connect();
+
+                    int code = connection.getResponseCode();
+                    switch (code) {
+                        case 200:
+                        case 201:
+                            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
+                            String line;
+                            while ((line = br.readLine()) != null) {
+                                data += line;
+                            }
+                            sendDataNumeroHoras(data);
+                            br.close();
+                    }
+                    connection.disconnect();
+                } catch (ProtocolException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            public String getData() {
+                return data;
+            }
+        });
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        char old = '"';
+        resultNumeroHoras = resultNumeroHoras.replace("{","");
+        resultNumeroHoras = resultNumeroHoras.replace("}","");
+        resultNumeroHoras = resultNumeroHoras.replace(String.valueOf(old),"");
+        Log.d("numero",resultNumeroHoras);
+
+        String[] numHoras = resultNumeroHoras.split(":");
+
+        Log.d("numeroHoras", numHoras[1]);
+        user.setNumeroHorasMensuales(String.valueOf(numHoras[1]));
+
+        Log.d("user del update", user.toString());
+        Thread thread2 = new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                try {
+                    URL url = new URL("http://158.101.203.234/add/controlJornada/updateNumeroHoras.php?id=" + user.getId() + "&numeroHorasMensuales=" + user.getNumeroHorasMensuales());
+                    Log.d("url", String.valueOf(url));
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection.setRequestMethod("POST");
+                    connection.setDoOutput(true);
+                    connection.connect();
+
+                    if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                        InputStream is = connection.getErrorStream();
+                    } else {
+                        InputStream err = connection.getErrorStream();
+                    }
+
+                    connection.disconnect();
+
+                } catch (ProtocolException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread2.start();
+        callback.onSuccess("edit");
+    }
+
+    @Override
     public void add(Horario horario, OnRepositoryCallback callback) {
-        //ControlJornadaDatabase.databaseWriteExecutor.submit(() -> horarioDao.insert(horario));
+
 
         Thread thread = new Thread(new Runnable() {
 
             @Override
             public void run() {
                 try {
-                    URL url2 = new URL("http://158.101.203.234/add/controlJornada/insertarHorario.php?id=" + horario.getId() + "&idUser=" + horario.getIduser() + "&emailUser=" + horario.getEmailUser() + "&morningWork=" + horario.getLugarTrabajoMñn()+ "&afternoonWork=" + horario.getLugarTrabajoTarde()+ "&actualDate=" + horario.getFechaDelDiaDeTrabajo()+ "&horarioEntradaManana=" + horario.getHorarioEntradaMñn()+ "&horarioSalidaManana=" + horario.getHorarioSalidaMñn()+ "&horarioEntradaTarde=" + horario.getHorarioEntradaTarde()+ "&horarioSalidaTarde=" + horario.getHorarioSalidaTarde()+ "&numeroHoras=" + horario.getNumeroHoras()+ "&motivoAusencia=" + horario.getMotivoAusencia());
+                    URL url2 = new URL("http://158.101.203.234/add/controlJornada/insertarHorario.php?id=" + horario.getId() + "&idUser=" + horario.getIduser() + "&emailUser=" + horario.getEmailUser() + "&morningWork=" + horario.getLugarTrabajoMñn() + "&afternoonWork=" + horario.getLugarTrabajoTarde() + "&actualDate=" + horario.getFechaDelDiaDeTrabajo() + "&horarioEntradaManana=" + horario.getHorarioEntradaMñn() + "&horarioSalidaManana=" + horario.getHorarioSalidaMñn() + "&horarioEntradaTarde=" + horario.getHorarioEntradaTarde() + "&horarioSalidaTarde=" + horario.getHorarioSalidaTarde() + "&numeroHoras=" + horario.getNumeroHoras() + "&motivoAusencia=" + horario.getMotivoAusencia());
                     Log.d("url", String.valueOf(url2));
                     HttpURLConnection connection = (HttpURLConnection) url2.openConnection();
                     connection.setRequestMethod("POST");
@@ -105,6 +199,7 @@ public class HorarioRepository implements HorarioContract.Repository, Calendario
     @Override
     public void leer(Horario horario, ReadFromRoomCallback callback) {
 
+
         Thread thread = new Thread(new Runnable() {
             public String data = "";
 
@@ -113,7 +208,7 @@ public class HorarioRepository implements HorarioContract.Repository, Calendario
 
                 try {
 
-                    URL url = new URL("http://158.101.203.234/add/controlJornada/leerHorario.php");
+                    URL url = new URL("http://158.101.203.234/add/controlJornada/leerHorarioNormalUser.php?actualDate=" + horario.getFechaDelDiaDeTrabajo() + "&emailUser=" + horario.getEmailUser());
                     Log.d("url", String.valueOf(url));
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("GET");
@@ -159,7 +254,7 @@ public class HorarioRepository implements HorarioContract.Repository, Calendario
         JSONArray array = null;
         int id = 0;
         int idUser = 0;
-        String emailUser = null;
+        String emailUser2 = null;
         String morningWork = null;
         String afternoonWork = null;
         String actualDate = null;
@@ -176,7 +271,7 @@ public class HorarioRepository implements HorarioContract.Repository, Calendario
                 JSONObject object = array.getJSONObject(i);
                 id = object.getInt("id");
                 idUser = object.getInt("idUser");
-                emailUser = object.getString("emailUser");
+                emailUser2 = object.getString("emailUser");
                 morningWork = object.getString("morningWork");
                 afternoonWork = object.getString("afternoonWork");
                 actualDate = object.getString("actualDate");
@@ -187,20 +282,20 @@ public class HorarioRepository implements HorarioContract.Repository, Calendario
                 numeroHoras = object.getString("numeroHoras");
                 motivoAusencia = object.getString("motivoAusencia");
 
-                Horario horario1 = new Horario(idUser, emailUser, morningWork, afternoonWork, actualDate, horarioEntradaManana, horarioSalidaManana, horarioEntradaTarde, horarioSalidaTarde, Integer.parseInt(numeroHoras), motivoAusencia);
+                Horario horario1 = new Horario(idUser, emailUser2, morningWork, afternoonWork, actualDate, horarioEntradaManana, horarioSalidaManana, horarioEntradaTarde, horarioSalidaTarde, Integer.parseInt(numeroHoras), motivoAusencia);
                 listHorario.add(horario1);
 
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        callback.OnSuccessReadHorario(String.valueOf(listHorario.size()));
-    }
 
+        callback.OnSuccessReadHorario(String.valueOf(listHorario.size()));
+        this.listHorario.clear();
+    }
 
     @Override
     public void leer(User user, ReadFromRoomCallback callback) {
-
 
         Thread thread = new Thread(new Runnable() {
             public String data = "";
@@ -267,6 +362,7 @@ public class HorarioRepository implements HorarioContract.Repository, Calendario
 
         try {
             array = new JSONArray(result);
+            Log.d("ARRRRAAAY", array.toString());
             for (int i = 0; i < array.length(); i++) {
                 JSONObject object = array.getJSONObject(i);
                 id = object.getInt("id");
@@ -285,7 +381,7 @@ public class HorarioRepository implements HorarioContract.Repository, Calendario
                 user.setGenero(genero);
                 user.setTelefono(telefono);
                 user.setEmpresa(empresa);
-                user.setEdad(0);
+                user.setEdad(edad);
 
                 listUser.add(user1);
 
@@ -299,15 +395,18 @@ public class HorarioRepository implements HorarioContract.Repository, Calendario
         Log.d("USER ADDED",user.toString());
         for (User user2: listUser) {
 
-            if (user.getId() == user2.getId()){
+            if (user.getEmail().equals(user2.getEmail())){
                 Log.d("USER ADDED 2",user.toString());
-                callback.OnSuccessReadUser(user2);
-            }else {
-                Log.d("USER ADDED 22",user.toString());
-                user.setId(0);
-                callback.OnSuccessReadUser(user2);
+                callback.OnSuccessReadUser("existe");
+                return;
             }
+
+            Log.d("USER ADDED 22",user.toString());
+            callback.OnSuccessReadUser("no existe");
+
         }
+
+        this.listUser.clear();
 
     }
 
@@ -397,55 +496,10 @@ public class HorarioRepository implements HorarioContract.Repository, Calendario
 
     }
 
-    @Override
-    public void edit(User user, OnRepositoryCallback callback) {
-//        Integer numHorasAlMes = null;
-//        try {
-//            numHorasAlMes = (Integer) ControlJornadaDatabase.databaseWriteExecutor.submit(() -> horarioDao.obtenerNumHorasAlMes(user.getId())).get();
-//        } catch (ExecutionException e) {
-//            e.printStackTrace();
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//        user.setNumeroHorasMensuales(String.valueOf(numHorasAlMes));
 
-        Thread thread = new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-                try {
-                    URL url = new URL("http://158.101.203.234/add/controlJornada/updateUser.php?email=" + user.getEmail() + "&name=" + user.getNombre() + "&surname=" + user.getApellidos() + "&numeroHorasMensuales=" + user.getNumeroHorasMensuales() + "&empresa=" + user.getEmpresa() + "&genero=" + user.getGenero() + "&telefono=" + user.getTelefono() + "&edad=" + user.getEdad());
-                    Log.d("url", String.valueOf(url));
-                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                    connection.setRequestMethod("POST");
-                    connection.setDoOutput(true);
-                    connection.connect();
-
-                    if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                        InputStream is = connection.getErrorStream();
-                    } else {
-                        InputStream err = connection.getErrorStream();
-                    }
-
-                    connection.disconnect();
-
-                } catch (ProtocolException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        thread.start();
-
-        //ControlJornadaDatabase.databaseWriteExecutor.submit(() -> userDao.update(user));
-        callback.onSuccess("edit");
-    }
 
     @Override
     public void add(User user, OnRepositoryCallback callback) throws ExecutionException, InterruptedException {
-        //ControlJornadaDatabase.databaseWriteExecutor.submit(() -> userDao.insert(user));
-
 
         Thread thread = new Thread(new Runnable() {
 
@@ -588,7 +642,7 @@ public class HorarioRepository implements HorarioContract.Repository, Calendario
 
                 try {
 
-                    URL url = new URL("http://158.101.203.234/add/controlJornada/leerHorarioAdmin.php?actualDate="+fechaDelDiaDeTrabajo+"&emailUser="+emailUser);
+                    URL url = new URL("http://158.101.203.234/add/controlJornada/leerHorarioNormalUser.php?actualDate="+fechaDelDiaDeTrabajo+"&emailUser="+emailUser);
                     Log.d("url", String.valueOf(url));
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("GET");

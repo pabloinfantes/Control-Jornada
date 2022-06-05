@@ -20,6 +20,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 
 import com.example.controljornada.R;
@@ -68,6 +70,7 @@ public class ListadoNumeroHorasFragment extends Fragment implements ListadoNumer
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         initRvNumHoras();
 
     }
@@ -98,7 +101,7 @@ public class ListadoNumeroHorasFragment extends Fragment implements ListadoNumer
                 return super.onOptionsItemSelected(item);
         }
     }
-    
+
 
 
     @Override
@@ -109,9 +112,10 @@ public class ListadoNumeroHorasFragment extends Fragment implements ListadoNumer
 
 
 
+
     @Override
     public void onFailure(String message) {
-
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
 
     @Override

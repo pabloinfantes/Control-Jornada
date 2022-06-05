@@ -101,8 +101,10 @@ public class CalendarioFragment extends Fragment implements CalendarioListContra
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
             String admin = prefs.getString("admin","1");
-            String emailUser = prefs.getString("emailUser","1");
+            String emailUser = prefs.getString("email","1");
 
+            Log.d("admin",admin);
+            Log.d("emailUser",emailUser);
             if (admin.equals("1")){
                 presenter.selectAdminUser(actualdate);
             }else {

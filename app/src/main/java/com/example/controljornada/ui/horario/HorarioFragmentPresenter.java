@@ -49,10 +49,9 @@ public class HorarioFragmentPresenter implements HorarioContract.Presenter, Hora
     }
 
     @Override
-    public void edit(User user) {
-        interactor.edit(user);
+    public void editNumHora(User user) {
+        interactor.editNumHora(user);
     }
-
 
     @Override
     public void onSuccess(String message) {
@@ -85,7 +84,7 @@ public class HorarioFragmentPresenter implements HorarioContract.Presenter, Hora
     }
 
     @Override
-    public void OnSuccessReadUser(User message) {
+    public void OnSuccessReadUser(String message) {
         view.OnSuccessReadUser(message);
     }
 

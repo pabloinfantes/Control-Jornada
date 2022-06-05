@@ -7,6 +7,6 @@ public interface ReadFromRoomCallback {
     void OnSuccessReadHorario(String message);
     void OnFailureReadHorario(String message);
 
-    void OnSuccessReadUser(User user);
+    void OnSuccessReadUser(String message);
     void OnFailureReadUser(String message);
 }

@@ -11,33 +11,30 @@ import java.time.LocalDate;
 
 
 
-@Entity
+
 public class User implements Serializable,Comparable {
     
     public static final String TAG = "user";
 
-    @PrimaryKey(autoGenerate = false)
-    private int id;
-    @NonNull
-    private String email;
-    @NonNull
-    private String nombre;
-    @NonNull
-    private int admin;
 
+    private int id;
+
+    private String email;
+    private String nombre;
+    private int admin;
     private String password;
     private String apellidos;
     private String genero;
     private String telefono;
-    private int edad;
+    private String edad;
     private String numeroHorasMensuales;
     private String empresa;
 
-    @Ignore
+
     public User() {
     }
 
-    @Ignore
+
     public User(String email, String password) {
         this.email = email;
         this.password = password;
@@ -49,6 +46,14 @@ public class User implements Serializable,Comparable {
         this.nombre = nombre;
         this.admin = admin;
         this.numeroHorasMensuales = numeroHorasMensuales;
+    }
+
+    public User(int id, String email, String nombre, int admin) {
+        this.id = id;
+        this.email = email;
+        this.nombre = nombre;
+        this.admin = admin;
+
     }
 
     public int getId() {
@@ -110,11 +115,11 @@ public class User implements Serializable,Comparable {
         this.telefono = telefono;
     }
 
-    public int getEdad() {
+    public String getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
+    public void setEdad(String edad) {
         this.edad = edad;
     }
 

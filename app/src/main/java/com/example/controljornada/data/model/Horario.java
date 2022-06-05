@@ -6,30 +6,25 @@ import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 
-@Entity (tableName = Horario.TAG,
-        foreignKeys = @ForeignKey(
-                entity = User.class,
-                parentColumns = "id",
-                childColumns = "iduser",
-                onDelete = ForeignKey.CASCADE))
+
 public class Horario {
 
     public static final String TAG = "horario";
 
-    @PrimaryKey(autoGenerate = true)
+
     private int id;
 
-    @NonNull
+
     private int iduser;
 
-    @NonNull
+
     private String emailUser;
 
     private String lugarTrabajoMñn;
 
     private String lugarTrabajoTarde;
 
-    @NonNull
+
     private String fechaDelDiaDeTrabajo;
 
 
@@ -45,7 +40,7 @@ public class Horario {
 
     private String motivoAusencia;
 
-    public Horario(int iduser, @NonNull String emailUser, String lugarTrabajoMñn, String lugarTrabajoTarde, @NonNull String fechaDelDiaDeTrabajo, String horarioEntradaMñn, String horarioSalidaMñn, String horarioEntradaTarde, String horarioSalidaTarde, int numeroHoras, String motivoAusencia) {
+    public Horario(int iduser,  String emailUser, String lugarTrabajoMñn, String lugarTrabajoTarde,  String fechaDelDiaDeTrabajo, String horarioEntradaMñn, String horarioSalidaMñn, String horarioEntradaTarde, String horarioSalidaTarde, int numeroHoras, String motivoAusencia) {
         this.iduser = iduser;
         this.emailUser = emailUser;
         this.lugarTrabajoMñn = lugarTrabajoMñn;
@@ -75,12 +70,12 @@ public class Horario {
         this.iduser = iduser;
     }
 
-    @NonNull
+
     public String getEmailUser() {
         return emailUser;
     }
 
-    public void setEmailUser(@NonNull String emailUser) {
+    public void setEmailUser( String emailUser) {
         this.emailUser = emailUser;
     }
 
@@ -100,12 +95,12 @@ public class Horario {
         this.lugarTrabajoTarde = lugarTrabajoTarde;
     }
 
-    @NonNull
+
     public String getFechaDelDiaDeTrabajo() {
         return fechaDelDiaDeTrabajo;
     }
 
-    public void setFechaDelDiaDeTrabajo(@NonNull String fechaDelDiaDeTrabajo) {
+    public void setFechaDelDiaDeTrabajo( String fechaDelDiaDeTrabajo) {
         this.fechaDelDiaDeTrabajo = fechaDelDiaDeTrabajo;
     }
 

@@ -96,7 +96,7 @@ public class HorarioFragmentInteractor implements OnRepositoryCallback, ReadFrom
     }
 
     @Override
-    public void OnSuccessReadUser(User message) {
+    public void OnSuccessReadUser(String message) {
         listener.OnSuccessReadUser(message);
     }
 
@@ -105,9 +105,7 @@ public class HorarioFragmentInteractor implements OnRepositoryCallback, ReadFrom
         listener.OnFailureReadUser(message);
     }
 
-    public void edit(User user) {
-        HorarioRepository.getInstance().edit(user,callback);
-    }
+
 
     public void leerObras() {
         HorarioRepository.getInstance().leerObra(listCallback);
@@ -122,5 +120,9 @@ public class HorarioFragmentInteractor implements OnRepositoryCallback, ReadFrom
     @Override
     public void OnFailureReadObra(String message) {
         listener.OnFailureReadObra(message);
+    }
+
+    public void editNumHora(User user) {
+        HorarioRepository.getInstance().editNumHora(user,callback);
     }
 }

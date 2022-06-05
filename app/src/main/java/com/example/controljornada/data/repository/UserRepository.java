@@ -2,9 +2,6 @@ package com.example.controljornada.data.repository;
 
 import android.util.Log;
 
-import com.example.controljornada.data.ControlJornadaDatabase;
-import com.example.controljornada.data.dao.UserDao;
-import com.example.controljornada.data.model.Obra;
 import com.example.controljornada.data.model.User;
 import com.example.controljornada.ui.base.OnRepositoryCallback;
 import com.example.controljornada.ui.base.OnRepositoryListCallback;
@@ -24,23 +21,23 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.concurrent.ExecutionException;
 
 public class UserRepository implements ListadoNumeroHorasContract.Repository, ListadoManageContract.Repository {
 
 
     private static UserRepository instance;
     private ArrayList<User> list;
+    private String resultNumeroHoras;
 
-    private UserDao userDao;
 
     private String result;
     private UserRepository(){
         list = new ArrayList<>();
-        userDao = ControlJornadaDatabase.getDatabase().userDao();
-    }
 
+    }
+    private void sendDataNumeroHoras(String data) {
+        resultNumeroHoras = data;
+    }
 
     public static UserRepository getInstance(){
         if (instance == null){
@@ -119,6 +116,7 @@ public class UserRepository implements ListadoNumeroHorasContract.Repository, Li
 
         try {
             array = new JSONArray(result);
+
             for (int i = 0; i < array.length(); i++) {
                 JSONObject object = array.getJSONObject(i);
                 id = object.getInt("id");
@@ -137,7 +135,7 @@ public class UserRepository implements ListadoNumeroHorasContract.Repository, Li
                 user.setGenero(genero);
                 user.setTelefono(telefono);
                 user.setEmpresa(empresa);
-                user.setEdad(0);
+                user.setEdad(edad);
 
                 list.add(user);
 
@@ -154,7 +152,7 @@ public class UserRepository implements ListadoNumeroHorasContract.Repository, Li
 
     @Override
     public void delete(User user, OnRepositoryListCallback callback) {
-        ControlJornadaDatabase.databaseWriteExecutor.submit(()-> userDao.delete(user));
+
 
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -193,7 +191,7 @@ public class UserRepository implements ListadoNumeroHorasContract.Repository, Li
 
     @Override
     public void undo(User user, OnRepositoryListCallback callback) {
-        ControlJornadaDatabase.databaseWriteExecutor.submit(()-> userDao.insert(user));
+
 
         Thread thread = new Thread(new Runnable() {
 
@@ -228,16 +226,20 @@ public class UserRepository implements ListadoNumeroHorasContract.Repository, Li
 
     }
 
+
+
+
+
+
     @Override
     public void add(User user, OnRepositoryCallback callback) {
-        ControlJornadaDatabase.databaseWriteExecutor.submit(()-> userDao.insert(user));
 
         Thread thread = new Thread(new Runnable() {
 
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://158.101.203.234/add/controlJornada/insertarUser.php?email="+user.getEmail()+"&name="+user.getNombre()+"&surname="+user.getApellidos()+"&numeroHorasMensuales="+user.getNumeroHorasMensuales());
+                    URL url = new URL("http://158.101.203.234/add/controlJornada/insertarUser.php?&email="+user.getEmail()+"&name="+user.getNombre()+"&surname="+user.getApellidos());
                     Log.d("url", String.valueOf(url));
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("POST");
@@ -267,14 +269,13 @@ public class UserRepository implements ListadoNumeroHorasContract.Repository, Li
 
     @Override
     public void edit(User user, OnRepositoryCallback callback) {
-        ControlJornadaDatabase.databaseWriteExecutor.submit(()-> userDao.update(user));
+
 
         Thread thread = new Thread(new Runnable() {
-
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://158.101.203.234/add/controlJornada/updateUser.php?email="+user.getEmail()+"&name="+user.getNombre()+"&surname="+user.getApellidos()+"&numeroHorasMensuales="+user.getNumeroHorasMensuales()+"&empresa="+user.getEmpresa()+"&genero="+user.getGenero()+"&telefono="+user.getTelefono()+"&edad="+user.getEdad());
+                    URL url = new URL("http://158.101.203.234/add/controlJornada/updateUser.php?admin="+user.getAdmin()+"&email="+user.getEmail()+"&name="+user.getNombre()+"&surname="+user.getApellidos()+"&numeroHorasMensuales="+user.getNumeroHorasMensuales()+"&empresa="+user.getEmpresa()+"&genero="+user.getGenero()+"&telefono="+user.getTelefono()+"&edad="+user.getEdad());
                     Log.d("url", String.valueOf(url));
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("POST");

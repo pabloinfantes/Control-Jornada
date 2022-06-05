@@ -2,6 +2,7 @@ package com.example.controljornada.ui.listadohoras;
 
 import com.example.controljornada.data.model.User;
 import com.example.controljornada.ui.base.BasePresenter;
+import com.example.controljornada.ui.base.OnRepositoryCallback;
 import com.example.controljornada.ui.base.OnRepositoryListCallback;
 
 import java.util.ArrayList;
@@ -25,9 +26,10 @@ public interface ListadoNumeroHorasContract {
         void undo(User user);
         void order();
 
+
     }
 
-    interface OnInteractorListener extends OnRepositoryListCallback {
+    interface OnInteractorListener extends OnRepositoryListCallback{
     }
 
     interface Repository{
@@ -35,7 +37,6 @@ public interface ListadoNumeroHorasContract {
         void getList(OnRepositoryListCallback callback);
         void delete(User user, OnRepositoryListCallback callback);
         void undo(User user, OnRepositoryListCallback callback);
-
 
 
     }

@@ -55,9 +55,10 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         String email = parts[0];
         String name = parts[1];
 
+
+
         Log.d("emailjajaj",email);
         Log.d("namejajaj",name);
-
 
 
         Thread thread = new Thread(new Runnable() {
@@ -85,10 +86,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
             }
-
-
         });
         thread.start();
 

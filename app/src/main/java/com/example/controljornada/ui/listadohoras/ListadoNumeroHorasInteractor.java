@@ -2,19 +2,23 @@ package com.example.controljornada.ui.listadohoras;
 
 import com.example.controljornada.data.model.User;
 import com.example.controljornada.data.repository.UserRepository;
+import com.example.controljornada.ui.base.OnRepositoryCallback;
 import com.example.controljornada.ui.base.OnRepositoryListCallback;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListadoNumeroHorasInteractor implements OnRepositoryListCallback {
+public class ListadoNumeroHorasInteractor implements OnRepositoryListCallback  {
 
     private ListadoNumeroHorasContract.OnInteractorListener listener;
     private OnRepositoryListCallback callback;
 
+
+
     public ListadoNumeroHorasInteractor(ListadoNumeroHorasContract.OnInteractorListener listener) {
         this.listener = listener;
         callback = this;
+
     }
 
 
@@ -29,6 +33,8 @@ public class ListadoNumeroHorasInteractor implements OnRepositoryListCallback {
     public void undo(User user){
         UserRepository.getInstance().undo(user,callback);
     }
+
+
 
     @Override
     public void onFailure(String message) {
@@ -49,5 +55,6 @@ public class ListadoNumeroHorasInteractor implements OnRepositoryListCallback {
     public void onUndoSuccess(String message) {
         listener.onUndoSuccess(message);
     }
+
 
 }

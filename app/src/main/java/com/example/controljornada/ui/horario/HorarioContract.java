@@ -26,7 +26,8 @@ public interface HorarioContract
         void leer(User user);
         void leerObras();
 
-        void edit(User user);
+
+        void editNumHora(User user);
 
         void add(Horario horario) throws ParseException;
         void add(User user) throws ExecutionException, InterruptedException;
@@ -42,7 +43,7 @@ public interface HorarioContract
         void leer(User user, ReadFromRoomCallback callback);
         void leerObra(ReadFromObras callback);
 
-        void edit(User user, OnRepositoryCallback callback);
+        void editNumHora(User user, OnRepositoryCallback callback);
 
         void add(Horario horario ,OnRepositoryCallback callback);
         void add(User user, OnRepositoryCallback callback) throws ExecutionException, InterruptedException;

@@ -41,7 +41,7 @@ public class HorarioFragment extends Fragment implements View.OnClickListener ,H
     private FragmentHorarioBinding binding;
     private HorarioContract.Presenter presenter;
     private String firmado;
-    private User userLeido;
+    private String existeUser;
     public static ArrayList<String> listObras = new ArrayList<>();
 
     public static Fragment newInstance(Bundle bundle) {
@@ -81,7 +81,7 @@ public class HorarioFragment extends Fragment implements View.OnClickListener ,H
         super.onViewCreated(view, savedInstanceState);
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        int idUser = prefs.getInt("id",1);
+        int idUser = prefs.getInt("id",44);
         String email = prefs.getString("email","1");
         String name = prefs.getString("name","1");
         String admin = prefs.getString("admin","1");
@@ -96,15 +96,16 @@ public class HorarioFragment extends Fragment implements View.OnClickListener ,H
         try {
 
             User user = new User(idUser,email,name, Integer.parseInt(admin),"0");
-
+            Log.d("leerUser",user.toString());
             presenter.leer(user);
+            Log.d("existeUser",existeUser);
 
-            if (userLeido.getId() == 0){
+            if (existeUser.equals("existe")){
+                presenter.editNumHora(user);
+            }else {
                 user.setApellidos(surname);
+                Log.d("aaaaad",user.toString());
                 presenter.add(user);
-            }
-            else {
-                presenter.edit(userLeido);
             }
 
 
@@ -297,10 +298,10 @@ public class HorarioFragment extends Fragment implements View.OnClickListener ,H
                         10,
                         null);
 
-                //presenter.leer(horario);
 
+                presenter.leer(horario);
 
-                //if (firmado.equals("0")){
+                if (firmado.equals("0")){
                     try {
                         Log.d("hora1",horario.getHorarioEntradaMñn());
                         Log.d("hora2",horario.getHorarioSalidaMñn());
@@ -322,9 +323,10 @@ public class HorarioFragment extends Fragment implements View.OnClickListener ,H
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
+                }else {
+                    Toast.makeText(getContext(),"Ya has firmado hoy",Toast.LENGTH_SHORT).show();
                 }
-
-            //}
+            }
         });
 
 
@@ -392,8 +394,8 @@ public class HorarioFragment extends Fragment implements View.OnClickListener ,H
     }
 
     @Override
-    public void OnSuccessReadUser(User user) {
-        userLeido = user;
+    public void OnSuccessReadUser(String message) {
+        existeUser = message;
     }
 
     @Override
