@@ -1,9 +1,5 @@
 package com.example.controljornada.ui;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,12 +18,14 @@ import androidx.preference.PreferenceManager;
 
 import com.example.controljornada.R;
 import com.example.controljornada.databinding.ActivityMainBinding;
-import com.google.android.material.navigation.NavigationView;
 
-import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Set;
-
+/**
+ * Esta clase es la encargada de gestionar lo que ocurre en esta vista en concreto
+ * @author pablo
+ *
+ */
 public class MainActivity extends AppCompatActivity implements PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
 
 
@@ -43,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements PreferenceFragmen
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setSupportActionBar(binding.include.toolbar);
         setContentView(binding.getRoot());
+
 
 
         //Inicializar el controlador de navegacion en la aplicacion

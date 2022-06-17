@@ -20,6 +20,11 @@ import com.example.controljornada.ui.horario.NotificationReceiver;
 
 import java.util.Calendar;
 
+/**
+ * Esta clase es la encargada de crear el canal para la notificaciones
+ * @author pablo
+ *
+ */
 public class ControlJornadaAplication extends Application {
 
 

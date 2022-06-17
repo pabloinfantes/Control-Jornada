@@ -155,13 +155,13 @@
     <string name="order_user">Ordenar usuarios por nombre</string>
     <string name="title_activity_main_admin">MainActivityAdmin</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="first_fragment_label" translatable="false">First Fragment</string>
+    <string name="second_fragment_label" translatable="false">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="hello_first_fragment" translatable="false">Hello first fragment</string>
+    <string name="hello_second_fragment" translatable="false">Hello second fragment. Arg: %1$s</string>
     <string name="guardar">Guardar</string>
     <string name="cerrarsesion">Cerrar Sesion</string>
     <string name="enfermedad">Enfermedad</string>
@@ -175,6 +175,17 @@
     <string name="admin">admin:</string>
     <string name="profile_tvInfo">Informacion</string>
     <string name="email">Correo Electronico</string>
+    <string name="edit">EDITAR</string>
+    <string name="btOlvidar">¿Olvidaste tu contraseña?</string>
+    <string name="title_activity_forgot_password">ForgotPassword</string>
+    <string name="recuperar">RECUPERAR</string>
+    <string name="ingresaCorreo">Ingresa tu correo</string>
+    <string name="tvRecupera">Recupera tu contraseña</string>
+    <string name="tvLugarTrabajoMnn">Lugar de trabajo por la mañana</string>
+    <string name="tvLugarTrabajoTarde">Lugar de trabajo por la tarde</string>
+    <string name="tvLogin">Login</string>
+    <string name="tvSigUp">Registrate</string>
+    <string name="tituloCreador">Nombre del creador de la aplicacion</string>
 
 
 </resources>

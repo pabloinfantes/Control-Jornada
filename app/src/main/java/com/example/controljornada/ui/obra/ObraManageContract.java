@@ -3,7 +3,11 @@ package com.example.controljornada.ui.obra;
 import com.example.controljornada.data.model.Obra;
 import com.example.controljornada.ui.base.BasePresenter;
 import com.example.controljornada.ui.base.OnRepositoryCallback;
-
+/**
+ * Esta clase es la encargada de obligar a implementar estos metodos
+ * @author pablo
+ *
+ */
 public interface ObraManageContract {
 
 

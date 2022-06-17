@@ -7,7 +7,11 @@ import com.example.controljornada.ui.base.OnRepositoryListCallback;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Esta clase es la encargada de pasar informacion del presenter segun la respuesta del repository
+ * @author pablo
+ *
+ */
 public class ListadoNumeroHorasInteractor implements OnRepositoryListCallback  {
 
     private ListadoNumeroHorasContract.OnInteractorListener listener;

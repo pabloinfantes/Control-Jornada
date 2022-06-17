@@ -25,6 +25,8 @@ import com.example.controljornada.ui.horario.HorarioFragment;
 import com.example.controljornada.ui.signup.SignUpActivity;
 import com.example.controljornada.databinding.ActivityLoginBinding;
 import com.example.controljornada.utils.CommonUtils;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -39,7 +41,11 @@ import java.net.HttpURLConnection;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-
+/**
+ * Esta clase es la encargada de gestionar lo que ocurre en esta vista en concreto
+ * @author pablo
+ *
+ */
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
 
     private ActivityLoginBinding binding;
@@ -63,6 +69,15 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
         //la vista se registra como subscriptor del EventBus
         EventBus.getDefault().register(this);
+
+
+        binding.btOlvidarPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this,ForgotPassword.class));
+                finish();
+            }
+        });
     }
 
 
@@ -142,12 +157,14 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         thread.start();
 
         try {
-            Thread.sleep(1000);
+            thread.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         Log.d("rr",result);
+
+
 
         JSONArray array = null;
         int id = 0;
@@ -155,8 +172,13 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         String admin = null;
         String name = null;
         String surname = null;
+        String password = null;
+
         try {
             array = new JSONArray(result);
+            if (array.length() < 1){
+                Toast.makeText(this,"Debe registrarse previamente",Toast.LENGTH_SHORT).show();
+            }
             for(int i=0; i < array.length(); i++)
             {
                 JSONObject object = array.getJSONObject(i);
@@ -165,12 +187,19 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
                 admin = object.getString("admin");
                 name = object.getString("name");
                 surname = object.getString("surname");
+                password = object.getString("password");
 
-                if (admin.equals("1")){
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                if (firebaseUser.isEmailVerified()){
+                    if (admin.equals("1")){
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    }else {
+                        startActivity(new Intent(LoginActivity.this, MainActivityNormalUser.class));
+                    }
                 }else {
-                    startActivity(new Intent(LoginActivity.this, MainActivityNormalUser.class));
+                    Toast.makeText(this,"Correo electronico no validado",Toast.LENGTH_SHORT).show();
                 }
+
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -183,6 +212,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         editor.putString("email",email);
         editor.putString("name",name);
         editor.putString("surname",surname);
+        editor.putString("password",password);
         editor.apply();
 
 

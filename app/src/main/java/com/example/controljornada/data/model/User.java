@@ -11,7 +11,11 @@ import java.time.LocalDate;
 
 
 
-
+/**
+ * Esta clase es el pojo user
+ * @author pablo
+ *
+ */
 public class User implements Serializable,Comparable {
     
     public static final String TAG = "user";

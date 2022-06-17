@@ -5,7 +5,11 @@ import android.text.TextUtils;
 import com.example.controljornada.data.model.Obra;
 import com.example.controljornada.data.repository.ObraRepository;
 import com.example.controljornada.ui.base.OnRepositoryCallback;
-
+/**
+ * Esta clase es la encargada de pasar informacion del presenter segun la respuesta del repository
+ * @author pablo
+ *
+ */
 public class ObraManageInteractor implements OnRepositoryCallback {
 
     ObraManageContract.OnInteractorManageListener listener;

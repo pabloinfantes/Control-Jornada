@@ -14,6 +14,12 @@ import com.example.controljornada.data.model.Horario;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Esta clase es la encargada de dar controlar la vista de los recyclerview
+ * @author pablo
+ *
+ */
 public class CalendarioAdapter extends RecyclerView.Adapter<CalendarioAdapter.ViewHolder>{
     private ArrayList<Horario> list;
 

@@ -1,8 +1,6 @@
 package com.example.controljornada.ui.obra;
 
-import static android.content.ContentValues.TAG;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -27,7 +25,11 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Esta clase es la encargada de gestionar lo que ocurre en esta vista en concreto
+ * @author pablo
+ *
+ */
 public class ListObraFragment extends Fragment implements ListadoObrasContract.View,ListadoObrasAdapter.OnManageListadoListener{
 
     private FragmentListObraBinding binding;
@@ -63,6 +65,8 @@ public class ListObraFragment extends Fragment implements ListadoObrasContract.V
         presenter.load();
         initFab();
     }
+
+
 
     private void initFab() {
         binding.floatingActionButton2.setOnClickListener(new View.OnClickListener() {

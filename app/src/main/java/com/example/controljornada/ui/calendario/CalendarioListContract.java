@@ -6,6 +6,12 @@ import com.example.controljornada.ui.base.OnRepositoryListCallback;
 
 import java.util.ArrayList;
 
+
+/**
+ * Esta clase es la encargada de obligar a implementar estos metodos
+ * @author pablo
+ *
+ */
 public interface CalendarioListContract {
 
 

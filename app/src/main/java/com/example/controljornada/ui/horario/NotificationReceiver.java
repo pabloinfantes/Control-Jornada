@@ -18,6 +18,11 @@ import com.example.controljornada.ui.MainActivity;
 
 import java.util.Random;
 
+/**
+ * Esta clase es la encargada de mandar la notificacion
+ * @author pablo
+ *
+ */
 public class NotificationReceiver extends BroadcastReceiver {
 
 

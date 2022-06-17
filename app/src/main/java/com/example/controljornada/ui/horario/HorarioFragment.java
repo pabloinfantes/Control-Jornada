@@ -34,7 +34,11 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-
+/**
+ * Esta clase es la encargada de gestionar lo que ocurre en esta vista en concreto
+ * @author pablo
+ *
+ */
 public class HorarioFragment extends Fragment implements View.OnClickListener ,HorarioContract.View{
 
 
@@ -42,6 +46,7 @@ public class HorarioFragment extends Fragment implements View.OnClickListener ,H
     private HorarioContract.Presenter presenter;
     private String firmado;
     private String existeUser;
+    private Horario horarioAusencia;
     public static ArrayList<String> listObras = new ArrayList<>();
 
     public static Fragment newInstance(Bundle bundle) {
@@ -281,6 +286,22 @@ public class HorarioFragment extends Fragment implements View.OnClickListener ,H
                 timePickerDialog3.show();
             }
         });
+        Horario horario =new Horario(idUser,
+                email,
+                binding.spinnerLugarTrabajo1.getSelectedItem().toString(),
+                binding.spinnerLugarTrabajo2.getSelectedItem().toString(),
+                fechaActual.toString(),
+                binding.tvHorarioIzq.getText().toString(),
+                binding.tvHorarioDer.getText().toString(),
+                binding.tvHorarioIzq2.getText().toString(),
+                binding.tvHorarioDer2.getText().toString(),
+                10,
+                null);
+
+        presenter.leer(horario);
+        if (!firmado.equals("0")){
+            binding.btFirma.setText(getResources().getString(R.string.edit));
+        }
 
         binding.btFirma.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -300,31 +321,46 @@ public class HorarioFragment extends Fragment implements View.OnClickListener ,H
 
 
                 presenter.leer(horario);
-
+                presenter.leerAusencia(horario);
                 if (firmado.equals("0")){
+
                     try {
+
                         Log.d("hora1",horario.getHorarioEntradaMñn());
                         Log.d("hora2",horario.getHorarioSalidaMñn());
                         Log.d("hora3",horario.getHorarioEntradaTarde());
                         Log.d("hora4",horario.getHorarioSalidaTarde());
-
                         int hora1 = Integer.parseInt(horario.getHorarioEntradaMñn().substring(0,2));
                         int hora2 = Integer.parseInt(horario.getHorarioSalidaMñn().substring(0,2));
                         int hora3 = Integer.parseInt(horario.getHorarioEntradaTarde().substring(0,2));
                         int hora4 = Integer.parseInt(horario.getHorarioSalidaTarde().substring(0,2));
-
                         int numHorasFinal = (hora4 -hora1) -1;
                         horario.setNumeroHoras(numHorasFinal);
 
-                        Log.d("numHoras", String.valueOf(numHorasFinal));
-                        presenter.add(horario);
-
+                        if (horario.getMotivoAusencia() == null){
+                            presenter.add(horario);
+                        }else {
+                            Toast.makeText(getContext(),"Usted ya ha firmado",Toast.LENGTH_SHORT).show();
+                        }
 
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
                 }else {
-                    Toast.makeText(getContext(),"Ya has firmado hoy",Toast.LENGTH_SHORT).show();
+                    int hora1 = Integer.parseInt(horario.getHorarioEntradaMñn().substring(0,2));
+                    int hora2 = Integer.parseInt(horario.getHorarioSalidaMñn().substring(0,2));
+                    int hora3 = Integer.parseInt(horario.getHorarioEntradaTarde().substring(0,2));
+                    int hora4 = Integer.parseInt(horario.getHorarioSalidaTarde().substring(0,2));
+
+                    int numHorasFinal = (hora4 -hora1) -1;
+                    horario.setNumeroHoras(numHorasFinal);
+
+                    if (horarioAusencia.getMotivoAusencia().equals("null")){
+                        presenter.editHorario(horario);
+                    }else {
+                        Toast.makeText(getContext(),"Usted ya ha firmado",Toast.LENGTH_SHORT).show();
+                    }
+
                 }
             }
         });
@@ -360,8 +396,10 @@ public class HorarioFragment extends Fragment implements View.OnClickListener ,H
 
     @Override
     public void onSuccess(String message) {
-
-        Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();
+        if (!message.equals("numeroHoras")){
+            binding.btFirma.setText(getResources().getString(R.string.edit));
+            Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -373,12 +411,12 @@ public class HorarioFragment extends Fragment implements View.OnClickListener ,H
 
     @Override
     public void setHora1AntesHora2() {
-        Toast.makeText(getContext(),"hora 1 mal",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(),"tramos horarios de por la mañana mal",Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void setHora3AntesHora4() {
-        Toast.makeText(getContext(),"hora 2 mal",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(),"tramos horarios de por la tarde mal",Toast.LENGTH_SHORT).show();
     }
 
 
@@ -414,6 +452,16 @@ public class HorarioFragment extends Fragment implements View.OnClickListener ,H
 
     @Override
     public void OnFailureReadObra(String message) {
+        Toast.makeText(getContext(),message,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void OnSuccessReadAusencia(Horario horario) {
+        horarioAusencia = horario;
+    }
+
+    @Override
+    public void OnFailureReadAusencia(String message) {
         Toast.makeText(getContext(),message,Toast.LENGTH_SHORT).show();
     }
 }

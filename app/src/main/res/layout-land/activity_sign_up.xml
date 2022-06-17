@@ -50,25 +50,6 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilUser"
-        style="@style/LoginTextHintApparience.SignUp"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/landscape_singup__marginTop"
-        android:layout_marginLeft="@dimen/landscape_singup_margin"
-        android:layout_marginRight="@dimen/landscape_singup_margin"
-        android:layout_weight="@dimen/signUp_layout_weight"
-        app:startIconDrawable="@drawable/ic_tiluser_person">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tieUser"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/SignUp_tieUser_hint"
-            tools:ignore="TextContrastCheck,TextContrastCheck" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilEmail"
         style="@style/LoginTextHintApparience.SignUp"
         android:layout_width="match_parent"

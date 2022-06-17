@@ -7,6 +7,11 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * Esta clase es la encargada de pasar la informacion entre la vista y el interactor
+ * @author pablo
+ *
+ */
 public class HorarioFragmentPresenter implements HorarioContract.Presenter, HorarioContract.OnInteractorManageListener {
 
     private HorarioContract.View view;
@@ -49,8 +54,18 @@ public class HorarioFragmentPresenter implements HorarioContract.Presenter, Hora
     }
 
     @Override
+    public void leerAusencia(Horario horario) {
+        interactor.leerAusencia(horario);
+    }
+
+    @Override
     public void editNumHora(User user) {
         interactor.editNumHora(user);
+    }
+
+    @Override
+    public void editHorario(Horario horario) {
+        interactor.editHorario(horario);
     }
 
     @Override
@@ -101,5 +116,15 @@ public class HorarioFragmentPresenter implements HorarioContract.Presenter, Hora
     @Override
     public void OnFailureReadObra(String message) {
         view.OnFailureReadObra(message);
+    }
+
+    @Override
+    public void OnSuccessReadAusencia(Horario horario) {
+        view.OnSuccessReadAusencia(horario);
+    }
+
+    @Override
+    public void OnFailureReadAusencia(String message) {
+        view.OnFailureReadAusencia(message);
     }
 }

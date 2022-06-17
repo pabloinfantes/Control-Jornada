@@ -3,6 +3,11 @@ package com.example.controljornada.ui.obra;
 
 import com.example.controljornada.data.model.Obra;
 
+/**
+ * Esta clase es la encargada de pasar la informacion entre la vista y el interactor
+ * @author pablo
+ *
+ */
 public class ObraManagePresenter implements ObraManageContract.Presenter , ObraManageContract.OnInteractorManageListener{
 
      private ObraManageContract.View view;

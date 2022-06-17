@@ -2,6 +2,11 @@ package com.example.controljornada.ui.profile;
 
 import com.example.controljornada.data.model.User;
 
+/**
+ * Esta clase es la encargada de pasar la informacion entre la vista y el interactor
+ * @author pablo
+ *
+ */
 public class ProfileFragmentPresenter implements UserContract.Presenter ,UserContract.OnInteractorListener{
 
 
@@ -36,5 +41,20 @@ public class ProfileFragmentPresenter implements UserContract.Presenter ,UserCon
     @Override
     public void edit(User user) {
         interactor.edit(user);
+    }
+
+    @Override
+    public void leer(String userEmail) {
+        interactor.leer(userEmail);
+    }
+
+    @Override
+    public void OnSuccessReadUser(User user) {
+        view.OnSuccessReadUser(user);
+    }
+
+    @Override
+    public void OnFailureReadUser(String message) {
+        view.OnFailureReadUser(message);
     }
 }

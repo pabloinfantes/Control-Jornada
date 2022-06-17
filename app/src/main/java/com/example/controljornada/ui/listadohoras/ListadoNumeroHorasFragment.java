@@ -39,7 +39,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Esta clase es la encargada de gestionar lo que ocurre en esta vista en concreto
+ * @author pablo
+ *
+ */
 public class ListadoNumeroHorasFragment extends Fragment implements ListadoNumeroHorasContract.View ,ListadoNumeroHorasAdapter.OnManageListadoListener{
 
     private FragmentListadoNumeroHorasBinding binding;
@@ -214,6 +218,9 @@ public class ListadoNumeroHorasFragment extends Fragment implements ListadoNumer
                 //Si la respuesta del usuario es true, se llama al presentador
                 if (result.getBoolean(BaseDialogFragment.KEY_BUNDLE)) {
                     userDeleted = user;
+                    //SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+                    //String password = prefs.getString("password","1");
+                    //userDeleted.setPassword(password);
                     presenter.delete(user);
 
                 }

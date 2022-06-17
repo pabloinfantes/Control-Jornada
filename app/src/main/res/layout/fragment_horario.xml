@@ -12,6 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="8dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:fontFamily="@font/officialbook"
@@ -54,7 +55,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint1"
         android:layout_width="367dp"
-        android:layout_height="162dp"
+        android:layout_height="169dp"
         android:layout_marginTop="8dp"
         style="@style/HorarioTextHintApparience"
         app:layout_constraintEnd_toEndOf="parent"
@@ -106,18 +107,30 @@
             app:layout_constraintStart_toEndOf="@+id/tvHorarioIzq"
             app:layout_constraintTop_toBottomOf="@+id/tvSalida" />
 
+        <TextView
+            android:id="@+id/tvLugarTrabajoMnn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tvLugarTrabajoMnn"
+            android:layout_marginTop="8dp"
+            android:textSize="12sp"
+            android:layout_marginLeft="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvHorarioDer" />"
+
         <Spinner
             android:id="@+id/spinnerLugarTrabajo1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:layout_marginTop="16dp"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvHorarioDer">
+            app:layout_constraintTop_toBottomOf="@+id/tvLugarTrabajoMnn">
 
         </Spinner>
 
@@ -181,18 +194,31 @@
             app:layout_constraintStart_toEndOf="@+id/tvHorarioIzq2"
             app:layout_constraintTop_toBottomOf="@+id/tvSalida2" />
 
+
+        <TextView
+            android:id="@+id/tvLugarTrabajoTarde"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tvLugarTrabajoTarde"
+            android:textSize="12sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvHorarioDer2" />"
+
+
         <Spinner
             android:id="@+id/spinnerLugarTrabajo2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvHorarioDer2">
+            app:layout_constraintTop_toBottomOf="@+id/tvLugarTrabajoTarde">
 
         </Spinner>
 
@@ -233,7 +259,7 @@
         android:layout_marginStart="@dimen/horario_btFirma_layout_marginStart"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="@dimen/horario_btFirma_layout_marginStart"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="8dp"
         android:backgroundTint="@color/colorYellow"
         android:text="@string/horario_btAusencia_text"
         android:textColor="@color/white"

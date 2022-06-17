@@ -26,7 +26,12 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-
+/**
+ * Esta clase es la encargada de hacer que la ausencia de un usuario en caso de que la haya
+ * funcione correctamente
+ * @author pablo
+ *
+ */
 public class AusenciaFragment extends Fragment implements HorarioContract.View {
 
     private FragmentAusenciaBinding binding;
@@ -263,5 +268,15 @@ public class AusenciaFragment extends Fragment implements HorarioContract.View {
     @Override
     public void OnFailureReadObra(String message) {
 //
+    }
+
+    @Override
+    public void OnSuccessReadAusencia(Horario horario) {
+        //
+    }
+
+    @Override
+    public void OnFailureReadAusencia(String message) {
+        //
     }
 }

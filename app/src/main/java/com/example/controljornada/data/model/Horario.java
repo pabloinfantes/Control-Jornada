@@ -1,12 +1,10 @@
 package com.example.controljornada.data.model;
 
-import androidx.annotation.NonNull;
-import androidx.room.Entity;
-import androidx.room.ForeignKey;
-import androidx.room.PrimaryKey;
-
-
-
+/**
+ * Esta clase es el pojo horario
+ * @author pablo
+ *
+ */
 public class Horario {
 
     public static final String TAG = "horario";

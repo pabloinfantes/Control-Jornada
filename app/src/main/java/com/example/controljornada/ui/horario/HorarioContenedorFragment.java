@@ -27,7 +27,11 @@ import com.example.controljornada.ui.profile.ProfileFragment;
 
 import java.util.Calendar;
 
-
+/**
+ * Esta clase es la encargada de gestionar lo que ocurre en esta vista en concreto
+ * @author pablo
+ *
+ */
 public class HorarioContenedorFragment extends Fragment {
 
     private FragmentHorarioContenedorBinding binding;

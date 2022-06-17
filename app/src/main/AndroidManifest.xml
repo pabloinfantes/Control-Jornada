@@ -16,6 +16,11 @@
         android:theme="@style/Theme.ControlJornada.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.login.ForgotPassword"
+            android:exported="false"
+            android:label="@string/title_activity_forgot_password"
+            android:theme="@style/Theme.ControlJornada.NoActionBar.NoActionBar" />
+        <activity
             android:name=".ui.MainActivityNormalUser"
             android:exported="false"
             android:label="@string/title_activity_main_admin"
@@ -42,7 +47,7 @@
         <activity
             android:name=".ui.MainActivity"
             android:exported="false"
-            android:theme="@style/Theme.ControlJornada.NoActionBar"></activity>
+            android:theme="@style/Theme.ControlJornada.NoActionBar" />
     </application>
 
 </manifest>

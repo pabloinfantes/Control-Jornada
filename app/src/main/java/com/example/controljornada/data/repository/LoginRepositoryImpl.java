@@ -14,9 +14,14 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.greenrobot.eventbus.EventBus;
-
+/**
+ * Esta clase es la encargada de comunicarse con la base de datos de firebase y maneja tanto el signup como el login
+ * @author pablo
+ *
+ */
 public class LoginRepositoryImpl implements LoginContract.Repository, SignUpContract.Repository {
 
     private static final String TAG = LoginRepositoryImpl.class.getName();
@@ -53,7 +58,7 @@ public class LoginRepositoryImpl implements LoginContract.Repository, SignUpCont
                             Event loginEvent = new Event();
                             loginEvent.setEventType(Event.onOnLoginError);
                             loginEvent.setMessage(task.getException().toString());
-
+                            callback.onFailure("Debe registrarse previamente");
                             //Publica el evento mediante el metodo post
                             EventBus.getDefault().post(loginEvent);
                         }
@@ -73,6 +78,8 @@ public class LoginRepositoryImpl implements LoginContract.Repository, SignUpCont
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
+                            FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                            firebaseUser.sendEmailVerification();
                             callback.onSuccess(email + "-"+user);
 
                         } else {
@@ -81,7 +88,6 @@ public class LoginRepositoryImpl implements LoginContract.Repository, SignUpCont
                             Event SignUpEvent = new Event();
                             SignUpEvent.setEventType(Event.onSignUpError);
                             SignUpEvent.setMessage(task.getException().toString());
-
                             //Publica el evento mediante el metodo post
                             EventBus.getDefault().post(SignUpEvent);
                         }

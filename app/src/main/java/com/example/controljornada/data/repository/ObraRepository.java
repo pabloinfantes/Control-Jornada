@@ -31,7 +31,12 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.ExecutionException;
-
+/**
+ * Esta clase es la encargada de comunicarse con la base de datos que esta en el servidor y proporcionar
+ * una serie de datos o acciones
+ * @author pablo
+ *
+ */
 public class ObraRepository implements ListadoObrasContract.Repository, ObraManageContract.Repository {
 
     private static ObraRepository instance;
@@ -116,7 +121,6 @@ public class ObraRepository implements ListadoObrasContract.Repository, ObraMana
         String name = null;
         String shortname = null;
         String description = null;
-
         try {
             array = new JSONArray(result);
             for (int i = 0; i < array.length(); i++) {
@@ -130,14 +134,15 @@ public class ObraRepository implements ListadoObrasContract.Repository, ObraMana
 
 
             }
+            Log.d("LIISOBRA", list.toString());
+            callback.onSuccess(list);
+            this.list.clear();
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
 
-        Log.d("LIISOBRA", list.toString());
-        callback.onSuccess(list);
-        this.list.clear();
+
 
     }
 
@@ -255,8 +260,11 @@ public class ObraRepository implements ListadoObrasContract.Repository, ObraMana
         });
         thread.start();
 
-
-
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         callback.onSuccess("Se ha añadido correctamente");
 
     }
@@ -271,7 +279,7 @@ public class ObraRepository implements ListadoObrasContract.Repository, ObraMana
             public void run() {
                 try {
 
-                    URL url = new URL("http://158.101.203.234/add/controlJornada/updateObra.php?id=" + obra.getId() + "&description=" +obra.getDescription().toString());
+                    URL url = new URL("http://158.101.203.234/add/controlJornada/updateObra.php?&id=" + obra.getId() + "&description=" +obra.getDescription().toString());
                     Log.d("url", String.valueOf(url));
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("POST");
@@ -296,7 +304,11 @@ public class ObraRepository implements ListadoObrasContract.Repository, ObraMana
 
         });
         thread.start();
-
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         callback.onSuccess("Se ha editado correctamente");
     }
 }

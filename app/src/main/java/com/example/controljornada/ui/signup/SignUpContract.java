@@ -4,7 +4,11 @@ import com.example.controljornada.ui.base.BasePresenter;
 import com.example.controljornada.ui.base.IProgressView;
 import com.example.controljornada.ui.base.OnRepositoryCallback;
 import com.example.controljornada.ui.login.LoginContract;
-
+/**
+ * Esta clase es la encargada de obligar a implementar estos metodos
+ * @author pablo
+ *
+ */
 public interface SignUpContract {
 
     interface View extends LoginContract.View {

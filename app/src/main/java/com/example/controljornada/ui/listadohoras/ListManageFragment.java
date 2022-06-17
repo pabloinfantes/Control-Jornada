@@ -30,7 +30,11 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.util.Random;
 
-
+/**
+ * Esta clase es la encargada de gestionar lo que ocurre en esta vista en concreto
+ * @author pablo
+ *
+ */
 public class ListManageFragment extends Fragment implements ListadoManageContract.View {
 
 
@@ -140,14 +144,6 @@ public class ListManageFragment extends Fragment implements ListadoManageContrac
         thread.start();
 
 
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(User.TAG, getUser());
-
-        PendingIntent pendingIntent = new NavDeepLinkBuilder(getActivity())
-                .setGraph(R.navigation.nav_graph)
-                .setDestination(R.id.listManageFragment)
-                .setArguments(bundle)
-                .createPendingIntent();
 
         //5.- Crear la notificacion
         Notification.Builder builder = null;
@@ -156,8 +152,7 @@ public class ListManageFragment extends Fragment implements ListadoManageContrac
                     .setSmallIcon(R.drawable.ic_action_email)
                     .setAutoCancel(true)
                     .setContentTitle(getResources().getString(R.string.notification_title_add_usuario))
-                    .setContentText(message)
-                    .setContentIntent(pendingIntent);
+                    .setContentText("Ha cambiado algo en la lista de usuarios");
         }
         //6.- Añadir notificacion al manager
         NotificationManager notificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);

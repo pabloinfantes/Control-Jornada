@@ -5,8 +5,10 @@ import android.util.Log;
 import com.example.controljornada.data.model.User;
 import com.example.controljornada.ui.base.OnRepositoryCallback;
 import com.example.controljornada.ui.base.OnRepositoryListCallback;
+import com.example.controljornada.ui.base.ReadFromUser;
 import com.example.controljornada.ui.listadohoras.ListadoManageContract;
 import com.example.controljornada.ui.listadohoras.ListadoNumeroHorasContract;
+import com.example.controljornada.ui.profile.UserContract;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,29 +24,38 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
-public class UserRepository implements ListadoNumeroHorasContract.Repository, ListadoManageContract.Repository {
+/**
+ * Esta clase es la encargada de comunicarse con la base de datos que esta en el servidor y proporcionar
+ * una serie de datos o acciones
+ * @author pablo
+ *
+ */
+public class UserRepository implements ListadoNumeroHorasContract.Repository, ListadoManageContract.Repository , UserContract.Repository {
 
 
     private static UserRepository instance;
     private ArrayList<User> list;
     private String resultNumeroHoras;
-
+    private User user = null;
 
     private String result;
-    private UserRepository(){
+
+    private UserRepository() {
         list = new ArrayList<>();
 
     }
+
     private void sendDataNumeroHoras(String data) {
         resultNumeroHoras = data;
     }
 
-    public static UserRepository getInstance(){
-        if (instance == null){
+    public static UserRepository getInstance() {
+        if (instance == null) {
             instance = new UserRepository();
         }
         return instance;
     }
+
     private void sendData(String data) {
         result = data;
     }
@@ -130,7 +141,7 @@ public class UserRepository implements ListadoNumeroHorasContract.Repository, Li
                 empresa = object.getString("empresa");
                 edad = object.getString("edad");
 
-                User user = new User(id, email,name,Integer.parseInt(admin),numeroHorasMensuales);
+                User user = new User(id, email, name, Integer.parseInt(admin), numeroHorasMensuales);
                 user.setApellidos(surname);
                 user.setGenero(genero);
                 user.setTelefono(telefono);
@@ -185,8 +196,33 @@ public class UserRepository implements ListadoNumeroHorasContract.Repository, Li
         });
         thread.start();
 
+        callback.onDeleteSucces("usuario borrado");
 
-        callback.onDeleteSucces("Se ha eliminado el usuario" +user.getNombre());
+
+        /*
+        AuthCredential credential = EmailAuthProvider.getCredential(user.getEmail(),user.getPassword());
+        // Prompt the user to re-provide their sign-in credentials
+
+        FirebaseUser userFire = FirebaseAuth.getInstance();
+            userFire.reauthenticate(credential)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            userFire.delete()
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Log.d("TAG", "User account deleted.");
+                                                callback.onDeleteSucces("usuario borrado");
+                                            }
+                                        }
+                                    });
+                        }
+                    });
+
+
+         */
     }
 
     @Override
@@ -198,16 +234,16 @@ public class UserRepository implements ListadoNumeroHorasContract.Repository, Li
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://158.101.203.234/add/controlJornada/insertarUser.php?email="+user.getEmail()+"&name="+user.getNombre()+"&surname="+user.getApellidos()+"&numeroHorasMensuales="+user.getNumeroHorasMensuales());
+                    URL url = new URL("http://158.101.203.234/add/controlJornada/insertarUser.php?email=" + user.getEmail() + "&name=" + user.getNombre() + "&surname=" + user.getApellidos() + "&numeroHorasMensuales=" + user.getNumeroHorasMensuales());
                     Log.d("url", String.valueOf(url));
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("POST");
                     connection.setDoOutput(true);
                     connection.connect();
 
-                    if( connection.getResponseCode() == HttpURLConnection.HTTP_OK ){
+                    if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                         InputStream is = connection.getErrorStream();
-                    }else{
+                    } else {
                         InputStream err = connection.getErrorStream();
                     }
 
@@ -221,14 +257,14 @@ public class UserRepository implements ListadoNumeroHorasContract.Repository, Li
             }
         });
         thread.start();
-
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         callback.onUndoSuccess("Se ha vuelto ha añadir este usuario");
 
     }
-
-
-
-
 
 
     @Override
@@ -239,16 +275,16 @@ public class UserRepository implements ListadoNumeroHorasContract.Repository, Li
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://158.101.203.234/add/controlJornada/insertarUser.php?&email="+user.getEmail()+"&name="+user.getNombre()+"&surname="+user.getApellidos());
+                    URL url = new URL("http://158.101.203.234/add/controlJornada/insertarUser.php?&email=" + user.getEmail() + "&name=" + user.getNombre() + "&surname=" + user.getApellidos());
                     Log.d("url", String.valueOf(url));
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("POST");
                     connection.setDoOutput(true);
                     connection.connect();
 
-                    if( connection.getResponseCode() == HttpURLConnection.HTTP_OK ){
+                    if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                         InputStream is = connection.getErrorStream();
-                    }else{
+                    } else {
                         InputStream err = connection.getErrorStream();
                     }
 
@@ -262,7 +298,11 @@ public class UserRepository implements ListadoNumeroHorasContract.Repository, Li
             }
         });
         thread.start();
-
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         callback.onSuccess("Se ha añadido correctamente");
     }
@@ -275,16 +315,16 @@ public class UserRepository implements ListadoNumeroHorasContract.Repository, Li
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://158.101.203.234/add/controlJornada/updateUser.php?admin="+user.getAdmin()+"&email="+user.getEmail()+"&name="+user.getNombre()+"&surname="+user.getApellidos()+"&numeroHorasMensuales="+user.getNumeroHorasMensuales()+"&empresa="+user.getEmpresa()+"&genero="+user.getGenero()+"&telefono="+user.getTelefono()+"&edad="+user.getEdad());
+                    URL url = new URL("http://158.101.203.234/add/controlJornada/updateUser.php?admin=" + user.getAdmin() + "&email=" + user.getEmail() + "&name=" + user.getNombre() + "&surname=" + user.getApellidos() + "&numeroHorasMensuales=" + user.getNumeroHorasMensuales() + "&empresa=" + user.getEmpresa() + "&genero=" + user.getGenero() + "&telefono=" + user.getTelefono() + "&edad=" + user.getEdad());
                     Log.d("url", String.valueOf(url));
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("POST");
                     connection.setDoOutput(true);
                     connection.connect();
 
-                    if( connection.getResponseCode() == HttpURLConnection.HTTP_OK ){
+                    if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                         InputStream is = connection.getErrorStream();
-                    }else{
+                    } else {
                         InputStream err = connection.getErrorStream();
                     }
 
@@ -299,6 +339,117 @@ public class UserRepository implements ListadoNumeroHorasContract.Repository, Li
         });
         thread.start();
 
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         callback.onSuccess(user.toString());
     }
+
+    @Override
+    public void leer(String userEmail, ReadFromUser callback) {
+
+        Thread thread = new Thread(new Runnable() {
+            public String data = "";
+            @Override
+            public void run() {
+
+                try {
+
+                    URL url = new URL("http://158.101.203.234/add/controlJornada/controlJornada.php?email="+userEmail);
+                    Log.d("url", String.valueOf(url));
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection.setRequestMethod("GET");
+                    connection.setRequestProperty("Content-Type", "application/json; utf-8");
+                    connection.setRequestProperty("Accept", "application/json");
+                    connection.connect();
+
+                    int code = connection.getResponseCode();
+                    switch (code) {
+                        case 200:
+                        case 201:
+                            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
+                            String line;
+                            while ((line = br.readLine()) != null) {
+                                data += line;
+                            }
+                            sendDataNumeroHoras(data);
+
+
+                            br.close();
+                    }
+                    connection.disconnect();
+                } catch (ProtocolException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            public String getData() {
+                return data;
+            }
+        });
+        thread.start();
+
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        JSONArray array = null;
+        int id = 0;
+        String email = null;
+        String admin = null;
+        String name = null;
+        String surname = null;
+        String password = null;
+        String numeroHorasMensuales = null;
+        String genero = null;
+        String telefono = null;
+        String empresa = null;
+        String edad = null;
+
+
+        try {
+            array = new JSONArray(resultNumeroHoras);
+            for(int i=0; i < array.length(); i++)
+            {
+                JSONObject object = array.getJSONObject(i);
+                id = object.getInt("id");
+                email = object.getString("email");
+                admin = object.getString("admin");
+                name = object.getString("name");
+                surname = object.getString("surname");
+                password = object.getString("password");
+                numeroHorasMensuales = object.getString("numeroHorasMensuales");
+                genero = object.getString("genero");
+                telefono = object.getString("telefono");
+                empresa = object.getString("empresa");
+                edad = object.getString("edad");
+
+
+            }
+            user = new User(id,email,name,Integer.parseInt(admin),numeroHorasMensuales);
+            user.setApellidos(surname);
+            user.setGenero(genero);
+            user.setTelefono(telefono);
+            user.setEmpresa(empresa);
+            user.setEdad(edad);
+            user.setPassword(password);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        callback.OnSuccessReadUser(user);
+
+
+    }
+
+
 }

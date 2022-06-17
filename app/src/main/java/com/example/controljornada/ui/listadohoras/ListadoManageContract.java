@@ -3,7 +3,11 @@ package com.example.controljornada.ui.listadohoras;
 import com.example.controljornada.data.model.User;
 import com.example.controljornada.ui.base.BasePresenter;
 import com.example.controljornada.ui.base.OnRepositoryCallback;
-
+/**
+ * Esta clase es la encargada de obligar a implementar estos metodos
+ * @author pablo
+ *
+ */
 public interface ListadoManageContract {
 
     interface View extends OnRepositoryCallback {

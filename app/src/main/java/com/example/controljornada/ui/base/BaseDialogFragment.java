@@ -9,6 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+/**
+ * Esta clase es la encargada de hacer que salga el cuadro de dialogo a la hora de eliminar en los listados
+ * @author pablo
+ *
+ */
 public class BaseDialogFragment extends DialogFragment {
 
     public static final String REQUEST ="requestDialog";

@@ -5,6 +5,11 @@ import com.example.controljornada.data.model.Horario;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Esta clase es la encargada de pasar la informacion entre la vista y el interactor
+ * @author pablo
+ *
+ */
 public class CalendarioListPresenter implements CalendarioListContract.Presenter, CalendarioListContract.OnInteractorListener{
 
     private CalendarioListContract.View view;

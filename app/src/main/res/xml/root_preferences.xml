@@ -46,8 +46,8 @@
 
         <Preference
             android:key="@string/key_empresa"
-            android:title="@string/tituloEmpresa"
-            android:summary="@string/nombreEmpresa"
+            android:title="@string/tituloCreador"
+            android:summary="Pablo Infante Sosa"
             />
         <Preference
             android:key="@string/key_version"

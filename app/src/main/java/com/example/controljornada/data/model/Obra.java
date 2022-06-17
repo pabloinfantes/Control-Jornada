@@ -8,6 +8,11 @@ import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 
+/**
+ * Esta clase es el pojo Obra
+ * @author pablo
+ *
+ */
 @Entity
 public class Obra implements Comparable , Serializable {
     public static final String TAG = "obra";

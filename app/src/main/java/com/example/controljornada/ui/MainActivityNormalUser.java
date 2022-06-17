@@ -1,12 +1,7 @@
 package com.example.controljornada.ui;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -23,10 +18,13 @@ import androidx.preference.PreferenceManager;
 import com.example.controljornada.R;
 import com.example.controljornada.databinding.ActivityMainNormalUserBinding;
 
-import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Set;
-
+/**
+ * Esta clase es la encargada de gestionar lo que ocurre en esta vista en concreto
+ * @author pablo
+ *
+ */
 public class MainActivityNormalUser extends AppCompatActivity implements PreferenceFragmentCompat.OnPreferenceStartFragmentCallback{
 
 

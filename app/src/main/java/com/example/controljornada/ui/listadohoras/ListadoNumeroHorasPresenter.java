@@ -7,6 +7,11 @@ import com.example.controljornada.data.model.User;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Esta clase es la encargada de pasar la informacion entre la vista y el interactor
+ * @author pablo
+ *
+ */
 public class ListadoNumeroHorasPresenter implements ListadoNumeroHorasContract.Presenter, ListadoNumeroHorasContract.OnInteractorListener {
 
     private ListadoNumeroHorasContract.View view;

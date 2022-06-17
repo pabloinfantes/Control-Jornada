@@ -6,6 +6,7 @@ import com.example.controljornada.data.model.Horario;
 import com.example.controljornada.data.model.User;
 import com.example.controljornada.ui.base.OnRepositoryCallback;
 import com.example.controljornada.ui.base.OnRepositoryListCallback;
+import com.example.controljornada.ui.base.ReadFromAusencia;
 import com.example.controljornada.ui.base.ReadFromObras;
 import com.example.controljornada.ui.base.ReadFromRoomCallback;
 import com.example.controljornada.ui.calendario.CalendarioListContract;
@@ -26,6 +27,13 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
+
+/**
+ * Esta clase es la encargada de comunicarse con la base de datos que esta en el servidor y proporcionar
+ * una serie de datos o acciones
+ * @author pablo
+ *
+ */
 public class HorarioRepository implements HorarioContract.Repository, CalendarioListContract.Repository {
 
     private static HorarioRepository instance;
@@ -157,7 +165,43 @@ public class HorarioRepository implements HorarioContract.Repository, Calendario
             }
         });
         thread2.start();
-        callback.onSuccess("edit");
+        callback.onSuccess("numeroHoras");
+
+    }
+
+    @Override
+    public void editHorario(Horario horario, OnRepositoryCallback callback) {
+
+        Thread thread = new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                try {
+                    URL url2 = new URL("http://158.101.203.234/add/controlJornada/updateHorario.php?idUser=" + horario.getIduser() + "&emailUser=" + horario.getEmailUser() + "&morningWork=" + horario.getLugarTrabajoMñn() + "&afternoonWork=" + horario.getLugarTrabajoTarde() + "&actualDate=" + horario.getFechaDelDiaDeTrabajo() + "&horarioEntradaManana=" + horario.getHorarioEntradaMñn() + "&horarioSalidaManana=" + horario.getHorarioSalidaMñn() + "&horarioEntradaTarde=" + horario.getHorarioEntradaTarde() + "&horarioSalidaTarde=" + horario.getHorarioSalidaTarde() + "&numeroHoras=" + horario.getNumeroHoras() + "&motivoAusencia=" + horario.getMotivoAusencia());
+                    Log.d("url", String.valueOf(url2));
+                    HttpURLConnection connection = (HttpURLConnection) url2.openConnection();
+                    connection.setRequestMethod("POST");
+                    connection.setDoOutput(true);
+                    connection.connect();
+
+                    if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                        InputStream is = connection.getErrorStream();
+                    } else {
+                        InputStream err = connection.getErrorStream();
+                    }
+                    Log.d("EDITOOOO", String.valueOf(url2));
+                    connection.disconnect();
+
+                } catch (ProtocolException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread.start();
+
+        callback.onSuccess("actualizado horario");
     }
 
     @Override
@@ -496,6 +540,99 @@ public class HorarioRepository implements HorarioContract.Repository, Calendario
 
     }
 
+    @Override
+    public void leerAusencia(Horario horario, ReadFromAusencia callback) {
+
+        Thread thread = new Thread(new Runnable() {
+            public String data = "";
+
+            @Override
+            public void run() {
+
+                try {
+
+                    URL url = new URL("http://158.101.203.234/add/controlJornada/leerHorarioNormalUser.php?actualDate=" + horario.getFechaDelDiaDeTrabajo() + "&emailUser=" + horario.getEmailUser());
+                    Log.d("url", String.valueOf(url));
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection.setRequestMethod("GET");
+                    connection.setRequestProperty("Content-Type", "application/json; utf-8");
+                    connection.setRequestProperty("Accept", "application/json");
+                    connection.connect();
+
+                    int code = connection.getResponseCode();
+                    switch (code) {
+                        case 200:
+                        case 201:
+                            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
+                            String line;
+                            while ((line = br.readLine()) != null) {
+                                data += line;
+                            }
+                            sendData(data);
+
+
+                            br.close();
+                    }
+                    connection.disconnect();
+                } catch (ProtocolException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            public String getData() {
+                return data;
+            }
+        });
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+        JSONArray array = null;
+        int id = 0;
+        int idUser = 0;
+        String emailUser2 = null;
+        String morningWork = null;
+        String afternoonWork = null;
+        String actualDate = null;
+        String horarioEntradaManana = null;
+        String horarioSalidaManana = null;
+        String horarioEntradaTarde = null;
+        String horarioSalidaTarde = null;
+        String numeroHoras = null;
+        String motivoAusencia = null;
+
+        try {
+            array = new JSONArray(result);
+            for (int i = 0; i < array.length(); i++) {
+                JSONObject object = array.getJSONObject(i);
+                id = object.getInt("id");
+                idUser = object.getInt("idUser");
+                emailUser2 = object.getString("emailUser");
+                morningWork = object.getString("morningWork");
+                afternoonWork = object.getString("afternoonWork");
+                actualDate = object.getString("actualDate");
+                horarioEntradaManana = object.getString("horarioEntradaManana");
+                horarioSalidaManana = object.getString("horarioSalidaManana");
+                horarioEntradaTarde = object.getString("horarioEntradaTarde");
+                horarioSalidaTarde = object.getString("horarioSalidaTarde");
+                numeroHoras = object.getString("numeroHoras");
+                motivoAusencia = object.getString("motivoAusencia");
+
+                Horario horario1 = new Horario(idUser, emailUser2, morningWork, afternoonWork, actualDate, horarioEntradaManana, horarioSalidaManana, horarioEntradaTarde, horarioSalidaTarde, Integer.parseInt(numeroHoras), motivoAusencia);
+                callback.OnSuccessReadAusencia(horario1);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
 
 
     @Override

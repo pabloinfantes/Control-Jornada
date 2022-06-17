@@ -1,37 +1,31 @@
 package com.example.controljornada.ui.calendario;
 
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CalendarView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.controljornada.data.model.Horario;
-import com.example.controljornada.data.model.User;
 import com.example.controljornada.databinding.FragmentCalendarioBinding;
-import com.example.controljornada.ui.login.LoginActivity;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-
+/**
+ * Esta clase es la encargada de gestionar lo que ocurre en esta vista en concreto
+ * @author pablo
+ *
+ */
 public class CalendarioFragment extends Fragment implements CalendarioListContract.View {
 
     private FragmentCalendarioBinding binding;
@@ -74,6 +68,7 @@ public class CalendarioFragment extends Fragment implements CalendarioListContra
         binding.calendario.setOnDateChangeListener((calendarView, year, month, day) -> {
 
             binding.rvCalendario.removeAllViewsInLayout();
+
             String actualdate;
 
             if ((month +1 ) < 10){
@@ -103,6 +98,7 @@ public class CalendarioFragment extends Fragment implements CalendarioListContra
             String admin = prefs.getString("admin","1");
             String emailUser = prefs.getString("email","1");
 
+
             Log.d("admin",admin);
             Log.d("emailUser",emailUser);
             if (admin.equals("1")){
@@ -111,7 +107,11 @@ public class CalendarioFragment extends Fragment implements CalendarioListContra
                 presenter.selectNormalUser(emailUser, actualdate );
             }
 
+
         });
+
+
+
     }
 
     private void initRv() {
@@ -150,12 +150,12 @@ public class CalendarioFragment extends Fragment implements CalendarioListContra
 
     @Override
     public void showNoData() {
-        Toast.makeText(getContext(),"mm",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(),"mm",Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void showData(ArrayList<Horario> list) {
-        Toast.makeText(getContext(),list.toString(),Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(),list.toString(),Toast.LENGTH_SHORT).show();
         adapter.update(list);
     }
 }

@@ -8,6 +8,19 @@
     android:orientation="vertical"
     android:textAlignment="center">
 
+
+    <TextView
+        android:id="@+id/tvSigUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/officialbook"
+        android:gravity="center_horizontal"
+        android:text="@string/tvSigUp"
+        android:textColor="@color/white"
+        android:textSize="40sp" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilName"
         style="@style/LoginTextHintApparience.SignUp"

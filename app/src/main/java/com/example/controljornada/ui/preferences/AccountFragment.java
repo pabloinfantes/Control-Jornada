@@ -9,7 +9,11 @@ import androidx.preference.EditTextPreference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.example.controljornada.R;
-
+/**
+ * Esta clase es la encargada de gestionar lo que ocurre en esta vista en concreto
+ * @author pablo
+ *
+ */
 public class AccountFragment extends PreferenceFragmentCompat {
 
     @Override

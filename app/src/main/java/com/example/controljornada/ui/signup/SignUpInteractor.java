@@ -10,7 +10,11 @@ import com.example.controljornada.data.repository.UserRepository;
 import com.example.controljornada.ui.base.OnRepositoryCallback;
 import com.example.controljornada.utils.CommonUtils;
 
-
+/**
+ * Esta clase es la encargada de pasar informacion del presenter segun la respuesta del repository
+ * @author pablo
+ *
+ */
 public class SignUpInteractor implements OnRepositoryCallback {
 
     private SignUpContract.OnSignUpInteractorListener listener;

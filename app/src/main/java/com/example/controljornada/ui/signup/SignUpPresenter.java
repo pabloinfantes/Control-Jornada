@@ -1,5 +1,10 @@
 package com.example.controljornada.ui.signup;
 
+/**
+ * Esta clase es la encargada de pasar la informacion entre la vista y el interactor
+ * @author pablo
+ *
+ */
 public class SignUpPresenter implements SignUpContract.Presenter, SignUpContract.OnSignUpInteractorListener {
 
     private SignUpContract.View view;

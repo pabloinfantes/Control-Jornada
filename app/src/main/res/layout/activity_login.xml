@@ -9,6 +9,7 @@
     tools:context=".ui.login.LoginActivity">
 
 
+
     <TextView
         android:id="@+id/tvName"
         android:layout_width="0dp"
@@ -34,7 +35,7 @@
         android:layout_marginStart="@dimen/login_constraint_marginStar"
         android:layout_marginTop="@dimen/login_constraint_marginTop"
         android:layout_marginEnd="@dimen/login_constraint_marginEnd"
-        android:layout_marginBottom="@dimen/login_constraint_marginBottom"
+        android:layout_marginBottom="40dp"
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,13 +47,13 @@
             style="@style/LoginTextHintApparience"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:layout_marginStart="@dimen/login_tilUser_marginStart"
-            android:layout_marginTop="@dimen/login_tilUser_marginTop1"
             android:layout_marginEnd="@dimen/login_tilUser_marginEnd"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/tvLogin">
 
 
             <com.google.android.material.textfield.TextInputEditText
@@ -87,20 +88,7 @@
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <CheckBox
-            android:id="@+id/chkRemember"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/login_tilPassword_marginEnd"
-            android:layout_marginTop="@dimen/login_tilPassword_marginEnd"
-            android:layout_marginBottom="@dimen/login_tilPassword_marginEnd"
-            android:layout_weight="0.8"
-            android:buttonTint="@color/colorPrimary"
-            android:text="@string/login_text_chkRemember"
-            app:layout_constraintBottom_toTopOf="@+id/btSignIn"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tilPassword"
-            app:layout_constraintVertical_bias="0.0" />
+
 
         <Button
             android:id="@+id/btSignUp"
@@ -117,25 +105,22 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tilPassword" />
 
+
         <Button
             android:id="@+id/btSignIn"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
 
             android:layout_gravity="center_horizontal"
-            android:layout_marginStart="@dimen/login_btSignIn_marginStart"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="@dimen/login_btSignIn_marginEnd"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
             android:backgroundTint="@color/colorPrimary"
             android:text="@string/login_btSignIn_text"
             android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintEnd_toStartOf="@+id/btSignUp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btSignUp"
+            app:layout_constraintTop_toBottomOf="@+id/tilPassword"
             tools:ignore="TextContrastCheck" />
-
-
 
         <ProgressBar
             android:id="@+id/progress_horizontal"
@@ -143,13 +128,43 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
             android:indeterminate="true"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chkRemember" />
+            app:layout_constraintTop_toBottomOf="@+id/btSignUp" />
+
+        <Button
+            android:id="@+id/btOlvidarPassword"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/btOlvidar"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/colorSecondary"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progress_horizontal" />
+
+        <TextView
+            android:id="@+id/tvLogin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:fontFamily="@font/officialbook"
+            android:gravity="center_horizontal"
+            android:text="@string/tvLogin"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/black"
+            android:textSize="50sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

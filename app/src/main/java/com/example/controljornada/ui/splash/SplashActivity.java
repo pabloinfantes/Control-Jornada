@@ -14,7 +14,11 @@ import com.example.controljornada.data.model.User;
 import com.example.controljornada.databinding.ActivitySplashBinding;
 import com.example.controljornada.ui.MainActivityNormalUser;
 import com.example.controljornada.ui.login.LoginActivity;
-
+/**
+ * Esta clase es la encargada de gestionar lo que ocurre en esta vista en concreto
+ * @author pablo
+ *
+ */
 public class SplashActivity extends AppCompatActivity {
 
     ActivitySplashBinding binding;

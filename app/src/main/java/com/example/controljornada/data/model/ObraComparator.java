@@ -2,6 +2,11 @@ package com.example.controljornada.data.model;
 
 import java.util.Comparator;
 
+/**
+ * Esta clase sirve para poder ordenar las obras
+ * @author pablo
+ *
+ */
 public class ObraComparator implements Comparator {
 
 

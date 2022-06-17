@@ -3,6 +3,11 @@ package com.example.controljornada.ui.login;
 
 import com.example.controljornada.data.model.User;
 
+/**
+ * Esta clase es la encargada de pasar la informacion entre la vista y el interactor
+ * @author pablo
+ *
+ */
 public class LoginPresenter implements LoginContract.Presenter, LoginContract.OnInteractorListener {
 
     private LoginContract.View view;

@@ -3,7 +3,11 @@ package com.example.controljornada.utils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
+/**
+ * Esta clase es la encargada de comprobar si la contraseña es valida
+ * @author pablo
+ *
+ */
 public final class CommonUtils {
 
 

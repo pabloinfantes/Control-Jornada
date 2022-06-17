@@ -75,7 +75,6 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:$room_version"
 
 
-    //Volley para Json
-    implementation 'com.android.volley:volley:1.2.1'
+
 
 }

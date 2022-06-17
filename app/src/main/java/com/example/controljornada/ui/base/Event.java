@@ -1,5 +1,11 @@
 package com.example.controljornada.ui.base;
 
+
+/**
+ * Esta clase es la encargada de controlar los eventos en los inputsText
+ * @author pablo
+ *
+ */
 public final class Event {
 
     public static final int onOnLoginError = 0;

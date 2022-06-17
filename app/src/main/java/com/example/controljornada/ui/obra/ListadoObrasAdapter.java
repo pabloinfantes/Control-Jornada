@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.preference.Preference;
@@ -26,6 +27,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Esta clase es la encargada de dar controlar la vista de los recyclerview
+ * @author pablo
+ *
+ */
 public class ListadoObrasAdapter extends RecyclerView.Adapter<ListadoObrasAdapter.ViewHolder> {
 
     private ArrayList<Obra> list;
@@ -99,6 +105,8 @@ public class ListadoObrasAdapter extends RecyclerView.Adapter<ListadoObrasAdapte
         if (order){
             Collections.sort(list);
             notifyDataSetChanged();
+        }else{
+            Toast.makeText(context,"Si desea ordenar debe activar el boton en los ajustes",Toast.LENGTH_SHORT).show();
         }
 
     }

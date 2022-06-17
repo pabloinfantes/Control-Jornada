@@ -2,6 +2,11 @@ package com.example.controljornada.data.model;
 
 import java.util.Comparator;
 
+/**
+ * Esta clase sirve para ordenar los usuarios en un listado
+ * @author pablo
+ *
+ */
 public class UserComparator implements Comparator {
 
     @Override

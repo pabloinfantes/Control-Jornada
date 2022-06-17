@@ -3,10 +3,8 @@ package com.example.controljornada.ui.obra;
 
 import android.app.Notification;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.os.Bundle;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,18 +13,20 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavDeepLinkBuilder;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.controljornada.ControlJornadaAplication;
 import com.example.controljornada.R;
 import com.example.controljornada.data.model.Obra;
-import com.example.controljornada.data.model.User;
 import com.example.controljornada.databinding.FragmentObraManageBinding;
 
 import java.util.Random;
 
-
+/**
+ * Esta clase es la encargada de gestionar lo que ocurre en esta vista en concreto
+ * @author pablo
+ *
+ */
 public class ObraManageFragment extends Fragment implements ObraManageContract.View{
 
     private FragmentObraManageBinding binding;
@@ -70,6 +70,8 @@ public class ObraManageFragment extends Fragment implements ObraManageContract.V
             @Override
             public void onClick(View view) {
                 presenter.add(getObra());
+
+
             }
         });
     }
@@ -77,6 +79,7 @@ public class ObraManageFragment extends Fragment implements ObraManageContract.V
     private void initFabEdit() {
         binding.fab.setImageResource(R.drawable.ic_edit);
         binding.tieShortName.setEnabled(false);
+        binding.tieName.setEnabled(false);
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -108,26 +111,20 @@ public class ObraManageFragment extends Fragment implements ObraManageContract.V
 
 
 
+
     @Override
     public void onSuccess(String message) {
 
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(Obra.TAG, getObra());
-
-
-        PendingIntent pendingIntent = new NavDeepLinkBuilder(getActivity())
-                .setGraph(R.navigation.nav_graph)
-                .setDestination(R.id.obraManageFragment)
-                .setArguments(bundle)
-                .createPendingIntent();
-
         //5.- Crear la notificacion
-        Notification.Builder builder = new Notification.Builder(getActivity(), ControlJornadaAplication.IDCHANEL)
-                .setSmallIcon(R.drawable.ic_action_email)
-                .setAutoCancel(true)
-                .setContentTitle(getResources().getString(R.string.notification_title_add_obra))
-                .setContentText(message)
-                .setContentIntent(pendingIntent);
+        Notification.Builder builder = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+
+            builder = new Notification.Builder(getActivity(), ControlJornadaAplication.IDCHANEL)
+                    .setSmallIcon(R.drawable.ic_action_email)
+                    .setAutoCancel(true)
+                    .setContentTitle(getResources().getString(R.string.notification_title_add_obra))
+                    .setContentText("Ha cambiado algo en la lista de obras");
+        }
         //6.- Añadir notificacion al manager
         NotificationManager notificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(new Random().nextInt(), builder.build());
@@ -136,6 +133,8 @@ public class ObraManageFragment extends Fragment implements ObraManageContract.V
         NavHostFragment.findNavController(this).navigateUp();
 
     }
+
+
 
     @Override
     public void onFailure(String message) {

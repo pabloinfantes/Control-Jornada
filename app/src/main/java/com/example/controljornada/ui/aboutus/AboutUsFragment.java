@@ -15,6 +15,12 @@ import com.example.controljornada.R;
 import mehdi.sakout.aboutpage.AboutPage;
 import mehdi.sakout.aboutpage.Element;
 
+/**
+ * Esta clase es la encargada de hacer de que funcionen los links a las redes sociales
+ *
+ * @author pablo
+ *
+ */
 public class AboutUsFragment extends Fragment {
 
     @Override
@@ -28,7 +34,7 @@ public class AboutUsFragment extends Fragment {
                 .setDescription("Aplicación para las empresas que se dedican a la construcción")
                 .addGroup("Redes Sociales")
                 .addEmail("pabloinfantes@gmail.com", "Email")
-                .addInstagram("pabloinfantes00")
+                .addInstagram("")
                 .addGitHub("pabloinfantes")
                 .addTwitter("pabloinfantes1")
                 .addPlayStore("pabloinfantes")

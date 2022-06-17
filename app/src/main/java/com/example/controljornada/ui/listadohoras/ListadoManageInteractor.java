@@ -5,7 +5,11 @@ import android.text.TextUtils;
 import com.example.controljornada.data.model.User;
 import com.example.controljornada.data.repository.UserRepository;
 import com.example.controljornada.ui.base.OnRepositoryCallback;
-
+/**
+ * Esta clase es la encargada de pasar informacion del presenter segun la respuesta del repository
+ * @author pablo
+ *
+ */
 public class ListadoManageInteractor implements OnRepositoryCallback {
 
     ListadoManageContract.OnInteractorManageListener listener;
